@@ -5,26 +5,11 @@
 //  Created by Nicolle on 05/03/24.
 //
 
+import Combine
 import UIKit
 
-struct Pokemon {
-    let name: String
-    let primaryAttribute: String
-    let secondaryAttribute: String?
-    let specie: String
-    let image: UIImage
-    let predominantColor: UIColor
-}
-
-class PokemonDetailsViewController: UIViewController {
-    let pokemon = Pokemon(
-        name: "Pikachu",
-        primaryAttribute: "Electric",
-        secondaryAttribute: nil,
-        specie: "Mouse",
-        image: .pikachu,
-        predominantColor: UIColor(named: "Yellow")!
-    )
+final class PokemonDetailsViewController: UIViewController {
+    let viewModel = PokemonDetailsViewModel()
 
     @IBOutlet weak var specieLabel: UILabel!
     @IBOutlet weak var primaryAttributeLabel: UILabel!
@@ -32,7 +17,19 @@ class PokemonDetailsViewController: UIViewController {
     @IBOutlet weak var secondaryAttributeLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
 
+    private var subscription: AnyCancellable?
+
     override func viewDidLoad() {
+        viewModel.onAppear()
+
+        subscription = viewModel.$pokemon.sink { [weak self] pokemon in
+            guard let pokemon else { return }
+
+            self?.update(with: pokemon)
+        }
+    }
+
+    private func update(with pokemon: Pokemon) {
         title = pokemon.name
         view.backgroundColor = pokemon.predominantColor
 
