@@ -16,22 +16,45 @@ final class PokemonDetailsViewController: UIViewController {
     @IBOutlet weak var secondaryAttributeView: UIView!
     @IBOutlet weak var secondaryAttributeLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
+    @IBOutlet weak var contentView: UIView!
+    
     private var subscription: AnyCancellable?
 
     override func viewDidLoad() {
         viewModel.onAppear()
 
-        subscription = viewModel.$pokemon.sink { [weak self] pokemon in
-            guard let pokemon else { return }
+        subscription = viewModel.$state
+            .sink { [weak self] state in
+                self?.update(with: state)
+            }
+    }
 
-            self?.update(with: pokemon)
+    private func update(with state: ViewState<Pokemon>) {
+        switch state {
+        case .loading:
+            setLoading()
+
+        case .content(let pokemon):
+            setContent(pokemon: pokemon)
         }
     }
 
-    private func update(with pokemon: Pokemon) {
-        title = pokemon.name
-        view.backgroundColor = pokemon.predominantColor
+    private func setLoading() {
+        title = ""
+        view.backgroundColor = .systemBackground
+        contentView.isHidden = true
+        loadingView.isHidden = false
+    }
+
+    private func setContent(pokemon: Pokemon) {
+        contentView.isHidden = false
+        loadingView.isHidden = true
+
+        primaryAttributeLabel.alpha = 0
+        specieLabel.alpha = 0
+        imageView.alpha = 0
+        secondaryAttributeView.alpha = 0
 
         primaryAttributeLabel.text = pokemon.primaryAttribute
         specieLabel.text = "\(pokemon.specie) Pokemon"
@@ -42,6 +65,15 @@ final class PokemonDetailsViewController: UIViewController {
             secondaryAttributeView.isHidden = false
         } else {
             secondaryAttributeView.isHidden = true
+        }
+
+        UIView.animate(withDuration: 0.5) {
+            self.primaryAttributeLabel.alpha = 1
+            self.specieLabel.alpha = 1
+            self.imageView.alpha = 1
+            self.secondaryAttributeView.alpha = 1
+            self.title = pokemon.name
+            self.view.backgroundColor = pokemon.predominantColor
         }
     }
 }
