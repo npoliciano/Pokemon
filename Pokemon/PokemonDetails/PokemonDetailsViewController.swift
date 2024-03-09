@@ -1,5 +1,5 @@
 //
-//  PokemonViewController.swift
+//  PokemonDetailsViewController.swift
 //  Pokemon
 //
 //  Created by Nicolle on 05/03/24.
@@ -16,7 +16,7 @@ struct Pokemon {
     let predominantColor: UIColor
 }
 
-class PokemonViewController: UIViewController {
+class PokemonDetailsViewController: UIViewController {
     let pokemon = Pokemon(
         name: "Pikachu",
         primaryAttribute: "Electric",
