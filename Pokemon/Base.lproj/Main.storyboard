@@ -22,7 +22,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MzY-IO-ZfJ" userLabel="Types Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="168" height="30"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiX-Xf-Xh8" userLabel="Type View">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiX-Xf-Xh8" userLabel="Primary Type View">
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grass" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJV-2B-7XS">
@@ -48,7 +48,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nmO-Pz-zaL" userLabel="Type View">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nmO-Pz-zaL" userLabel="Secondary Type View">
                                                 <rect key="frame" x="88" y="0.0" width="80" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Poison" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcv-I3-Kbb">
@@ -124,6 +124,13 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="uB9-EH-5Ci" id="ZEb-8J-j7d"/>
+                        <outlet property="primaryAttributeLabel" destination="sJV-2B-7XS" id="DUE-4A-GA5"/>
+                        <outlet property="secondaryAttributeLabel" destination="Jcv-I3-Kbb" id="a50-Qj-hXo"/>
+                        <outlet property="secondaryAttributeView" destination="nmO-Pz-zaL" id="jO2-pU-RDd"/>
+                        <outlet property="specieLabel" destination="Gtv-w2-nf3" id="goS-hk-RRN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
