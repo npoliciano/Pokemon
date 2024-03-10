@@ -27,10 +27,23 @@
                                                 <color key="backgroundColor" red="0.44313728810000003" green="0.8078432083" blue="0.7019608021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agn-wa-pSA" userLabel="Segments Container">
-                                                <rect key="frame" x="0.0" y="288" width="393" height="157"/>
+                                                <rect key="frame" x="0.0" y="288" width="393" height="79"/>
+                                                <subviews>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="615-8j-48O">
+                                                        <rect key="frame" x="16" y="40" width="361" height="32"/>
+                                                        <segments>
+                                                            <segment title="About"/>
+                                                            <segment title="Evolution"/>
+                                                            <segment title="Stats"/>
+                                                        </segments>
+                                                    </segmentedControl>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="157" id="aw3-gv-qop"/>
+                                                    <constraint firstItem="615-8j-48O" firstAttribute="leading" secondItem="Agn-wa-pSA" secondAttribute="leading" constant="16" id="DLM-1S-pwy"/>
+                                                    <constraint firstItem="615-8j-48O" firstAttribute="top" secondItem="Agn-wa-pSA" secondAttribute="top" constant="40" id="axv-ad-hiH"/>
+                                                    <constraint firstAttribute="bottom" secondItem="615-8j-48O" secondAttribute="bottom" constant="8" id="iOS-JA-egg"/>
+                                                    <constraint firstAttribute="trailing" secondItem="615-8j-48O" secondAttribute="trailing" constant="16" id="uv1-e7-9LW"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
