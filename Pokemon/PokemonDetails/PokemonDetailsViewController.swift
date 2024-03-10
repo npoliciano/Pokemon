@@ -35,6 +35,7 @@ final class PokemonDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         setupSegments()
+        setupAboutView()
         viewModel.onAppear()
 
         subscription = viewModel.$state
@@ -47,6 +48,18 @@ final class PokemonDetailsViewController: UIViewController {
         aboutContainerView.isHidden = false
         evolutionContainerView.isHidden = true
         statsContainerView.isHidden = true
+    }
+
+    private func setupAboutView() {
+        let aboutView =  UINib(nibName: "AboutView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! AboutView
+
+        aboutContainerView.addSubview(aboutView)
+        aboutView.translatesAutoresizingMaskIntoConstraints = false
+
+        aboutView.topAnchor.constraint(equalTo: aboutContainerView.topAnchor).isActive = true
+        aboutView.bottomAnchor.constraint(equalTo: aboutContainerView.bottomAnchor).isActive = true
+        aboutView.leadingAnchor.constraint(equalTo: aboutContainerView.leadingAnchor).isActive = true
+        aboutView.trailingAnchor.constraint(equalTo: aboutContainerView.trailingAnchor).isActive = true
     }
 
     private func update(with state: ViewState<Pokemon>) {
