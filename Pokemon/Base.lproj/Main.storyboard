@@ -17,12 +17,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9K-Gb-YDx">
-                                <rect key="frame" x="0.0" y="155" width="393" height="663"/>
+                                <rect key="frame" x="0.0" y="155" width="393" height="697"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15Y-Oz-I8k" userLabel="Scrollable Content">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="763"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7rE-Mv-9ud">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="87L-G9-Ghi">
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="316"/>
+                                                <color key="backgroundColor" red="0.44313728810000003" green="0.8078432083" blue="0.7019608021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agn-wa-pSA" userLabel="Segments Container">
+                                                <rect key="frame" x="0.0" y="288" width="393" height="157"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="157" id="aw3-gv-qop"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="30"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7rE-Mv-9ud" userLabel="Header Stack View">
                                                 <rect key="frame" x="16" y="16" width="361" height="300"/>
                                                 <subviews>
                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="cib-n6-q2S">
@@ -138,10 +155,17 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="87L-G9-Ghi" firstAttribute="bottom" secondItem="7rE-Mv-9ud" secondAttribute="bottom" id="DAJ-VZ-wMe"/>
+                                            <constraint firstAttribute="trailing" secondItem="87L-G9-Ghi" secondAttribute="trailing" id="OFH-We-IwQ"/>
+                                            <constraint firstItem="Agn-wa-pSA" firstAttribute="leading" secondItem="15Y-Oz-I8k" secondAttribute="leading" id="OaV-dq-FmF"/>
                                             <constraint firstAttribute="bottom" secondItem="7rE-Mv-9ud" secondAttribute="bottom" priority="250" constant="447" id="SMF-Hu-KTN"/>
                                             <constraint firstItem="7rE-Mv-9ud" firstAttribute="top" secondItem="15Y-Oz-I8k" secondAttribute="top" constant="16" id="VSK-BS-kC4"/>
+                                            <constraint firstAttribute="trailing" secondItem="Agn-wa-pSA" secondAttribute="trailing" id="WUG-ju-2mN"/>
+                                            <constraint firstItem="87L-G9-Ghi" firstAttribute="leading" secondItem="15Y-Oz-I8k" secondAttribute="leading" id="rit-Hb-QOF"/>
+                                            <constraint firstItem="Agn-wa-pSA" firstAttribute="top" secondItem="7rE-Mv-9ud" secondAttribute="bottom" constant="-28" id="smB-mG-96D"/>
+                                            <constraint firstItem="87L-G9-Ghi" firstAttribute="top" secondItem="15Y-Oz-I8k" secondAttribute="top" id="vUS-Fr-ST6"/>
                                             <constraint firstAttribute="trailing" secondItem="7rE-Mv-9ud" secondAttribute="trailing" constant="16" id="xbl-pQ-EFf"/>
                                             <constraint firstItem="7rE-Mv-9ud" firstAttribute="leading" secondItem="15Y-Oz-I8k" secondAttribute="leading" constant="16" id="z0Y-tH-EgD"/>
                                         </constraints>
@@ -163,7 +187,7 @@
                         <constraints>
                             <constraint firstItem="m9K-Gb-YDx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1mm-2l-SCd"/>
                             <constraint firstItem="m9K-Gb-YDx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Dnb-r0-dek"/>
-                            <constraint firstItem="m9K-Gb-YDx" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="m4j-kY-po1"/>
+                            <constraint firstItem="m9K-Gb-YDx" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="m4j-kY-po1"/>
                             <constraint firstItem="m9K-Gb-YDx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qiG-Ci-dnc"/>
                         </constraints>
                     </view>
@@ -174,6 +198,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="1R8-NQ-yzA" id="fMY-bS-TCO"/>
+                        <outlet property="headerBackgroundView" destination="87L-G9-Ghi" id="p3C-3J-m1M"/>
                         <outlet property="imageView" destination="uB9-EH-5Ci" id="ZEb-8J-j7d"/>
                         <outlet property="loadingView" destination="cib-n6-q2S" id="Sjt-2U-oIq"/>
                         <outlet property="primaryAttributeLabel" destination="sJV-2B-7XS" id="DUE-4A-GA5"/>

@@ -18,7 +18,8 @@ final class PokemonDetailsViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var contentView: UIView!
-    
+    @IBOutlet weak var headerBackgroundView: UIView!
+
     private var subscription: AnyCancellable?
 
     override func viewDidLoad() {
@@ -43,6 +44,7 @@ final class PokemonDetailsViewController: UIViewController {
     private func setLoading() {
         title = ""
         view.backgroundColor = .systemBackground
+        headerBackgroundView.backgroundColor = .systemBackground
         contentView.isHidden = true
         loadingView.isHidden = false
     }
@@ -74,6 +76,7 @@ final class PokemonDetailsViewController: UIViewController {
             self.secondaryAttributeView.alpha = 1
             self.title = pokemon.name
             self.view.backgroundColor = pokemon.predominantColor
+            self.headerBackgroundView.backgroundColor = pokemon.predominantColor
         }
     }
 }
