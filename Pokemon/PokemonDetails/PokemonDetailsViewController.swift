@@ -8,6 +8,12 @@
 import Combine
 import UIKit
 
+enum SegmentSection: Int {
+    case about
+    case evolution
+    case stats
+}
+
 final class PokemonDetailsViewController: UIViewController {
     let viewModel = PokemonDetailsViewModel()
 
@@ -20,15 +26,26 @@ final class PokemonDetailsViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var headerBackgroundView: UIView!
 
+    @IBOutlet weak var aboutContainerView: UIView!
+    @IBOutlet weak var evolutionContainerView: UIView!
+    @IBOutlet weak var statsContainerView: UIView!
+
     private var subscription: AnyCancellable?
 
     override func viewDidLoad() {
+        setupSegments()
         viewModel.onAppear()
 
         subscription = viewModel.$state
             .sink { [weak self] state in
                 self?.update(with: state)
             }
+    }
+
+    private func setupSegments() {
+        aboutContainerView.isHidden = false
+        evolutionContainerView.isHidden = true
+        statsContainerView.isHidden = true
     }
 
     private func update(with state: ViewState<Pokemon>) {
@@ -77,6 +94,27 @@ final class PokemonDetailsViewController: UIViewController {
             self.title = pokemon.name
             self.view.backgroundColor = pokemon.predominantColor
             self.headerBackgroundView.backgroundColor = pokemon.predominantColor
+        }
+    }
+
+    @IBAction func didSelectSegment(_ sender: UISegmentedControl) {
+        guard let segment = SegmentSection(rawValue: sender.selectedSegmentIndex) else {
+            return
+        }
+
+        switch segment {
+        case .about:
+            aboutContainerView.isHidden = false
+            evolutionContainerView.isHidden = true
+            statsContainerView.isHidden = true
+        case .evolution:
+            aboutContainerView.isHidden = true
+            evolutionContainerView.isHidden = false
+            statsContainerView.isHidden = true
+        case .stats:
+            aboutContainerView.isHidden = true
+            evolutionContainerView.isHidden = true
+            statsContainerView.isHidden = false
         }
     }
 }
