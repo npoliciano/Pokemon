@@ -31,6 +31,8 @@ final class PokemonDetailsViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
 
+    private let aboutView = UINib(nibName: "AboutView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! AboutView
+
     private var subscription: AnyCancellable?
 
     override func viewDidLoad() {
@@ -51,8 +53,6 @@ final class PokemonDetailsViewController: UIViewController {
     }
 
     private func setupAboutView() {
-        let aboutView =  UINib(nibName: "AboutView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! AboutView
-
         aboutContainerView.addSubview(aboutView)
         aboutView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -108,6 +108,7 @@ final class PokemonDetailsViewController: UIViewController {
             self.title = pokemon.name
             self.view.backgroundColor = pokemon.predominantColor
             self.headerBackgroundView.backgroundColor = pokemon.predominantColor
+            self.aboutView.setContent(with: pokemon)
         }
     }
 
