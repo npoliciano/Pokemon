@@ -23,12 +23,13 @@ final class PokemonDetailsViewController: UIViewController {
     @IBOutlet weak var secondaryAttributeLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
-    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var headerBackgroundView: UIView!
 
     @IBOutlet weak var aboutContainerView: UIView!
     @IBOutlet weak var evolutionContainerView: UIView!
     @IBOutlet weak var statsContainerView: UIView!
+
+    @IBOutlet weak var scrollView: UIScrollView!
 
     private var subscription: AnyCancellable?
 
@@ -62,12 +63,12 @@ final class PokemonDetailsViewController: UIViewController {
         title = ""
         view.backgroundColor = .systemBackground
         headerBackgroundView.backgroundColor = .systemBackground
-        contentView.isHidden = true
+        scrollView.isHidden = true
         loadingView.isHidden = false
     }
 
     private func setContent(pokemon: Pokemon) {
-        contentView.isHidden = false
+        scrollView.isHidden = false
         loadingView.isHidden = true
 
         primaryAttributeLabel.alpha = 0
