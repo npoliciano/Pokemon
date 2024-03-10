@@ -17,16 +17,16 @@ final class AboutView: UIView {
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setup()
-    }
-
-    private func setup() {
-        containerView.layer.shadowColor = UIColor.black.cgColor
-        containerView.layer.shadowOpacity = 1
-        containerView.layer.shadowOffset = .zero
-        containerView.layer.shadowRadius = 10
-        containerView.layer.shouldRasterize = true
-    }
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//        setup()
+//    }
+//
+//    private func setup() {
+//        containerView.layer.shadowColor = UIColor.black.cgColor
+//        containerView.layer.shadowOpacity = 1
+//        containerView.layer.shadowOffset = .zero
+//        containerView.layer.shadowRadius = 10
+//        containerView.layer.shouldRasterize = true
+//    }
 }
