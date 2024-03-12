@@ -203,7 +203,6 @@ Bulbasaur is notable for being the very first Pokémon in the National Pokédex.
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="containerView" destination="tXE-Y8-Cm7" id="NKn-ao-5KT"/>
                 <outlet property="descriptionLabel" destination="vuP-Ed-67P" id="D26-gF-ESy"/>
                 <outlet property="eggCycleLabel" destination="wGE-b9-DWI" id="yQC-DH-Nii"/>
                 <outlet property="eggGroupsLabel" destination="KkB-Ub-573" id="3sX-6i-UUZ"/>

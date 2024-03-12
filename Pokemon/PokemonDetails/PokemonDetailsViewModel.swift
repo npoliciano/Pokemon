@@ -14,6 +14,11 @@ struct Pokemon {
     let male: String
     let height: String
     let weight: String
+    let hp: Int
+    let attack: Int
+    let defense: Int
+    let speed: Int
+    let statsTotal: Int
 }
 
 final class PokemonDetailsViewModel {
@@ -38,7 +43,12 @@ final class PokemonDetailsViewModel {
                 female: "50%",
                 male: "50%",
                 height: "0.4 m (1′04″)",
-                weight: "6.0 kg (13.2 lbs)"
+                weight: "6.0 kg (13.2 lbs)",
+                hp: 35,
+                attack: 55,
+                defense: 40,
+                speed: 90,
+                statsTotal: 220
             ))
         }
     }

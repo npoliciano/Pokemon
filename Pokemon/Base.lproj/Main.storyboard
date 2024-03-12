@@ -194,19 +194,9 @@
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nzo-UM-ggY">
                                                         <rect key="frame" x="0.0" y="100" width="393" height="50"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YC8-B8-5zf">
-                                                                <rect key="frame" x="177" y="14.999999999999998" width="39.333333333333343" height="20.333333333333329"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
                                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                         <constraints>
-                                                            <constraint firstItem="YC8-B8-5zf" firstAttribute="centerX" secondItem="Nzo-UM-ggY" secondAttribute="centerX" id="CEz-1E-QNr"/>
-                                                            <constraint firstItem="YC8-B8-5zf" firstAttribute="centerY" secondItem="Nzo-UM-ggY" secondAttribute="centerY" id="brp-vu-o3q"/>
-                                                            <constraint firstAttribute="height" constant="50" id="y7e-sB-3Xt"/>
+                                                            <constraint firstAttribute="height" priority="250" constant="50" id="y7e-sB-3Xt"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>

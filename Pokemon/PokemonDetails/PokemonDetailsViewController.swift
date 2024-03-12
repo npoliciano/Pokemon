@@ -33,11 +33,14 @@ final class PokemonDetailsViewController: UIViewController {
 
     private let aboutView = UINib(nibName: "AboutView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! AboutView
 
+    private let statsView = UINib(nibName: "StatsView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! StatsView
+
     private var subscription: AnyCancellable?
 
     override func viewDidLoad() {
-        setupSegments()
         setupAboutView()
+        setupStatsView()
+        setupSegments()
         viewModel.onAppear()
 
         subscription = viewModel.$state
@@ -60,6 +63,16 @@ final class PokemonDetailsViewController: UIViewController {
         aboutView.bottomAnchor.constraint(equalTo: aboutContainerView.bottomAnchor).isActive = true
         aboutView.leadingAnchor.constraint(equalTo: aboutContainerView.leadingAnchor).isActive = true
         aboutView.trailingAnchor.constraint(equalTo: aboutContainerView.trailingAnchor).isActive = true
+    }
+
+    private func setupStatsView() {
+        statsContainerView.addSubview(statsView)
+        statsView.translatesAutoresizingMaskIntoConstraints = false
+
+        statsView.topAnchor.constraint(equalTo: statsContainerView.topAnchor).isActive = true
+        statsView.bottomAnchor.constraint(equalTo: statsContainerView.bottomAnchor).isActive = true
+        statsView.leadingAnchor.constraint(equalTo: statsContainerView.leadingAnchor).isActive = true
+        statsView.trailingAnchor.constraint(equalTo: statsContainerView.trailingAnchor).isActive = true
     }
 
     private func update(with state: ViewState<Pokemon>) {
@@ -109,6 +122,7 @@ final class PokemonDetailsViewController: UIViewController {
             self.view.backgroundColor = pokemon.predominantColor
             self.headerBackgroundView.backgroundColor = pokemon.predominantColor
             self.aboutView.setContent(with: pokemon)
+            self.statsView.setContent(with: pokemon)
         }
     }
 

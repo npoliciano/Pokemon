@@ -8,7 +8,6 @@
 import UIKit
 
 final class AboutView: UIView {
-    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var eggCycleLabel: UILabel!
     @IBOutlet weak var eggGroupsLabel: UILabel!
