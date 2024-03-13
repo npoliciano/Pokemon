@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A405AE632BA24E45003CBBD5 /* PokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405AE622BA24E45003CBBD5 /* PokemonCell.swift */; };
 		A462F93E2B9822D200D60FC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A462F93D2B9822D200D60FC0 /* AppDelegate.swift */; };
 		A462F9402B9822D200D60FC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A462F93F2B9822D200D60FC0 /* SceneDelegate.swift */; };
 		A462F9422B9822D200D60FC0 /* PokemonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A462F9412B9822D200D60FC0 /* PokemonDetailsViewController.swift */; };
@@ -26,6 +27,7 @@
 		A4D6B3642BA131BA008DD1EF /* EvolutionChainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6B3632BA131BA008DD1EF /* EvolutionChainView.swift */; };
 		A4D6B3662BA13242008DD1EF /* EvolutionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D6B3652BA13242008DD1EF /* EvolutionView.xib */; };
 		A4D6B3682BA13576008DD1EF /* EvolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6B3672BA13576008DD1EF /* EvolutionView.swift */; };
+		A4F74F2F2BA2312000FBB8A6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F74F2E2BA2312000FBB8A6 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A405AE622BA24E45003CBBD5 /* PokemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCell.swift; sourceTree = "<group>"; };
 		A462F93A2B9822D200D60FC0 /* Pokemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokemon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A462F93D2B9822D200D60FC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A462F93F2B9822D200D60FC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +72,7 @@
 		A4D6B3632BA131BA008DD1EF /* EvolutionChainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionChainView.swift; sourceTree = "<group>"; };
 		A4D6B3652BA13242008DD1EF /* EvolutionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EvolutionView.xib; sourceTree = "<group>"; };
 		A4D6B3672BA13576008DD1EF /* EvolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionView.swift; sourceTree = "<group>"; };
+		A4F74F2E2BA2312000FBB8A6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A405AE612BA24DAD003CBBD5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A405AE622BA24E45003CBBD5 /* PokemonCell.swift */,
+				A4F74F2E2BA2312000FBB8A6 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		A462F9312B9822D200D60FC0 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				A4923AF32B9C1C3100DD717E /* Utils */,
+				A405AE612BA24DAD003CBBD5 /* Home */,
 				A4923AF02B9C0D2B00DD717E /* PokemonDetails */,
 				A462F93D2B9822D200D60FC0 /* AppDelegate.swift */,
 				A462F93F2B9822D200D60FC0 /* SceneDelegate.swift */,
@@ -326,7 +340,9 @@
 			files = (
 				A4D6B3682BA13576008DD1EF /* EvolutionView.swift in Sources */,
 				A462F9422B9822D200D60FC0 /* PokemonDetailsViewController.swift in Sources */,
+				A405AE632BA24E45003CBBD5 /* PokemonCell.swift in Sources */,
 				A462F93E2B9822D200D60FC0 /* AppDelegate.swift in Sources */,
+				A4F74F2F2BA2312000FBB8A6 /* HomeViewController.swift in Sources */,
 				A4923AF52B9C1C4F00DD717E /* ViewState.swift in Sources */,
 				A462F9402B9822D200D60FC0 /* SceneDelegate.swift in Sources */,
 				A4923AFA2B9D7ABC00DD717E /* AboutView.swift in Sources */,

@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Pikachu",
+    "primaryAttribute": "Electric",
+    "secondaryAttribute": null,
+    "specie": "Mouse",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "name": "Bulbasaur",
+    "primaryAttribute": "Poison",
+    "secondaryAttribute": "Grass",
+    "specie": "Mouse",
+    "image": ""
+  }
+]
