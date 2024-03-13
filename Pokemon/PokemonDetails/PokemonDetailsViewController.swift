@@ -32,13 +32,14 @@ final class PokemonDetailsViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
 
     private let aboutView = UINib(nibName: "AboutView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! AboutView
-
+    private let evolutionView = UINib(nibName: "EvolutionView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! EvolutionView
     private let statsView = UINib(nibName: "StatsView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! StatsView
 
     private var subscription: AnyCancellable?
 
     override func viewDidLoad() {
         setupAboutView()
+        setupEvolutionView()
         setupStatsView()
         setupSegments()
         viewModel.onAppear()
@@ -63,6 +64,16 @@ final class PokemonDetailsViewController: UIViewController {
         aboutView.bottomAnchor.constraint(equalTo: aboutContainerView.bottomAnchor).isActive = true
         aboutView.leadingAnchor.constraint(equalTo: aboutContainerView.leadingAnchor).isActive = true
         aboutView.trailingAnchor.constraint(equalTo: aboutContainerView.trailingAnchor).isActive = true
+    }
+
+    private func setupEvolutionView() {
+        evolutionContainerView.addSubview(evolutionView)
+        evolutionView.translatesAutoresizingMaskIntoConstraints = false
+
+        evolutionView.topAnchor.constraint(equalTo: evolutionContainerView.topAnchor).isActive = true
+        evolutionView.bottomAnchor.constraint(equalTo: evolutionContainerView.bottomAnchor).isActive = true
+        evolutionView.leadingAnchor.constraint(equalTo: evolutionContainerView.leadingAnchor).isActive = true
+        evolutionView.trailingAnchor.constraint(equalTo: evolutionContainerView.trailingAnchor).isActive = true
     }
 
     private func setupStatsView() {

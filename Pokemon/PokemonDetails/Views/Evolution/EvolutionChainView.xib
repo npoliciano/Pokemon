@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EvolutionChainView" customModule="Pokemon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="111"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ngO-v1-I1B">
+                    <rect key="frame" x="16" y="0.0" width="90" height="111"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sHW-kT-Akr">
+                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFj-Hf-wk6">
+                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="45"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pikachu" translatesAutoresizingMaskIntoConstraints="NO" id="BNg-Dm-2tg">
+                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="90" id="T6H-Bk-7EJ"/>
+                                        <constraint firstAttribute="width" constant="90" id="aTD-qU-ilx"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="XFj-Hf-wk6" firstAttribute="leading" secondItem="sHW-kT-Akr" secondAttribute="leading" id="3wq-Kz-Ejk"/>
+                                <constraint firstItem="XFj-Hf-wk6" firstAttribute="top" secondItem="sHW-kT-Akr" secondAttribute="top" id="6xZ-CM-maR"/>
+                                <constraint firstItem="BNg-Dm-2tg" firstAttribute="leading" secondItem="sHW-kT-Akr" secondAttribute="leading" id="9ME-k2-eYL"/>
+                                <constraint firstAttribute="bottom" secondItem="XFj-Hf-wk6" secondAttribute="bottom" id="OmQ-L5-Rr6"/>
+                                <constraint firstItem="BNg-Dm-2tg" firstAttribute="top" secondItem="sHW-kT-Akr" secondAttribute="top" id="pcN-By-2F8"/>
+                                <constraint firstAttribute="bottom" secondItem="BNg-Dm-2tg" secondAttribute="bottom" id="pmh-jj-sab"/>
+                                <constraint firstAttribute="trailing" secondItem="XFj-Hf-wk6" secondAttribute="trailing" id="xwX-P1-mgW"/>
+                                <constraint firstAttribute="trailing" secondItem="BNg-Dm-2tg" secondAttribute="trailing" id="yQd-uI-UC2"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pikachu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYV-Lg-oSQ">
+                            <rect key="frame" x="24.000000000000004" y="98" width="42.333333333333343" height="13"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="q8p-fg-crU">
+                    <rect key="frame" x="157.66666666666666" y="41.666666666666664" width="78" height="28.000000000000007"/>
+                    <color key="tintColor" systemColor="tertiaryLabelColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="78" id="gc1-42-lj2"/>
+                        <constraint firstAttribute="height" constant="33.670000000000002" id="wWC-nG-x2e"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8G5-8j-Are">
+                    <rect key="frame" x="287" y="0.0" width="90" height="111"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFy-Mo-1RI">
+                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zux-93-T6p">
+                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="45"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pikachu" translatesAutoresizingMaskIntoConstraints="NO" id="dYk-ZH-QGv">
+                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="90" id="YC7-Pr-5d0"/>
+                                        <constraint firstAttribute="height" constant="90" id="wIf-Ea-WNs"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="dYk-ZH-QGv" secondAttribute="bottom" id="0t8-jQ-xAO"/>
+                                <constraint firstItem="dYk-ZH-QGv" firstAttribute="top" secondItem="bFy-Mo-1RI" secondAttribute="top" id="1V8-tn-DDv"/>
+                                <constraint firstItem="dYk-ZH-QGv" firstAttribute="leading" secondItem="bFy-Mo-1RI" secondAttribute="leading" id="2ol-n7-5qv"/>
+                                <constraint firstAttribute="trailing" secondItem="zux-93-T6p" secondAttribute="trailing" id="3Yj-Oy-Usb"/>
+                                <constraint firstAttribute="trailing" secondItem="dYk-ZH-QGv" secondAttribute="trailing" id="END-1s-T0S"/>
+                                <constraint firstItem="zux-93-T6p" firstAttribute="leading" secondItem="bFy-Mo-1RI" secondAttribute="leading" id="GW0-oc-r5j"/>
+                                <constraint firstItem="zux-93-T6p" firstAttribute="top" secondItem="bFy-Mo-1RI" secondAttribute="top" id="hrg-Bb-OOp"/>
+                                <constraint firstAttribute="bottom" secondItem="zux-93-T6p" secondAttribute="bottom" id="sQd-WS-qHV"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pikachu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WfI-SJ-TmC">
+                            <rect key="frame" x="24.000000000000004" y="98" width="42.333333333333343" height="13"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="8G5-8j-Are" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GQ1-P8-psv"/>
+                <constraint firstAttribute="bottom" secondItem="8G5-8j-Are" secondAttribute="bottom" id="N31-g9-FNJ"/>
+                <constraint firstItem="q8p-fg-crU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="O0V-LS-O4P"/>
+                <constraint firstAttribute="bottom" secondItem="ngO-v1-I1B" secondAttribute="bottom" id="Tth-Dz-DBb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8G5-8j-Are" secondAttribute="trailing" constant="16" id="ZEc-Wr-V8m"/>
+                <constraint firstItem="ngO-v1-I1B" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jfJ-kp-KRb"/>
+                <constraint firstItem="ngO-v1-I1B" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="vah-35-AKf"/>
+                <constraint firstItem="q8p-fg-crU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="x2u-iP-HNi"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="firstEvolutionImageView" destination="BNg-Dm-2tg" id="ARL-39-5G8"/>
+                <outlet property="firstEvolutionLabel" destination="KYV-Lg-oSQ" id="2FJ-qa-jQp"/>
+                <outlet property="secondEvolutionImageView" destination="dYk-ZH-QGv" id="aFh-LP-iUF"/>
+                <outlet property="secondEvolutionLabel" destination="WfI-SJ-TmC" id="pwJ-aH-Mc2"/>
+            </connections>
+            <point key="canvasLocation" x="0.76335877862595414" y="-219.36619718309859"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow.right" catalog="system" width="128" height="95"/>
+        <image name="pikachu" width="256" height="256"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
