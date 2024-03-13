@@ -20,6 +20,11 @@ final class EvolutionView: UIView {
         setupSecondChainView()
     }
 
+    func setContent(with pokemon: Pokemon) {
+        firstEvolutionChainView.setContent(with: pokemon.firstEvolutionChain)
+        secondEvolutionChainView.setContent(with: pokemon.secondEvolutionChain)
+    }
+
     private func setupFirstChainView() {
         firstEvolutionChainContainerView.addSubview(firstEvolutionChainView)
         firstEvolutionChainView.translatesAutoresizingMaskIntoConstraints = false

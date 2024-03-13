@@ -134,6 +134,7 @@ final class PokemonDetailsViewController: UIViewController {
             self.headerBackgroundView.backgroundColor = pokemon.predominantColor
             self.aboutView.setContent(with: pokemon)
             self.statsView.setContent(with: pokemon)
+            self.evolutionView.setContent(with: pokemon)
         }
     }
 
