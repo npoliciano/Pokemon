@@ -12,7 +12,71 @@
     "name": "Bulbasaur",
     "primaryAttribute": "Poison",
     "secondaryAttribute": "Grass",
-    "specie": "Mouse",
+    "specie": "Seed",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "name": "Charmander",
+    "primaryAttribute": "Fire",
+    "secondaryAttribute": "null",
+    "specie": "Lizard",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "name": "Squirtle",
+    "primaryAttribute": "Water",
+    "secondaryAttribute": "null",
+    "specie": "Tiny Turtle",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "name": "Charizard",
+    "primaryAttribute": "Fire",
+    "secondaryAttribute": "Flying",
+    "specie": "Flame",
+    "image": ""
+  },
+  {
+    "id": 6,
+    "name": "Hoppip",
+    "primaryAttribute": "Grass",
+    "secondaryAttribute": "Flying",
+    "specie": "Cottonweed",
+    "image": ""
+  },
+  {
+    "id": 7,
+    "name": "Dragonite",
+    "primaryAttribute": "Dragon",
+    "secondaryAttribute": "Flying",
+    "specie": "Dragon",
+    "image": ""
+  },
+  {
+    "id": 8,
+    "name": "Snorlax",
+    "primaryAttribute": "Normal",
+    "secondaryAttribute": "null",
+    "specie": "Sleeping",
+    "image": ""
+  },
+  {
+    "id": 9,
+    "name": "Dialga",
+    "primaryAttribute": "Steel",
+    "secondaryAttribute": "Dragon",
+    "specie": "Temporal",
+    "image": ""
+  },
+  {
+    "id": 10,
+    "name": "Xerneas",
+    "primaryAttribute": "Fairy",
+    "secondaryAttribute": "null",
+    "specie": "Life",
     "image": ""
   }
 ]
