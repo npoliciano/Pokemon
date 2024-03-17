@@ -58,32 +58,17 @@ final class PokemonDetailsViewController: UIViewController {
 
     private func setupAboutView() {
         aboutContainerView.addSubview(aboutView)
-        aboutView.translatesAutoresizingMaskIntoConstraints = false
-
-        aboutView.topAnchor.constraint(equalTo: aboutContainerView.topAnchor).isActive = true
-        aboutView.bottomAnchor.constraint(equalTo: aboutContainerView.bottomAnchor).isActive = true
-        aboutView.leadingAnchor.constraint(equalTo: aboutContainerView.leadingAnchor).isActive = true
-        aboutView.trailingAnchor.constraint(equalTo: aboutContainerView.trailingAnchor).isActive = true
+        aboutView.constrainToEdges(superview: aboutContainerView)
     }
 
     private func setupEvolutionView() {
         evolutionContainerView.addSubview(evolutionView)
-        evolutionView.translatesAutoresizingMaskIntoConstraints = false
-
-        evolutionView.topAnchor.constraint(equalTo: evolutionContainerView.topAnchor).isActive = true
-        evolutionView.bottomAnchor.constraint(equalTo: evolutionContainerView.bottomAnchor).isActive = true
-        evolutionView.leadingAnchor.constraint(equalTo: evolutionContainerView.leadingAnchor).isActive = true
-        evolutionView.trailingAnchor.constraint(equalTo: evolutionContainerView.trailingAnchor).isActive = true
+        evolutionView.constrainToEdges(superview: evolutionContainerView)
     }
 
     private func setupStatsView() {
         statsContainerView.addSubview(statsView)
-        statsView.translatesAutoresizingMaskIntoConstraints = false
-
-        statsView.topAnchor.constraint(equalTo: statsContainerView.topAnchor).isActive = true
-        statsView.bottomAnchor.constraint(equalTo: statsContainerView.bottomAnchor).isActive = true
-        statsView.leadingAnchor.constraint(equalTo: statsContainerView.leadingAnchor).isActive = true
-        statsView.trailingAnchor.constraint(equalTo: statsContainerView.trailingAnchor).isActive = true
+        statsView.constrainToEdges(superview: statsContainerView)
     }
 
     private func update(with state: ViewState<Pokemon>) {

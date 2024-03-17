@@ -27,21 +27,11 @@ final class EvolutionView: UIView {
 
     private func setupFirstChainView() {
         firstEvolutionChainContainerView.addSubview(firstEvolutionChainView)
-        firstEvolutionChainView.translatesAutoresizingMaskIntoConstraints = false
-
-        firstEvolutionChainView.topAnchor.constraint(equalTo: firstEvolutionChainContainerView.topAnchor).isActive = true
-        firstEvolutionChainView.bottomAnchor.constraint(equalTo: firstEvolutionChainContainerView.bottomAnchor).isActive = true
-        firstEvolutionChainView.leadingAnchor.constraint(equalTo: firstEvolutionChainContainerView.leadingAnchor).isActive = true
-        firstEvolutionChainView.trailingAnchor.constraint(equalTo: firstEvolutionChainContainerView.trailingAnchor).isActive = true
+        firstEvolutionChainView.constrainToEdges(superview: firstEvolutionChainContainerView)
     }
 
     private func setupSecondChainView() {
         secondEvolutionChainContainerView.addSubview(secondEvolutionChainView)
-        secondEvolutionChainView.translatesAutoresizingMaskIntoConstraints = false
-
-        secondEvolutionChainView.topAnchor.constraint(equalTo: secondEvolutionChainContainerView.topAnchor).isActive = true
-        secondEvolutionChainView.bottomAnchor.constraint(equalTo: secondEvolutionChainContainerView.bottomAnchor).isActive = true
-        secondEvolutionChainView.leadingAnchor.constraint(equalTo: secondEvolutionChainContainerView.leadingAnchor).isActive = true
-        secondEvolutionChainView.trailingAnchor.constraint(equalTo: secondEvolutionChainContainerView.trailingAnchor).isActive = true
+        secondEvolutionChainView.constrainToEdges(superview: secondEvolutionChainContainerView)
     }
 }

@@ -17,12 +17,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
 
-        let homeViewController = HomeViewController()
-        homeViewController.title = "Pokemons"
-        let navigationController = UINavigationController(rootViewController: homeViewController)
-        navigationController.navigationBar.prefersLargeTitles = true
+//        let homeViewController = HomeViewController()
+//        homeViewController.title = "Pokemons"
+//        let navigationController = UINavigationController(rootViewController: homeViewController)
+//        navigationController.navigationBar.prefersLargeTitles = true
 
-        window?.rootViewController = navigationController
+//        window?.rootViewController = navigationController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateInitialViewController()
+        window?.rootViewController = vc
         window?.makeKeyAndVisible()
     }
 
