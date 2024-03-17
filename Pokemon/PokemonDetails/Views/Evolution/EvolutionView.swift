@@ -11,8 +11,8 @@ final class EvolutionView: UIView {
     @IBOutlet weak var firstEvolutionChainContainerView: UIView!
     @IBOutlet weak var secondEvolutionChainContainerView: UIView!
 
-    private let firstEvolutionChainView = UINib(nibName: "EvolutionChainView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! EvolutionChainView
-    private let secondEvolutionChainView = UINib(nibName: "EvolutionChainView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! EvolutionChainView
+    private let firstEvolutionChainView = EvolutionChainView.loadFromNib()
+    private let secondEvolutionChainView = EvolutionChainView.loadFromNib()
 
     override func awakeFromNib() {
         super.awakeFromNib()
