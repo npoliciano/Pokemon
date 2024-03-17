@@ -70,6 +70,7 @@ final class PokemonCell: UICollectionViewCell {
 }
 extension PokemonCell {
     struct Pokemon {
+        let id: Int
         let name: String
         let imageUrl: URL
         let primaryAttribute: String

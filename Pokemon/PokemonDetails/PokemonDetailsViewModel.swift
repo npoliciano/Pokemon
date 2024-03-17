@@ -36,6 +36,12 @@ struct Pokemon {
 final class PokemonDetailsViewModel {
     @Published var state: ViewState<Pokemon> = .loading
 
+    let selectedPokemonId: Int
+
+    init(selectedPokemonId: Int) {
+        self.selectedPokemonId = selectedPokemonId
+    }
+
     func onAppear() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
             self?.state = .content(
@@ -86,5 +92,4 @@ final class PokemonDetailsViewModel {
             )
         }
     }
-
 }

@@ -15,8 +15,17 @@ enum SegmentSection: Int {
 }
 
 final class PokemonDetailsViewController: UIViewController {
-    let viewModel = PokemonDetailsViewModel()
+    let viewModel: PokemonDetailsViewModel
 
+    init(viewModel: PokemonDetailsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: "PokemonDetailsViewController", bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     @IBOutlet weak var specieLabel: UILabel!
     @IBOutlet weak var primaryAttributeLabel: UILabel!
     @IBOutlet weak var secondaryAttributeView: UIView!
@@ -48,6 +57,10 @@ final class PokemonDetailsViewController: UIViewController {
             .sink { [weak self] state in
                 self?.update(with: state)
             }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.setTitleColor(.white)
     }
 
     private func setupSegments() {
