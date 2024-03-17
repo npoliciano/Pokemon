@@ -99,7 +99,7 @@ final class PokemonDetailsViewController: UIViewController {
         secondaryAttributeView.alpha = 0
 
         primaryAttributeLabel.text = pokemon.primaryAttribute
-        specieLabel.text = "\(pokemon.specie) Pokemon"
+        specieLabel.text = "\(pokemon.specie) Pokémon"
         imageView.image = pokemon.image
 
         if let secondaryAttribute = pokemon.secondaryAttribute {

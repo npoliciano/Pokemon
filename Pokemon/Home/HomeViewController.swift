@@ -48,20 +48,10 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
 
     private func setupColletionViewConstraints() {
         view.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-        ])
+        collectionView.constrainToEdges(superview: view)
     }
 
     // MARK: - UICollectionViewDataSource protocol
-
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        1
-    }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
