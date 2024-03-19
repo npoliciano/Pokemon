@@ -28,6 +28,7 @@
 		A4923AF82B9D719300DD717E /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4923AF72B9D719300DD717E /* AboutView.xib */; };
 		A4923AFA2B9D7ABC00DD717E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4923AF92B9D7ABC00DD717E /* AboutView.swift */; };
 		A4D10E662BAA4F62002740B5 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D10E652BAA4F62002740B5 /* HomeAPI.swift */; };
+		A4D10E682BAA54BA002740B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4D10E672BAA54BA002740B5 /* GoogleService-Info.plist */; };
 		A4D6B35D2B9FEB10008DD1EF /* StatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D6B35C2B9FEB10008DD1EF /* StatsView.xib */; };
 		A4D6B35F2B9FF53C008DD1EF /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6B35E2B9FF53C008DD1EF /* StatsView.swift */; };
 		A4D6B3622BA12D22008DD1EF /* EvolutionChainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D6B3612BA12D22008DD1EF /* EvolutionChainView.xib */; };
@@ -79,6 +80,7 @@
 		A4923AF72B9D719300DD717E /* AboutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
 		A4923AF92B9D7ABC00DD717E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		A4D10E652BAA4F62002740B5 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
+		A4D10E672BAA54BA002740B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A4D6B35C2B9FEB10008DD1EF /* StatsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsView.xib; sourceTree = "<group>"; };
 		A4D6B35E2B9FF53C008DD1EF /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		A4D6B3612BA12D22008DD1EF /* EvolutionChainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EvolutionChainView.xib; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				A462F93D2B9822D200D60FC0 /* AppDelegate.swift */,
 				A462F93F2B9822D200D60FC0 /* SceneDelegate.swift */,
 				A462F9462B9822D300D60FC0 /* Assets.xcassets */,
+				A4D10E672BAA54BA002740B5 /* GoogleService-Info.plist */,
 				A462F9482B9822D300D60FC0 /* LaunchScreen.storyboard */,
 				A462F94B2B9822D300D60FC0 /* Info.plist */,
 			);
@@ -342,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4D6B3662BA13242008DD1EF /* EvolutionView.xib in Resources */,
+				A4D10E682BAA54BA002740B5 /* GoogleService-Info.plist in Resources */,
 				A4D6B35D2B9FEB10008DD1EF /* StatsView.xib in Resources */,
 				A4923AF82B9D719300DD717E /* AboutView.xib in Resources */,
 				A462F94A2B9822D300D60FC0 /* LaunchScreen.storyboard in Resources */,
