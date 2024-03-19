@@ -79,7 +79,8 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
     ) {
         let item = items[indexPath.item]
 
-        let viewModel = PokemonDetailsViewModel(selectedPokemonId: item.id)
+        let api = PokemonDetailsAPI(selectedPokemonId: item.id)
+        let viewModel = PokemonDetailsViewModel(api: api)
         let viewController = PokemonDetailsViewController(viewModel: viewModel)
 
         navigationController?.pushViewController(viewController, animated: true)

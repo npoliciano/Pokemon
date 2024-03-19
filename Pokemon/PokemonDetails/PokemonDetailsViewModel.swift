@@ -1,3 +1,4 @@
+import Combine
 import UIKit
 
 struct EvolutionChain {
@@ -34,24 +35,26 @@ struct Pokemon {
 }
 
 final class PokemonDetailsViewModel: ObservableObject {
-    let selectedPokemonId: Int
-    private let api = PokemonsAPI()
+    private let api: PokemonDetailsAPI
 
     @Published var state: ViewState<Pokemon> = .loading
 
-    init(selectedPokemonId: Int) {
-        self.selectedPokemonId = selectedPokemonId
+    private var subscription: AnyCancellable?
+
+    init(api: PokemonDetailsAPI) {
+        self.api = api
     }
 
     func onAppear() {
-        api.getPokemonDetails(id: selectedPokemonId) { [weak self] pokemon in
-            guard let pokemon else {
-                self?.state = .error
-                return
+        subscription = api.getPokemonDetails()
+            .subscribe(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                if case .failure = completion {
+                    self?.state = .error
+                }
+            } receiveValue: { [weak self] pokemon in
+                self?.state = .content(pokemon)
             }
-
-            self?.state = .content(pokemon)
-        }
     }
 }
 

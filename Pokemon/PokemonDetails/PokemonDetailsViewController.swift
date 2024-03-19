@@ -15,7 +15,7 @@ enum SegmentSection: Int {
 }
 
 final class PokemonDetailsViewController: UIViewController {
-    let viewModel: PokemonDetailsViewModel
+    private let viewModel: PokemonDetailsViewModel
 
     init(viewModel: PokemonDetailsViewModel) {
         self.viewModel = viewModel
