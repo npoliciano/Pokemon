@@ -9,5 +9,6 @@ import Foundation
 
 enum ViewState<Content> {
     case loading
+    case error
     case content(Content)
 }

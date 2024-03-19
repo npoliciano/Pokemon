@@ -91,6 +91,8 @@ final class PokemonDetailsViewController: UIViewController {
 
         case .content(let pokemon):
             setContent(pokemon: pokemon)
+        case .error:
+            break
         }
     }
 
