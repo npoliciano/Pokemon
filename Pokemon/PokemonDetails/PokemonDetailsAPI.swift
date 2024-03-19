@@ -15,8 +15,8 @@ final class PokemonDetailsAPI {
         self.selectedPokemonId = selectedPokemonId
     }
 
-    func getPokemonDetails() -> AnyPublisher<Pokemon, Error> {
-        let pokemon = Pokemon(
+    func getPokemonDetails() -> AnyPublisher<PokemonDetails, Error> {
+        let pokemon = PokemonDetails(
             name: "Pikachu",
             primaryAttribute: "Electric",
             secondaryAttribute: nil,

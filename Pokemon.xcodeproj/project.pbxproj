@@ -154,7 +154,6 @@
 				A4923AF32B9C1C3100DD717E /* Utils */,
 				A405AE612BA24DAD003CBBD5 /* Home */,
 				A4923AF02B9C0D2B00DD717E /* PokemonDetails */,
-				A41F581F2BA8C27100CF08E6 /* PokemonDetailsAPI.swift */,
 				A462F93D2B9822D200D60FC0 /* AppDelegate.swift */,
 				A462F93F2B9822D200D60FC0 /* SceneDelegate.swift */,
 				A462F9462B9822D300D60FC0 /* Assets.xcassets */,
@@ -188,6 +187,7 @@
 				A462F9412B9822D200D60FC0 /* PokemonDetailsViewController.swift */,
 				A41F581B2BA7ADFE00CF08E6 /* PokemonDetailsViewController.xib */,
 				A4923AF12B9C0DB200DD717E /* PokemonDetailsViewModel.swift */,
+				A41F581F2BA8C27100CF08E6 /* PokemonDetailsAPI.swift */,
 			);
 			path = PokemonDetails;
 			sourceTree = "<group>";
