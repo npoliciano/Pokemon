@@ -19,7 +19,7 @@ final class StatsView: UIView {
     @IBOutlet weak var speedProgressView: UIProgressView!
     @IBOutlet weak var totalProgressView: UIProgressView!
 
-    func setContent(with pokemon: Pokemon) {
+    func setContent(with pokemon: PokemonDetails) {
         hpLabel.text = String(pokemon.hp)
         attackLabel.text = String(pokemon.attack)
         defenseLabel.text = String(pokemon.defense)

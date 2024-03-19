@@ -20,7 +20,7 @@ final class EvolutionView: UIView {
         setupSecondChainView()
     }
 
-    func setContent(with pokemon: Pokemon) {
+    func setContent(with pokemon: PokemonDetails) {
         firstEvolutionChainView.setContent(with: pokemon.firstEvolutionChain)
         secondEvolutionChainView.setContent(with: pokemon.secondEvolutionChain)
     }

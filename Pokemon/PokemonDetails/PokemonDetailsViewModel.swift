@@ -11,7 +11,7 @@ struct EvolutionChain {
     let to: Pokemon
 }
 
-struct Pokemon {
+struct PokemonDetails {
     let name: String
     let primaryAttribute: String
     let secondaryAttribute: String?
@@ -37,7 +37,7 @@ struct Pokemon {
 final class PokemonDetailsViewModel: ObservableObject {
     private let api: PokemonDetailsAPI
 
-    @Published var state: ViewState<Pokemon> = .loading
+    @Published var state: ViewState<PokemonDetails> = .loading
 
     private var subscription: AnyCancellable?
 

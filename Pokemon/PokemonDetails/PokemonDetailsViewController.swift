@@ -84,7 +84,7 @@ final class PokemonDetailsViewController: UIViewController {
         statsView.constrainToEdges(superview: statsContainerView)
     }
 
-    private func update(with state: ViewState<Pokemon>) {
+    private func update(with state: ViewState<PokemonDetails>) {
         switch state {
         case .loading:
             setLoading()
@@ -104,7 +104,7 @@ final class PokemonDetailsViewController: UIViewController {
         loadingView.isHidden = false
     }
 
-    private func setContent(pokemon: Pokemon) {
+    private func setContent(pokemon: PokemonDetails) {
         scrollView.isHidden = false
         loadingView.isHidden = true
 

@@ -16,7 +16,7 @@ final class AboutView: UIView {
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
 
-    func setContent(with pokemon: Pokemon) {
+    func setContent(with pokemon: PokemonDetails) {
         descriptionLabel.text = pokemon.description
         eggCycleLabel.text = pokemon.eggCycle
         eggGroupsLabel.text = pokemon.eggGroups
