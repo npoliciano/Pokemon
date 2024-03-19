@@ -68,6 +68,9 @@ final class PokemonCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+typealias Pokemon = PokemonCell.Pokemon
+
 extension PokemonCell {
     struct Pokemon {
         let id: Int

@@ -5,6 +5,7 @@
 //  Created by Nicolle on 13/03/24.
 //
 
+import Combine
 import UIKit
 
 final class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -19,25 +20,24 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
 
     private let itemsPerRow: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    private var subscription: AnyCancellable?
 
-    var items: [PokemonCell.Pokemon] = [
-        .init(
-            id: 0,
-            name: "Pikachu",
-            imageUrl: URL(string: "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081")!,
-            primaryAttribute: "Grass",
-            secondaryAttribute: "Poison",
-            backgroundColor: .pikachu
-        ),
-        .init(
-            id: 1,
-            name: "Pikachu",
-            imageUrl: URL(string: "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2FAE45F260-9012-45F5-BE75-5C8972014EAA?alt=media&token=55b2ea2f-d525-47c0-95ae-7ddf01e879d3")!,
-            primaryAttribute: "Electric",
-            secondaryAttribute: nil,
-            backgroundColor: .pikachu
-        )
-    ]
+    private let viewModel: HomeViewModel
+
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private var items: [Pokemon] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +46,20 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
         collectionView.dataSource = self
         collectionView.register(PokemonCell.self, forCellWithReuseIdentifier: PokemonCell.identifier)
         collectionView.reloadData()
+
+        viewModel.onAppear()
+
+        subscription = viewModel.$state
+            .sink { [weak self] state in
+                switch state {
+                case .loading:
+                    break
+                case .error:
+                    break
+                case .content(let pokemons):
+                    self?.items = pokemons
+                }
+            }
     }
 
     override func viewWillAppear(_ animated: Bool) {

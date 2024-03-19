@@ -17,7 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
 
-        let homeViewController = HomeViewController()
+        let api = HomeAPI()
+        let viewModel = HomeViewModel(api: api)
+        let homeViewController = HomeViewController(viewModel: viewModel)
+
         homeViewController.title = "Pokémons"
         let navigationController = UINavigationController(rootViewController: homeViewController)
         navigationController.navigationBar.prefersLargeTitles = true
