@@ -21,10 +21,11 @@ final class HomeViewModel {
 
     func onAppear() {
         subscription = api.getPokemons()
-            .subscribe(on: DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
-                if case .failure = completion {
+                if case .failure(let error) = completion {
                     self?.state = .error
+                    print(error)
                 }
             } receiveValue: { [weak self] pokemons in
                 self?.state = .content(pokemons)

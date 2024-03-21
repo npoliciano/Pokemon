@@ -29,6 +29,14 @@
 		A4923AFA2B9D7ABC00DD717E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4923AF92B9D7ABC00DD717E /* AboutView.swift */; };
 		A4D10E662BAA4F62002740B5 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D10E652BAA4F62002740B5 /* HomeAPI.swift */; };
 		A4D10E682BAA54BA002740B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4D10E672BAA54BA002740B5 /* GoogleService-Info.plist */; };
+		A4D10E6B2BAA56A4002740B5 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = A4D10E6A2BAA56A4002740B5 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		A4D10E6D2BAA56A4002740B5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = A4D10E6C2BAA56A4002740B5 /* FirebaseCrashlytics */; };
+		A4D10E6F2BAA56A4002740B5 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = A4D10E6E2BAA56A4002740B5 /* FirebaseDatabase */; };
+		A4D10E712BAA56A4002740B5 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A4D10E702BAA56A4002740B5 /* FirebaseDatabaseSwift */; };
+		A4D10E752BABD448002740B5 /* FirebaseDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D10E742BABD448002740B5 /* FirebaseDatabaseService.swift */; };
+		A4D10E772BABE145002740B5 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D10E762BABE145002740B5 /* UIColor+Extensions.swift */; };
+		A4D10E792BABEC9F002740B5 /* Future+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D10E782BABEC9F002740B5 /* Future+Extensions.swift */; };
+		A4D10E7B2BABECD7002740B5 /* PokemonJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D10E7A2BABECD7002740B5 /* PokemonJSON.swift */; };
 		A4D6B35D2B9FEB10008DD1EF /* StatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D6B35C2B9FEB10008DD1EF /* StatsView.xib */; };
 		A4D6B35F2B9FF53C008DD1EF /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6B35E2B9FF53C008DD1EF /* StatsView.swift */; };
 		A4D6B3622BA12D22008DD1EF /* EvolutionChainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D6B3612BA12D22008DD1EF /* EvolutionChainView.xib */; };
@@ -81,6 +89,10 @@
 		A4923AF92B9D7ABC00DD717E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		A4D10E652BAA4F62002740B5 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		A4D10E672BAA54BA002740B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A4D10E742BABD448002740B5 /* FirebaseDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseService.swift; sourceTree = "<group>"; };
+		A4D10E762BABE145002740B5 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		A4D10E782BABEC9F002740B5 /* Future+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Future+Extensions.swift"; sourceTree = "<group>"; };
+		A4D10E7A2BABECD7002740B5 /* PokemonJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonJSON.swift; sourceTree = "<group>"; };
 		A4D6B35C2B9FEB10008DD1EF /* StatsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsView.xib; sourceTree = "<group>"; };
 		A4D6B35E2B9FF53C008DD1EF /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		A4D6B3612BA12D22008DD1EF /* EvolutionChainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EvolutionChainView.xib; sourceTree = "<group>"; };
@@ -95,7 +107,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4D10E712BAA56A4002740B5 /* FirebaseDatabaseSwift in Frameworks */,
+				A4D10E6D2BAA56A4002740B5 /* FirebaseCrashlytics in Frameworks */,
 				A405AE662BA3D2D0003CBBD5 /* Kingfisher in Frameworks */,
+				A4D10E6F2BAA56A4002740B5 /* FirebaseDatabase in Frameworks */,
+				A4D10E6B2BAA56A4002740B5 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +139,7 @@
 				A4F74F2E2BA2312000FBB8A6 /* HomeViewController.swift */,
 				A41F58212BAA45B700CF08E6 /* HomeViewModel.swift */,
 				A4D10E652BAA4F62002740B5 /* HomeAPI.swift */,
+				A4D10E7A2BABECD7002740B5 /* PokemonJSON.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -159,6 +176,7 @@
 		A462F93C2B9822D200D60FC0 /* Pokemon */ = {
 			isa = PBXGroup;
 			children = (
+				A4D10E732BABD41E002740B5 /* Services */,
 				A4923AF32B9C1C3100DD717E /* Utils */,
 				A405AE612BA24DAD003CBBD5 /* Home */,
 				A4923AF02B9C0D2B00DD717E /* PokemonDetails */,
@@ -207,6 +225,8 @@
 				A4923AF42B9C1C4F00DD717E /* ViewState.swift */,
 				A41F58162BA79E4700CF08E6 /* UIView+Extensions.swift */,
 				A41F581D2BA7B3FC00CF08E6 /* UINavigationBar+Extensions.swift */,
+				A4D10E762BABE145002740B5 /* UIColor+Extensions.swift */,
+				A4D10E782BABEC9F002740B5 /* Future+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -221,6 +241,14 @@
 				A4D6B35C2B9FEB10008DD1EF /* StatsView.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A4D10E732BABD41E002740B5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A4D10E742BABD448002740B5 /* FirebaseDatabaseService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		A4D6B3602BA12CE2008DD1EF /* Evolution */ = {
@@ -244,6 +272,7 @@
 				A462F9362B9822D200D60FC0 /* Sources */,
 				A462F9372B9822D200D60FC0 /* Frameworks */,
 				A462F9382B9822D200D60FC0 /* Resources */,
+				A4D10E722BAA596C002740B5 /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -252,6 +281,10 @@
 			name = Pokemon;
 			packageProductDependencies = (
 				A405AE652BA3D2D0003CBBD5 /* Kingfisher */,
+				A4D10E6A2BAA56A4002740B5 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				A4D10E6C2BAA56A4002740B5 /* FirebaseCrashlytics */,
+				A4D10E6E2BAA56A4002740B5 /* FirebaseDatabase */,
+				A4D10E702BAA56A4002740B5 /* FirebaseDatabaseSwift */,
 			);
 			productName = Pokemon;
 			productReference = A462F93A2B9822D200D60FC0 /* Pokemon.app */;
@@ -327,6 +360,7 @@
 			mainGroup = A462F9312B9822D200D60FC0;
 			packageReferences = (
 				A405AE642BA3D2D0003CBBD5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				A4D10E692BAA56A4002740B5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = A462F93B2B9822D200D60FC0 /* Products */;
 			projectDirPath = "";
@@ -371,6 +405,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A4D10E722BAA596C002740B5 /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			name = Crashlytics;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A462F9362B9822D200D60FC0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -378,15 +438,19 @@
 			files = (
 				A4D6B3682BA13576008DD1EF /* EvolutionView.swift in Sources */,
 				A462F9422B9822D200D60FC0 /* PokemonDetailsViewController.swift in Sources */,
+				A4D10E752BABD448002740B5 /* FirebaseDatabaseService.swift in Sources */,
 				A405AE632BA24E45003CBBD5 /* PokemonCell.swift in Sources */,
 				A4D10E662BAA4F62002740B5 /* HomeAPI.swift in Sources */,
 				A41F58222BAA45B700CF08E6 /* HomeViewModel.swift in Sources */,
 				A462F93E2B9822D200D60FC0 /* AppDelegate.swift in Sources */,
 				A4F74F2F2BA2312000FBB8A6 /* HomeViewController.swift in Sources */,
+				A4D10E792BABEC9F002740B5 /* Future+Extensions.swift in Sources */,
 				A41F58192BA7AC0200CF08E6 /* AttributeView.swift in Sources */,
 				A4923AF52B9C1C4F00DD717E /* ViewState.swift in Sources */,
+				A4D10E772BABE145002740B5 /* UIColor+Extensions.swift in Sources */,
 				A41F58172BA79E4700CF08E6 /* UIView+Extensions.swift in Sources */,
 				A41F58202BA8C27100CF08E6 /* PokemonDetailsAPI.swift in Sources */,
+				A4D10E7B2BABECD7002740B5 /* PokemonJSON.swift in Sources */,
 				A462F9402B9822D200D60FC0 /* SceneDelegate.swift in Sources */,
 				A4923AFA2B9D7ABC00DD717E /* AboutView.swift in Sources */,
 				A4D6B35F2B9FF53C008DD1EF /* StatsView.swift in Sources */,
@@ -566,6 +630,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 69T9YBDLV5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Pokemon/Info.plist;
@@ -741,6 +806,14 @@
 				minimumVersion = 7.11.0;
 			};
 		};
+		A4D10E692BAA56A4002740B5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.23.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -748,6 +821,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A405AE642BA3D2D0003CBBD5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		A4D10E6A2BAA56A4002740B5 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4D10E692BAA56A4002740B5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		A4D10E6C2BAA56A4002740B5 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4D10E692BAA56A4002740B5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		A4D10E6E2BAA56A4002740B5 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4D10E692BAA56A4002740B5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		A4D10E702BAA56A4002740B5 /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4D10E692BAA56A4002740B5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

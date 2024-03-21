@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,7 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
 
-        let api = HomeAPI()
+        let database = FirebaseDatabaseService<[PokemonJSON]>(
+            path: "pokemons",
+            databaseReference: Database.database().reference()
+        )
+        let api = HomeAPI(database: database)
         let viewModel = HomeViewModel(api: api)
         let homeViewController = HomeViewController(viewModel: viewModel)
 

@@ -1,82 +1,90 @@
-[
-  {
-    "id": 1,
-    "name": "Pikachu",
-    "primaryAttribute": "Electric",
-    "secondaryAttribute": null,
-    "specie": "Mouse",
-    "image": ""
-  },
-  {
-    "id": 2,
-    "name": "Bulbasaur",
-    "primaryAttribute": "Poison",
-    "secondaryAttribute": "Grass",
-    "specie": "Seed",
-    "image": ""
-  },
-  {
-    "id": 3,
-    "name": "Charmander",
-    "primaryAttribute": "Fire",
-    "secondaryAttribute": "null",
-    "specie": "Lizard",
-    "image": ""
-  },
-  {
-    "id": 4,
-    "name": "Squirtle",
-    "primaryAttribute": "Water",
-    "secondaryAttribute": "null",
-    "specie": "Tiny Turtle",
-    "image": ""
-  },
-  {
-    "id": 5,
-    "name": "Charizard",
-    "primaryAttribute": "Fire",
-    "secondaryAttribute": "Flying",
-    "specie": "Flame",
-    "image": ""
-  },
-  {
-    "id": 6,
-    "name": "Hoppip",
-    "primaryAttribute": "Grass",
-    "secondaryAttribute": "Flying",
-    "specie": "Cottonweed",
-    "image": ""
-  },
-  {
-    "id": 7,
-    "name": "Dragonite",
-    "primaryAttribute": "Dragon",
-    "secondaryAttribute": "Flying",
-    "specie": "Dragon",
-    "image": ""
-  },
-  {
-    "id": 8,
-    "name": "Snorlax",
-    "primaryAttribute": "Normal",
-    "secondaryAttribute": "null",
-    "specie": "Sleeping",
-    "image": ""
-  },
-  {
-    "id": 9,
-    "name": "Dialga",
-    "primaryAttribute": "Steel",
-    "secondaryAttribute": "Dragon",
-    "specie": "Temporal",
-    "image": ""
-  },
-  {
-    "id": 10,
-    "name": "Xerneas",
-    "primaryAttribute": "Fairy",
-    "secondaryAttribute": "null",
-    "specie": "Life",
-    "image": ""
-  }
-]
+{
+  "pokemons": [
+    {
+      "id": 1,
+      "name": "Pikachu",
+      "primaryAttribute": "Electric",
+      "specie": "Mouse",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
+      "backgroundColor": "#bf930f"
+    },
+    {
+      "id": 2,
+      "name": "Bulbasaur",
+      "primaryAttribute": "Poison",
+      "secondaryAttribute": "Grass",
+      "specie": "Seed",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
+      "backgroundColor": "#bf930f"
+    },
+    {
+      "id": 3,
+      "name": "Charmander",
+      "primaryAttribute": "Fire",
+      "secondaryAttribute": "null",
+      "specie": "Lizard",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
+      "backgroundColor": "#bf930f"
+    },
+    {
+      "id": 4,
+      "name": "Squirtle",
+      "primaryAttribute": "Water",
+      "specie": "Tiny Turtle",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
+      "backgroundColor": "#bf930f"
+    },
+    {
+      "id": 5,
+      "name": "Charizard",
+      "primaryAttribute": "Fire",
+      "secondaryAttribute": "Flying",
+      "specie": "Flame",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
+      "backgroundColor": "#bf930f"
+    },
+    {
+      "id": 6,
+      "name": "Hoppip",
+      "primaryAttribute": "Grass",
+      "secondaryAttribute": "Flying",
+      "specie": "Cottonweed",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
+      "backgroundColor": "#bf930f"
+    },
+    {
+      "id": 7,
+      "name": "Dragonite",
+      "primaryAttribute": "Dragon",
+      "secondaryAttribute": "Flying",
+      "specie": "Dragon",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
+      "backgroundColor": "#bf930f"
+    },
+    {
+      "id": 8,
+      "name": "Snorlax",
+      "primaryAttribute": "Normal",
+      "specie": "Sleeping",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
+      "backgroundColor": "#bf930f"
+    },
+    {
+      "id": 9,
+      "name": "Dialga",
+      "primaryAttribute": "Steel",
+      "secondaryAttribute": "Dragon",
+      "specie": "Temporal",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
+      "backgroundColor": "#bf930f"
+    },
+    {
+      "id": 10,
+      "name": "Xerneas",
+      "primaryAttribute": "Fairy",
+      "specie": "Life",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
+      "backgroundColor": "#bf930f"
+    }
+  ]
+}
