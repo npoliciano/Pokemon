@@ -40,6 +40,8 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
+    let refreshControl = UIRefreshControl()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupColletionViewConstraints()
@@ -47,11 +49,13 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
         collectionView.dataSource = self
         collectionView.register(PokemonCell.self, forCellWithReuseIdentifier: PokemonCell.identifier)
         collectionView.reloadData()
-
+        setupRefreshControl()
+        
         viewModel.onAppear()
 
         subscription = viewModel.$state
             .sink { [weak self] state in
+                self?.refreshControl.endRefreshing()
                 switch state {
                 case .loading:
                     break
@@ -65,6 +69,15 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.setTitleColor(.label)
+    }
+
+    private func setupRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
+    }
+
+    @objc private func refreshData() {
+        viewModel.onRefresh()
     }
 
     private func setupColletionViewConstraints() {

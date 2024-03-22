@@ -139,7 +139,6 @@
 				A4F74F2E2BA2312000FBB8A6 /* HomeViewController.swift */,
 				A41F58212BAA45B700CF08E6 /* HomeViewModel.swift */,
 				A4D10E652BAA4F62002740B5 /* HomeAPI.swift */,
-				A4D10E7A2BABECD7002740B5 /* PokemonJSON.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -247,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				A4D10E742BABD448002740B5 /* FirebaseDatabaseService.swift */,
+				A4D10E7A2BABECD7002740B5 /* PokemonJSON.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";

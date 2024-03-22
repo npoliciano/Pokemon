@@ -30,4 +30,8 @@ final class HomeViewModel {
                 self?.state = .content(pokemons)
             }
     }
+
+    func onRefresh() {
+        onAppear()
+    }
 }
