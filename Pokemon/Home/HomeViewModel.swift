@@ -23,9 +23,8 @@ final class HomeViewModel {
         subscription = api.getPokemons()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
-                if case .failure(let error) = completion {
+                if case .failure = completion {
                     self?.state = .error
-                    print(error)
                 }
             } receiveValue: { [weak self] pokemons in
                 self?.state = .content(pokemons)

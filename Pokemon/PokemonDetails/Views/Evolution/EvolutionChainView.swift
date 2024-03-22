@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class EvolutionChainView: UIView {
     @IBOutlet weak var firstEvolutionImageView: UIImageView!
@@ -14,8 +15,8 @@ final class EvolutionChainView: UIView {
     @IBOutlet weak var secondEvolutionLabel: UILabel!
 
     func setContent(with chain: EvolutionChain) {
-        firstEvolutionImageView.image = chain.from.image
-        secondEvolutionImageView.image = chain.to.image
+        firstEvolutionImageView.kf.setImage(with: chain.from.imageUrl)
+        secondEvolutionImageView.kf.setImage(with: chain.to.imageUrl)
         firstEvolutionLabel.text = chain.from.name
         secondEvolutionLabel.text = chain.to.name
     }

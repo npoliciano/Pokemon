@@ -4,7 +4,7 @@ import UIKit
 struct EvolutionChain {
     struct Pokemon {
         let name: String
-        let image: UIImage
+        let imageUrl: URL
     }
 
     let from: Pokemon
@@ -16,8 +16,8 @@ struct PokemonDetails {
     let primaryAttribute: String
     let secondaryAttribute: String?
     let specie: String
-    let image: UIImage
-    let predominantColor: UIColor
+    let imageUrl: URL
+    let backgroundColor: UIColor
     let description: String
     let eggCycle: String
     let eggGroups: String
@@ -47,7 +47,7 @@ final class PokemonDetailsViewModel: ObservableObject {
 
     func onAppear() {
         subscription = api.getPokemonDetails()
-            .subscribe(on: DispatchQueue.main)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
                 if case .failure = completion {
                     self?.state = .error

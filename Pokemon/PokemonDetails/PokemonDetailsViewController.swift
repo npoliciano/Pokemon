@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Kingfisher
 import UIKit
 
 enum SegmentSection: Int {
@@ -115,7 +116,7 @@ final class PokemonDetailsViewController: UIViewController {
 
         primaryAttributeLabel.text = pokemon.primaryAttribute
         specieLabel.text = "\(pokemon.specie) Pokémon"
-        imageView.image = pokemon.image
+        imageView.kf.setImage(with: pokemon.imageUrl)
 
         if let secondaryAttribute = pokemon.secondaryAttribute {
             secondaryAttributeLabel.text = secondaryAttribute
@@ -130,8 +131,8 @@ final class PokemonDetailsViewController: UIViewController {
             self.imageView.alpha = 1
             self.secondaryAttributeView.alpha = 1
             self.title = pokemon.name
-            self.view.backgroundColor = pokemon.predominantColor
-            self.headerBackgroundView.backgroundColor = pokemon.predominantColor
+            self.view.backgroundColor = pokemon.backgroundColor
+            self.headerBackgroundView.backgroundColor = pokemon.backgroundColor
             self.aboutView.setContent(with: pokemon)
             self.statsView.setContent(with: pokemon)
             self.evolutionView.setContent(with: pokemon)

@@ -6,6 +6,7 @@
 //
 
 import Combine
+import FirebaseDatabase
 import UIKit
 
 final class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -93,7 +94,12 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
     ) {
         let item = items[indexPath.item]
 
-        let api = PokemonDetailsAPI(selectedPokemonId: item.id)
+        let reference = Database.database().reference()
+        let database = FirebaseDatabaseService<PokemonJSON>(
+            path: "pokemons/\(item.id)",
+            databaseReference: reference
+        )
+        let api = PokemonDetailsAPI(database: database)
         let viewModel = PokemonDetailsViewModel(api: api)
         let viewController = PokemonDetailsViewController(viewModel: viewModel)
 

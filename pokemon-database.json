@@ -2,89 +2,85 @@
   "pokemons": [
     {
       "id": 1,
-      "name": "Pikachu",
-      "primaryAttribute": "Electric",
-      "specie": "Mouse",
+      "name": "Bulbasaur",
       "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
-      "backgroundColor": "#bf930f"
+      "primaryAttribute": "Grass",
+      "secondaryAttribute": "Poison",
+      "backgroundColor": "#78C850",
+      "specie": "Seed",
+      "description": "A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon.",
+      "eggCycle": "Monster",
+      "eggGroups": "Grass",
+      "female": "50%",
+      "male": "50%",
+      "height": "0.7 m",
+      "weight": "6.9 kg",
+      "hp": 45,
+      "attack": 49,
+      "defense": 49,
+      "speed": 45,
+      "statsTotal": 318,
+      "firstEvolutionChain": {
+        "from": {
+          "name": "Bulbasaur",
+          "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081"
+        },
+        "to": {
+          "name": "Ivysaur",
+          "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081"
+        }
+      },
+      "secondEvolutionChain": {
+        "from": {
+          "name": "Ivysaur",
+          "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081"
+        },
+        "to": {
+          "name": "Venusaur",
+          "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081"
+        }
+      }
     },
     {
       "id": 2,
-      "name": "Bulbasaur",
-      "primaryAttribute": "Poison",
-      "secondaryAttribute": "Grass",
-      "specie": "Seed",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
-      "backgroundColor": "#bf930f"
-    },
-    {
-      "id": 3,
       "name": "Charmander",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
       "primaryAttribute": "Fire",
-      "secondaryAttribute": "null",
+      "secondaryAttribute": null,
+      "backgroundColor": "#F08030",
       "specie": "Lizard",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
-      "backgroundColor": "#bf930f"
-    },
-    {
-      "id": 4,
-      "name": "Squirtle",
-      "primaryAttribute": "Water",
-      "specie": "Tiny Turtle",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
-      "backgroundColor": "#bf930f"
-    },
-    {
-      "id": 5,
-      "name": "Charizard",
-      "primaryAttribute": "Fire",
-      "secondaryAttribute": "Flying",
-      "specie": "Flame",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
-      "backgroundColor": "#bf930f"
-    },
-    {
-      "id": 6,
-      "name": "Hoppip",
-      "primaryAttribute": "Grass",
-      "secondaryAttribute": "Flying",
-      "specie": "Cottonweed",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
-      "backgroundColor": "#bf930f"
-    },
-    {
-      "id": 7,
-      "name": "Dragonite",
-      "primaryAttribute": "Dragon",
-      "secondaryAttribute": "Flying",
-      "specie": "Dragon",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
-      "backgroundColor": "#bf930f"
-    },
-    {
-      "id": 8,
-      "name": "Snorlax",
-      "primaryAttribute": "Normal",
-      "specie": "Sleeping",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
-      "backgroundColor": "#bf930f"
-    },
-    {
-      "id": 9,
-      "name": "Dialga",
-      "primaryAttribute": "Steel",
-      "secondaryAttribute": "Dragon",
-      "specie": "Temporal",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
-      "backgroundColor": "#bf930f"
-    },
-    {
-      "id": 10,
-      "name": "Xerneas",
-      "primaryAttribute": "Fairy",
-      "specie": "Life",
-      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081",
-      "backgroundColor": "#bf930f"
+      "description": "Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail.",
+      "eggCycle": "Monster",
+      "eggGroups": "Dragon",
+      "female": "12.5%",
+      "male": "87.5%",
+      "height": "0.6 m",
+      "weight": "8.5 kg",
+      "hp": 39,
+      "attack": 52,
+      "defense": 43,
+      "speed": 65,
+      "statsTotal": 309,
+      "firstEvolutionChain": {
+        "from": {
+          "name": "Charmander",
+          "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081"
+        },
+        "to": {
+          "name": "Charmeleon",
+          "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081"
+        }
+      },
+      "secondEvolutionChain": {
+        "from": {
+          "name": "Charmeleon",
+          "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081"
+        },
+        "to": {
+          "name": "Charizard",
+          "imageUrl": "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F62CDB87E-9A76-4184-B82A-4FB38CDA2BD0?alt=media&token=82726149-f9a6-4299-8837-6bae1ecb1081"
+        }
+      }
     }
   ]
 }
