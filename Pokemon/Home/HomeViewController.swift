@@ -11,6 +11,8 @@ import UIKit
 
 final class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
+    // Subviews
+
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -19,10 +21,18 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
         return collectionView
     }()
 
+    private let loadingView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .large)
+        view.startAnimating()
+        return view
+    }()
+
+    // Collection View Configuration
+
     private let itemsPerRow: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
-    private var subscription: AnyCancellable?
 
+    private var subscription: AnyCancellable?
     private let viewModel: HomeViewModel
 
     init(viewModel: HomeViewModel) {
@@ -45,24 +55,31 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         setupColletionViewConstraints()
+        setupLoadingViewConstraints()
+        setupRefreshControl()
+
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(PokemonCell.self, forCellWithReuseIdentifier: PokemonCell.identifier)
         collectionView.reloadData()
-        setupRefreshControl()
+
+        collectionView.isHidden = true
+        loadingView.isHidden = false
         
         viewModel.onAppear()
 
-        subscription = viewModel.$state
+        subscription = viewModel
+            .$state
+            .dropFirst()
             .sink { [weak self] state in
                 self?.refreshControl.endRefreshing()
                 switch state {
-                case .loading:
-                    break
                 case .error:
                     break
                 case .content(let pokemons):
                     self?.items = pokemons
+                    self?.collectionView.isHidden = false
+                    self?.loadingView.isHidden = true
                 }
             }
     }
@@ -71,13 +88,23 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
         navigationController?.navigationBar.setTitleColor(.label)
     }
 
+    @objc private func refreshData() {
+        viewModel.onRefresh()
+    }
+
     private func setupRefreshControl() {
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         collectionView.refreshControl = refreshControl
     }
 
-    @objc private func refreshData() {
-        viewModel.onRefresh()
+    private func setupLoadingViewConstraints() {
+        view.addSubview(loadingView)
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 
     private func setupColletionViewConstraints() {

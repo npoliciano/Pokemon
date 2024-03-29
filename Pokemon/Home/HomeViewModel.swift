@@ -8,8 +8,13 @@
 import Combine
 import Foundation
 
+enum HomeViewState {
+    case content([Pokemon])
+    case error
+}
+
 final class HomeViewModel {
-    @Published var state = ViewState<[Pokemon]>.loading
+    @Published var state = HomeViewState.content([])
 
     private let api: HomeAPI
 
