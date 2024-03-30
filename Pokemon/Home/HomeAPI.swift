@@ -15,7 +15,9 @@ final class HomeAPI {
     init(database: FirebaseDatabaseService<[PokemonJSON]>) {
         self.database = database
     }
+}
 
+extension HomeAPI: HomeService {
     func getPokemons() -> AnyPublisher<[Pokemon], Error> {
         database
             .getData()

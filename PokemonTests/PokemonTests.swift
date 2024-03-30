@@ -5,32 +5,47 @@
 //  Created by Nicolle on 05/03/24.
 //
 
+import Combine
 import XCTest
 @testable import Pokemon
 
-final class PokemonTests: XCTestCase {
+/*
+ Testar:
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+ Behavioral / Functional
+
+ - ✅ init não chama nada
+ - se o estado inicial é content([])
+ - que o onRefresh executa o onAppear
+
+ - Stubbing:
+ - se quando obtém sucesso do getPokemon, o state é alterado para content e recebe a pokemon list
+ - se quando getPokemon falha, o state é alterado .error
+
+
+ Structural / Non-functional
+
+ - se getPokemons está sendo chamado (Spy)
+ - se getPokemons conclui na main thread
+ - se não memory leak / retain cycle
+ */
+
+
+final class HomeViewModelTests: XCTestCase {
+    func testInitDoesNotPerformAnyRequest() {
+        let service = HomeServiceSpy()
+        _ = HomeViewModel(service: service)
+
+        XCTAssertEqual(service.getPokemonsCalls, 0)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
+
+final class HomeServiceSpy: HomeService {
+    var getPokemonsCalls = 0
+
+    func getPokemons() -> AnyPublisher<[Pokemon], Error> {
+        getPokemonsCalls += 1
+        fatalError()
+    }
+}
+

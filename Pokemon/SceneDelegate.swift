@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             databaseReference: Database.database().reference()
         )
         let api = HomeAPI(database: database)
-        let viewModel = HomeViewModel(api: api)
+        let viewModel = HomeViewModel(service: api)
         let homeViewController = HomeViewController(viewModel: viewModel)
 
         homeViewController.title = "Pokémons"

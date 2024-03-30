@@ -13,19 +13,24 @@ enum HomeViewState {
     case error
 }
 
-final class HomeViewModel {
-    @Published var state = HomeViewState.content([])
+protocol HomeService {
+    func getPokemons() -> AnyPublisher<[Pokemon], Error>
+}
 
-    private let api: HomeAPI
+final class HomeViewModel {
+    @Published
+    private(set) var state = HomeViewState.content([])
+
+    private let service: HomeService
 
     private var subscription: AnyCancellable?
 
-    init(api: HomeAPI) {
-        self.api = api
+    init(service: HomeService) {
+        self.service = service
     }
 
     func onAppear() {
-        subscription = api.getPokemons()
+        subscription = service.getPokemons()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
                 if case .failure = completion {
