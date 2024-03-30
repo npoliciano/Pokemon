@@ -30,13 +30,19 @@ import XCTest
  - se não memory leak / retain cycle
  */
 
-
 final class HomeViewModelTests: XCTestCase {
     func testInitDoesNotPerformAnyRequest() {
         let service = HomeServiceSpy()
         _ = HomeViewModel(service: service)
 
         XCTAssertEqual(service.getPokemonsCalls, 0)
+    }
+
+    func testInitialStateIsEmpty() {
+        let service = HomeServiceSpy()
+        let sut = HomeViewModel(service: service)
+
+        XCTAssertEqual(sut.state, .content([]))
     }
 }
 
@@ -49,3 +55,26 @@ final class HomeServiceSpy: HomeService {
     }
 }
 
+extension HomeViewState: Equatable {
+    public static func ==(lhs: HomeViewState, rhs: HomeViewState) -> Bool {
+        switch (lhs, rhs) {
+        case (.error, .error):
+            return true
+        case (.content(let lhsPokemons), .content(let rhsPokemons)):
+            return lhsPokemons == rhsPokemons
+        default:
+            return false
+        }
+    }
+}
+
+extension Pokemon: Equatable {
+    public static func ==(lhs: Pokemon, rhs: Pokemon) -> Bool {
+        lhs.id == rhs.id &&
+        lhs.name == rhs.name &&
+        lhs.imageUrl == rhs.imageUrl &&
+        lhs.primaryAttribute == rhs.primaryAttribute &&
+        lhs.secondaryAttribute == rhs.secondaryAttribute &&
+        lhs.backgroundColor == rhs.backgroundColor
+    }
+}
