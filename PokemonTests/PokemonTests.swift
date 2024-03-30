@@ -15,7 +15,7 @@ import XCTest
  Behavioral / Functional
 
  - ✅ init não chama nada
- - se o estado inicial é content([])
+ - ✅ se o estado inicial é content([])
  - que o onRefresh executa o onAppear
 
  - Stubbing:
@@ -44,6 +44,18 @@ final class HomeViewModelTests: XCTestCase {
 
         XCTAssertEqual(sut.state, .content([]))
     }
+
+    func testGetsPokemonOnAppear() {
+        // Arrange / Given
+        let service = HomeServiceSpy()
+        let sut = HomeViewModel(service: service)
+
+        // Act / When
+        sut.onAppear()
+
+        // Assert / Then
+        XCTAssertEqual(service.getPokemonsCalls, 1)
+    }
 }
 
 final class HomeServiceSpy: HomeService {
@@ -51,7 +63,9 @@ final class HomeServiceSpy: HomeService {
 
     func getPokemons() -> AnyPublisher<[Pokemon], Error> {
         getPokemonsCalls += 1
-        fatalError()
+        return Result.success([])
+            .publisher
+            .eraseToAnyPublisher()
     }
 }
 
