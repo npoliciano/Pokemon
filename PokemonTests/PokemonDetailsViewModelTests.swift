@@ -36,23 +36,63 @@ final class PokemonDetailsViewModelTests: XCTestCase {
     func testStateIsErrorOnFailureToGetPokemonDetails() {
         let service = PokemonDetailsServiceSpy()
         let sut = PokemonDetailsViewModel(service: service, scheduler: .immediate)
+        service.expectedResult = .failure(ErrorDummy())
 
         sut.onAppear()
 
         XCTAssertEqual(sut.state, .error)
+    }
+
+    func testStateIsContentWithPokemonDetailsOnSuccess() {
+        let service = PokemonDetailsServiceSpy()
+        let sut = PokemonDetailsViewModel(service: service, scheduler: .immediate)
+        let expectedPokemonDetails = PokemonDetails(
+            name: "0",
+            primaryAttribute: "0",
+            secondaryAttribute: "0",
+            specie: "0",
+            imageUrl: URL(filePath: "0"),
+            backgroundColor: .black,
+            description: "0",
+            eggCycle: "0",
+            eggGroups: "0",
+            female: "0",
+            male: "0",
+            height: "0",
+            weight: "0",
+            hp: 0,
+            attack: 0,
+            defense: 0,
+            speed: 0,
+            statsTotal: 0,
+            firstEvolutionChain: EvolutionChain(
+                from: .init(name: "0", imageUrl: URL(filePath: "0")),
+                to: .init(name: "0", imageUrl: URL(filePath: "0"))
+            ),
+            secondEvolutionChain: EvolutionChain(
+                from: .init(name: "0", imageUrl: URL(filePath: "0")),
+                to: .init(name: "0", imageUrl: URL(filePath: "0"))
+            )
+        )
+        service.expectedResult = .success(expectedPokemonDetails)
+
+        sut.onAppear()
+
+        XCTAssertEqual(sut.state, .content(expectedPokemonDetails))
     }
 }
 
 final class PokemonDetailsServiceSpy: PokemonDetailsService {
     private(set) var getPokemonDetailsCalls = 0
 
+    var expectedResult = Result<PokemonDetails, Error>.failure(ErrorDummy())
+
     func getPokemonDetails() -> AnyPublisher<PokemonDetails, Error> {
         getPokemonDetailsCalls += 1
-        return Result.failure(ErrorDummy())
+        return expectedResult
             .publisher
             .eraseToAnyPublisher()
     }
-
 }
 
 extension ViewState<PokemonDetails>: Equatable {
