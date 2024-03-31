@@ -16,10 +16,10 @@ import XCTest
 
  - ✅ init não chama nada
  - ✅ se o estado inicial é content([])
- - que o onRefresh executa o onAppear
+ - ✅ que o onRefresh executa o onAppear
 
  - Stubbing:
- - se quando obtém sucesso do getPokemon, o state é alterado para content e recebe a pokemon list
+ - ✅ se quando obtém sucesso do getPokemon, o state é alterado para content e recebe a pokemon list
  - ✅ se quando obtém sucesso do getPokemon empty, o state é alterado para content com lista vazia
  - ✅ se quando getPokemon falha, o state é alterado .error
 
@@ -95,6 +95,60 @@ final class HomeViewModelTests: XCTestCase {
 
         // Act / When
         sut.onAppear()
+
+        // Assert
+        XCTAssertEqual(sut.state, .content(expectedPokemons))
+    }
+
+    func testGetsPokemonOnRefresh() {
+        // Arrange / Given
+        let service = HomeServiceSpy()
+        let sut = HomeViewModel(service: service, scheduler: .immediate)
+
+        // Act / When
+        sut.onRefresh()
+
+        // Assert / Then
+        XCTAssertEqual(service.getPokemonsCalls, 1)
+    }
+
+    func testStateIsErrorOnRefreshFailureToGetPokemons() {
+        // Arrange / Given
+        let service = HomeServiceSpy()
+        let sut = HomeViewModel(service: service, scheduler: .immediate)
+        service.expectedResult = .failure(ErrorDummy())
+
+        // Act / When
+        sut.onRefresh()
+
+        // Assert
+        XCTAssertEqual(sut.state, .error)
+    }
+
+    func testStateIsEmptyContentOnRefreshSuccessWithEmptyPokemonList() {
+        // Arrange / Given
+        let service = HomeServiceSpy()
+        let sut = HomeViewModel(service: service, scheduler: .immediate)
+        service.expectedResult = .success([])
+
+        // Act / When
+        sut.onRefresh()
+
+        // Assert
+        XCTAssertEqual(sut.state, .content([]))
+    }
+    func testStateIsContentWithPokemonsOnRefreshSuccessWithPokemonList() {
+        // Arrange / Given
+        let service = HomeServiceSpy()
+        let sut = HomeViewModel(service: service, scheduler: .immediate)
+        let expectedPokemons = [
+            Pokemon(id: 0, name: "0", imageUrl: URL(fileURLWithPath: "0"), primaryAttribute: "0", secondaryAttribute: "0", backgroundColor: .black),
+            Pokemon(id: 1, name: "1", imageUrl: URL(fileURLWithPath: "1"), primaryAttribute: "1", secondaryAttribute: nil, backgroundColor: .blue)
+        ]
+        service.expectedResult = .success(expectedPokemons)
+
+        // Act / When
+        sut.onRefresh()
 
         // Assert
         XCTAssertEqual(sut.state, .content(expectedPokemons))
