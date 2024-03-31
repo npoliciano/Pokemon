@@ -24,6 +24,15 @@ final class PokemonDetailsViewModelTests: XCTestCase {
         XCTAssertEqual(sut.state, .loading)
     }
 
+    func testGetsPokemonDetailsOnAppear() {
+        let service = PokemonDetailsServiceSpy()
+        let sut = PokemonDetailsViewModel(service: service)
+
+        sut.onAppear()
+
+        XCTAssertEqual(service.getPokemonDetailsCalls, 1)
+    }
+
 }
 
 final class PokemonDetailsServiceSpy: PokemonDetailsService {
@@ -31,7 +40,9 @@ final class PokemonDetailsServiceSpy: PokemonDetailsService {
 
     func getPokemonDetails() -> AnyPublisher<PokemonDetails, Error> {
         getPokemonDetailsCalls += 1
-        fatalError()
+        return Result.failure(ErrorDummy())
+            .publisher
+            .eraseToAnyPublisher()
     }
 
 }
