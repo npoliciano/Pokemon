@@ -140,7 +140,7 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
             databaseReference: reference
         )
         let api = PokemonDetailsAPI(database: database)
-        let viewModel = PokemonDetailsViewModel(service: api)
+        let viewModel = PokemonDetailsViewModel(service: api, scheduler: .main)
         let viewController = PokemonDetailsViewController(viewModel: viewModel)
 
         navigationController?.pushViewController(viewController, animated: true)

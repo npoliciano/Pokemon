@@ -1,5 +1,6 @@
 import Combine
 import UIKit
+import CombineSchedulers
 
 struct EvolutionChain {
     struct Pokemon {
@@ -40,19 +41,21 @@ protocol PokemonDetailsService {
 
 final class PokemonDetailsViewModel {
     private let service: PokemonDetailsService
+    private let scheduler: AnySchedulerOf<DispatchQueue>
 
     @Published 
     private(set) var state: ViewState<PokemonDetails> = .loading
 
     private var subscription: AnyCancellable?
 
-    init(service: PokemonDetailsService) {
+    init(service: PokemonDetailsService, scheduler: AnySchedulerOf<DispatchQueue>) {
         self.service = service
+        self.scheduler = scheduler
     }
 
     func onAppear() {
         subscription = service.getPokemonDetails()
-            .receive(on: DispatchQueue.main)
+            .receive(on: scheduler)
             .sink { [weak self] completion in
                 if case .failure = completion {
                     self?.state = .error

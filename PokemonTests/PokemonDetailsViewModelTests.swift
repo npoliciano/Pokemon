@@ -12,27 +12,35 @@ import XCTest
 final class PokemonDetailsViewModelTests: XCTestCase {
     func testInitDoesNotPerformAnyRequest() {
         let service = PokemonDetailsServiceSpy()
-        let sut = PokemonDetailsViewModel(service: service)
+        let sut = PokemonDetailsViewModel(service: service, scheduler: .immediate)
 
         XCTAssertEqual(service.getPokemonDetailsCalls, 0)
     }
 
     func testInitialStateIsLoading() {
         let service = PokemonDetailsServiceSpy()
-        let sut = PokemonDetailsViewModel(service: service)
+        let sut = PokemonDetailsViewModel(service: service, scheduler: .immediate)
 
         XCTAssertEqual(sut.state, .loading)
     }
 
     func testGetsPokemonDetailsOnAppear() {
         let service = PokemonDetailsServiceSpy()
-        let sut = PokemonDetailsViewModel(service: service)
+        let sut = PokemonDetailsViewModel(service: service, scheduler: .immediate)
 
         sut.onAppear()
 
         XCTAssertEqual(service.getPokemonDetailsCalls, 1)
     }
 
+    func testStateIsErrorOnFailureToGetPokemonDetails() {
+        let service = PokemonDetailsServiceSpy()
+        let sut = PokemonDetailsViewModel(service: service, scheduler: .immediate)
+
+        sut.onAppear()
+
+        XCTAssertEqual(sut.state, .error)
+    }
 }
 
 final class PokemonDetailsServiceSpy: PokemonDetailsService {
