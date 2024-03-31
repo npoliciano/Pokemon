@@ -13,6 +13,7 @@ final class PokemonDetailsViewModelTests: XCTestCase {
     func testInitDoesNotPerformAnyRequest() {
         let service = PokemonDetailsServiceSpy()
         let sut = PokemonDetailsViewModel(service: service, scheduler: .immediate)
+        trackForMemoryLeaks(sut, service)
 
         XCTAssertEqual(service.getPokemonDetailsCalls, 0)
     }
@@ -20,6 +21,7 @@ final class PokemonDetailsViewModelTests: XCTestCase {
     func testInitialStateIsLoading() {
         let service = PokemonDetailsServiceSpy()
         let sut = PokemonDetailsViewModel(service: service, scheduler: .immediate)
+        trackForMemoryLeaks(sut, service)
 
         XCTAssertEqual(sut.state, .loading)
     }
@@ -27,6 +29,7 @@ final class PokemonDetailsViewModelTests: XCTestCase {
     func testGetsPokemonDetailsOnAppear() {
         let service = PokemonDetailsServiceSpy()
         let sut = PokemonDetailsViewModel(service: service, scheduler: .immediate)
+        trackForMemoryLeaks(sut, service)
 
         sut.onAppear()
 
@@ -36,6 +39,7 @@ final class PokemonDetailsViewModelTests: XCTestCase {
     func testStateIsErrorOnFailureToGetPokemonDetails() {
         let service = PokemonDetailsServiceSpy()
         let sut = PokemonDetailsViewModel(service: service, scheduler: .immediate)
+        trackForMemoryLeaks(sut, service)
         service.expectedResult = .failure(ErrorDummy())
 
         sut.onAppear()
@@ -46,6 +50,7 @@ final class PokemonDetailsViewModelTests: XCTestCase {
     func testStateIsContentWithPokemonDetailsOnSuccess() {
         let service = PokemonDetailsServiceSpy()
         let sut = PokemonDetailsViewModel(service: service, scheduler: .immediate)
+        trackForMemoryLeaks(sut, service)
         let expectedPokemonDetails = PokemonDetails(
             name: "0",
             primaryAttribute: "0",
