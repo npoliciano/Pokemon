@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import CombineSchedulers
 
 enum HomeViewState {
     case content([Pokemon])
@@ -22,16 +23,18 @@ final class HomeViewModel {
     private(set) var state = HomeViewState.content([])
 
     private let service: HomeService
+    private let scheduler: AnySchedulerOf<DispatchQueue>
 
     private var subscription: AnyCancellable?
 
-    init(service: HomeService) {
+    init(service: HomeService, scheduler: AnySchedulerOf<DispatchQueue>) {
         self.service = service
+        self.scheduler = scheduler
     }
 
     func onAppear() {
         subscription = service.getPokemons()
-            .receive(on: DispatchQueue.main)
+            .receive(on: scheduler)
             .sink { [weak self] completion in
                 if case .failure = completion {
                     self?.state = .error

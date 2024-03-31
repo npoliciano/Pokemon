@@ -37,6 +37,7 @@
 		A4D10E772BABE145002740B5 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D10E762BABE145002740B5 /* UIColor+Extensions.swift */; };
 		A4D10E792BABEC9F002740B5 /* Future+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D10E782BABEC9F002740B5 /* Future+Extensions.swift */; };
 		A4D10E7B2BABECD7002740B5 /* PokemonJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D10E7A2BABECD7002740B5 /* PokemonJSON.swift */; };
+		A4D19D402BB8E3170099F225 /* CombineSchedulers in Frameworks */ = {isa = PBXBuildFile; productRef = A4D19D3F2BB8E3170099F225 /* CombineSchedulers */; };
 		A4D6B35D2B9FEB10008DD1EF /* StatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D6B35C2B9FEB10008DD1EF /* StatsView.xib */; };
 		A4D6B35F2B9FF53C008DD1EF /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6B35E2B9FF53C008DD1EF /* StatsView.swift */; };
 		A4D6B3622BA12D22008DD1EF /* EvolutionChainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D6B3612BA12D22008DD1EF /* EvolutionChainView.xib */; };
@@ -109,6 +110,7 @@
 			files = (
 				A4D10E712BAA56A4002740B5 /* FirebaseDatabaseSwift in Frameworks */,
 				A4D10E6D2BAA56A4002740B5 /* FirebaseCrashlytics in Frameworks */,
+				A4D19D402BB8E3170099F225 /* CombineSchedulers in Frameworks */,
 				A405AE662BA3D2D0003CBBD5 /* Kingfisher in Frameworks */,
 				A4D10E6F2BAA56A4002740B5 /* FirebaseDatabase in Frameworks */,
 				A4D10E6B2BAA56A4002740B5 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
@@ -285,6 +287,7 @@
 				A4D10E6C2BAA56A4002740B5 /* FirebaseCrashlytics */,
 				A4D10E6E2BAA56A4002740B5 /* FirebaseDatabase */,
 				A4D10E702BAA56A4002740B5 /* FirebaseDatabaseSwift */,
+				A4D19D3F2BB8E3170099F225 /* CombineSchedulers */,
 			);
 			productName = Pokemon;
 			productReference = A462F93A2B9822D200D60FC0 /* Pokemon.app */;
@@ -361,6 +364,7 @@
 			packageReferences = (
 				A405AE642BA3D2D0003CBBD5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				A4D10E692BAA56A4002740B5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				A4D19D3E2BB8E3170099F225 /* XCRemoteSwiftPackageReference "combine-schedulers" */,
 			);
 			productRefGroup = A462F93B2B9822D200D60FC0 /* Products */;
 			projectDirPath = "";
@@ -814,6 +818,14 @@
 				minimumVersion = 10.23.0;
 			};
 		};
+		A4D19D3E2BB8E3170099F225 /* XCRemoteSwiftPackageReference "combine-schedulers" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/combine-schedulers";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -841,6 +853,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A4D10E692BAA56A4002740B5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabaseSwift;
+		};
+		A4D19D3F2BB8E3170099F225 /* CombineSchedulers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4D19D3E2BB8E3170099F225 /* XCRemoteSwiftPackageReference "combine-schedulers" */;
+			productName = CombineSchedulers;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

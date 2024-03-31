@@ -33,14 +33,14 @@ import XCTest
 final class HomeViewModelTests: XCTestCase {
     func testInitDoesNotPerformAnyRequest() {
         let service = HomeServiceSpy()
-        _ = HomeViewModel(service: service)
+        _ = HomeViewModel(service: service, scheduler: .immediate)
 
         XCTAssertEqual(service.getPokemonsCalls, 0)
     }
 
     func testInitialStateIsEmpty() {
         let service = HomeServiceSpy()
-        let sut = HomeViewModel(service: service)
+        let sut = HomeViewModel(service: service, scheduler: .immediate)
 
         XCTAssertEqual(sut.state, .content([]))
     }
@@ -48,7 +48,7 @@ final class HomeViewModelTests: XCTestCase {
     func testGetsPokemonOnAppear() {
         // Arrange / Given
         let service = HomeServiceSpy()
-        let sut = HomeViewModel(service: service)
+        let sut = HomeViewModel(service: service, scheduler: .immediate)
 
         // Act / When
         sut.onAppear()
@@ -60,26 +60,13 @@ final class HomeViewModelTests: XCTestCase {
     func testStateIsErrorOnFailureToGetPokemons() {
         // Arrange / Given
         let service = HomeServiceSpy()
-        let sut = HomeViewModel(service: service)
-        var receivedState: HomeViewState?
-
-        let exp = expectation(description: "Awaiting to get failure")
-
-        let subscription = sut.$state
-            .dropFirst()
-            .sink { state in
-                receivedState = state
-                exp.fulfill()
-            }
+        let sut = HomeViewModel(service: service, scheduler: .immediate)
 
         // Act / When
         sut.onAppear()
 
         // Assert
-
-        waitForExpectations(timeout: 1.0)
-
-        XCTAssertEqual(receivedState, .error)
+        XCTAssertEqual(sut.state, .error)
     }
 }
 
