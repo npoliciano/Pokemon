@@ -20,7 +20,8 @@ import XCTest
 
  - Stubbing:
  - se quando obtém sucesso do getPokemon, o state é alterado para content e recebe a pokemon list
- - se quando getPokemon falha, o state é alterado .error
+ - se quando obtém sucesso do getPokemon empty, o state é alterado para content com lista vazia
+ - ✅ se quando getPokemon falha, o state é alterado .error
 
 
  Structural / Non-functional
@@ -61,6 +62,7 @@ final class HomeViewModelTests: XCTestCase {
         // Arrange / Given
         let service = HomeServiceSpy()
         let sut = HomeViewModel(service: service, scheduler: .immediate)
+        service.expectedResult = .failure(ErrorDummy())
 
         // Act / When
         sut.onAppear()
@@ -68,14 +70,29 @@ final class HomeViewModelTests: XCTestCase {
         // Assert
         XCTAssertEqual(sut.state, .error)
     }
+
+    func testStateIsEmptyContentOnSuccessWithEmptyPokemonList() {
+        // Arrange / Given
+        let service = HomeServiceSpy()
+        let sut = HomeViewModel(service: service, scheduler: .immediate)
+        service.expectedResult = .success([])
+
+        // Act / When
+        sut.onAppear()
+
+        // Assert
+        XCTAssertEqual(sut.state, .content([]))
+    }
 }
 
 final class HomeServiceSpy: HomeService {
-    var getPokemonsCalls = 0
+    private(set) var getPokemonsCalls = 0
+
+    var expectedResult = Result<[Pokemon], Error>.failure(ErrorDummy())
 
     func getPokemons() -> AnyPublisher<[Pokemon], Error> {
         getPokemonsCalls += 1
-        return Result.failure(ErrorDummy())
+        return expectedResult
             .publisher
             .eraseToAnyPublisher()
     }
