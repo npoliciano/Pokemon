@@ -25,7 +25,7 @@ import XCTest
 
  Structural / Non-functional
 
- - se getPokemons está sendo chamado (Spy)
+ - ✅ se getPokemons está sendo chamado (Spy)
  - se getPokemons conclui na main thread
  - se não memory leak / retain cycle
  */
@@ -56,6 +56,31 @@ final class HomeViewModelTests: XCTestCase {
         // Assert / Then
         XCTAssertEqual(service.getPokemonsCalls, 1)
     }
+
+    func testStateIsErrorOnFailureToGetPokemons() {
+        // Arrange / Given
+        let service = HomeServiceSpy()
+        let sut = HomeViewModel(service: service)
+        var receivedState: HomeViewState?
+
+        let exp = expectation(description: "Awaiting to get failure")
+
+        let subscription = sut.$state
+            .dropFirst()
+            .sink { state in
+                receivedState = state
+                exp.fulfill()
+            }
+
+        // Act / When
+        sut.onAppear()
+
+        // Assert
+
+        waitForExpectations(timeout: 1.0)
+
+        XCTAssertEqual(receivedState, .error)
+    }
 }
 
 final class HomeServiceSpy: HomeService {
@@ -63,11 +88,13 @@ final class HomeServiceSpy: HomeService {
 
     func getPokemons() -> AnyPublisher<[Pokemon], Error> {
         getPokemonsCalls += 1
-        return Result.success([])
+        return Result.failure(ErrorDummy())
             .publisher
             .eraseToAnyPublisher()
     }
 }
+
+struct ErrorDummy: Error { }
 
 extension HomeViewState: Equatable {
     public static func ==(lhs: HomeViewState, rhs: HomeViewState) -> Bool {
