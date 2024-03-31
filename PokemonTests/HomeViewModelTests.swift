@@ -9,32 +9,11 @@ import Combine
 import XCTest
 @testable import Pokemon
 
-/*
- Testar:
-
- Behavioral / Functional
-
- - ✅ init não chama nada
- - ✅ se o estado inicial é content([])
- - ✅ que o onRefresh executa o onAppear
-
- - Stubbing:
- - ✅ se quando obtém sucesso do getPokemon, o state é alterado para content e recebe a pokemon list
- - ✅ se quando obtém sucesso do getPokemon empty, o state é alterado para content com lista vazia
- - ✅ se quando getPokemon falha, o state é alterado .error
-
-
- Structural / Non-functional
-
- - ✅ se getPokemons está sendo chamado (Spy)
- - ✅ se getPokemons conclui na main thread
- - se não memory leak / retain cycle
- */
-
 final class HomeViewModelTests: XCTestCase {
     func testInitDoesNotPerformAnyRequest() {
         let service = HomeServiceSpy()
-        _ = HomeViewModel(service: service, scheduler: .immediate)
+        let sut = HomeViewModel(service: service, scheduler: .immediate)
+        trackForMemoryLeaks(sut, service)
 
         XCTAssertEqual(service.getPokemonsCalls, 0)
     }
@@ -42,6 +21,7 @@ final class HomeViewModelTests: XCTestCase {
     func testInitialStateIsEmpty() {
         let service = HomeServiceSpy()
         let sut = HomeViewModel(service: service, scheduler: .immediate)
+        trackForMemoryLeaks(sut, service)
 
         XCTAssertEqual(sut.state, .content([]))
     }
@@ -50,6 +30,7 @@ final class HomeViewModelTests: XCTestCase {
         // Arrange / Given
         let service = HomeServiceSpy()
         let sut = HomeViewModel(service: service, scheduler: .immediate)
+        trackForMemoryLeaks(sut, service)
 
         // Act / When
         sut.onAppear()
@@ -62,6 +43,7 @@ final class HomeViewModelTests: XCTestCase {
         // Arrange / Given
         let service = HomeServiceSpy()
         let sut = HomeViewModel(service: service, scheduler: .immediate)
+        trackForMemoryLeaks(sut, service)
         service.expectedResult = .failure(ErrorDummy())
 
         // Act / When
@@ -75,6 +57,7 @@ final class HomeViewModelTests: XCTestCase {
         // Arrange / Given
         let service = HomeServiceSpy()
         let sut = HomeViewModel(service: service, scheduler: .immediate)
+        trackForMemoryLeaks(sut, service)
         service.expectedResult = .success([])
 
         // Act / When
@@ -87,6 +70,7 @@ final class HomeViewModelTests: XCTestCase {
         // Arrange / Given
         let service = HomeServiceSpy()
         let sut = HomeViewModel(service: service, scheduler: .immediate)
+        trackForMemoryLeaks(sut, service)
         let expectedPokemons = [
             Pokemon(id: 0, name: "0", imageUrl: URL(fileURLWithPath: "0"), primaryAttribute: "0", secondaryAttribute: "0", backgroundColor: .black),
             Pokemon(id: 1, name: "1", imageUrl: URL(fileURLWithPath: "1"), primaryAttribute: "1", secondaryAttribute: nil, backgroundColor: .blue)
@@ -104,6 +88,7 @@ final class HomeViewModelTests: XCTestCase {
         // Arrange / Given
         let service = HomeServiceSpy()
         let sut = HomeViewModel(service: service, scheduler: .immediate)
+        trackForMemoryLeaks(sut, service)
 
         // Act / When
         sut.onRefresh()
@@ -116,6 +101,7 @@ final class HomeViewModelTests: XCTestCase {
         // Arrange / Given
         let service = HomeServiceSpy()
         let sut = HomeViewModel(service: service, scheduler: .immediate)
+        trackForMemoryLeaks(sut, service)
         service.expectedResult = .failure(ErrorDummy())
 
         // Act / When
@@ -129,6 +115,7 @@ final class HomeViewModelTests: XCTestCase {
         // Arrange / Given
         let service = HomeServiceSpy()
         let sut = HomeViewModel(service: service, scheduler: .immediate)
+        trackForMemoryLeaks(sut, service)
         service.expectedResult = .success([])
 
         // Act / When
@@ -141,6 +128,7 @@ final class HomeViewModelTests: XCTestCase {
         // Arrange / Given
         let service = HomeServiceSpy()
         let sut = HomeViewModel(service: service, scheduler: .immediate)
+        trackForMemoryLeaks(sut, service)
         let expectedPokemons = [
             Pokemon(id: 0, name: "0", imageUrl: URL(fileURLWithPath: "0"), primaryAttribute: "0", secondaryAttribute: "0", backgroundColor: .black),
             Pokemon(id: 1, name: "1", imageUrl: URL(fileURLWithPath: "1"), primaryAttribute: "1", secondaryAttribute: nil, backgroundColor: .blue)

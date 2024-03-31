@@ -35,12 +35,12 @@ final class HomeViewModel {
     func onAppear() {
         subscription = service.getPokemons()
             .receive(on: scheduler)
-            .sink { [weak self] completion in
+            .sink { completion in
                 if case .failure = completion {
-                    self?.state = .error
+                    self.state = .error
                 }
-            } receiveValue: { [weak self] pokemons in
-                self?.state = .content(pokemons)
+            } receiveValue: { pokemons in
+                self.state = .content(pokemons)
             }
     }
 
