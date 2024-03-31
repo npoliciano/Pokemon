@@ -14,7 +14,9 @@ final class PokemonDetailsAPI {
     init(database: FirebaseDatabaseService<PokemonJSON>) {
         self.database = database
     }
+}
 
+extension PokemonDetailsAPI: PokemonDetailsService {
     func getPokemonDetails() -> AnyPublisher<PokemonDetails, Error> {
         database
             .getData()

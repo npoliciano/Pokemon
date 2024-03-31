@@ -34,19 +34,23 @@ struct PokemonDetails {
     let secondEvolutionChain: EvolutionChain
 }
 
-final class PokemonDetailsViewModel: ObservableObject {
-    private let api: PokemonDetailsAPI
+protocol PokemonDetailsService {
+    func getPokemonDetails() -> AnyPublisher<PokemonDetails, Error>
+}
+
+final class PokemonDetailsViewModel {
+    private let service: PokemonDetailsService
 
     @Published var state: ViewState<PokemonDetails> = .loading
 
     private var subscription: AnyCancellable?
 
-    init(api: PokemonDetailsAPI) {
-        self.api = api
+    init(service: PokemonDetailsService) {
+        self.service = service
     }
 
     func onAppear() {
-        subscription = api.getPokemonDetails()
+        subscription = service.getPokemonDetails()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
                 if case .failure = completion {
