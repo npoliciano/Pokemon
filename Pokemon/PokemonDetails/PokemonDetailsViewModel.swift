@@ -41,7 +41,8 @@ protocol PokemonDetailsService {
 final class PokemonDetailsViewModel {
     private let service: PokemonDetailsService
 
-    @Published var state: ViewState<PokemonDetails> = .loading
+    @Published 
+    private(set) var state: ViewState<PokemonDetails> = .loading
 
     private var subscription: AnyCancellable?
 

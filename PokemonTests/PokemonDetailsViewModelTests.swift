@@ -16,6 +16,14 @@ final class PokemonDetailsViewModelTests: XCTestCase {
 
         XCTAssertEqual(service.getPokemonDetailsCalls, 0)
     }
+
+    func testInitialStateIsLoading() {
+        let service = PokemonDetailsServiceSpy()
+        let sut = PokemonDetailsViewModel(service: service)
+
+        XCTAssertEqual(sut.state, .loading)
+    }
+
 }
 
 final class PokemonDetailsServiceSpy: PokemonDetailsService {
@@ -26,4 +34,58 @@ final class PokemonDetailsServiceSpy: PokemonDetailsService {
         fatalError()
     }
 
+}
+
+extension ViewState<PokemonDetails>: Equatable {
+    public static func ==(lhs: ViewState<PokemonDetails>, rhs: ViewState<PokemonDetails>) -> Bool {
+        switch (lhs, rhs) {
+        case (.error, .error):
+            return true
+        case (.content(let lhsPokemon), .content(let rhsPokemon)):
+            return lhsPokemon == rhsPokemon
+        case (.loading, .loading):
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+extension PokemonDetails: Equatable {
+    public static func ==(lhs: PokemonDetails, rhs: PokemonDetails) -> Bool {
+        lhs.name == rhs.name &&
+        lhs.primaryAttribute == rhs.primaryAttribute &&
+        lhs.secondaryAttribute == rhs.secondaryAttribute &&
+        lhs.specie == rhs.specie &&
+        lhs.imageUrl == rhs.imageUrl &&
+        lhs.backgroundColor == rhs.backgroundColor &&
+        lhs.description == rhs.description &&
+        lhs.eggCycle == rhs.eggCycle &&
+        lhs.eggGroups == rhs.eggGroups &&
+        lhs.female == rhs.female &&
+        lhs.male == rhs.male &&
+        lhs.height == rhs.height &&
+        lhs.weight == rhs.weight &&
+        lhs.hp == rhs.hp &&
+        lhs.attack == rhs.attack &&
+        lhs.defense == rhs.defense &&
+        lhs.speed == rhs.speed &&
+        lhs.statsTotal == rhs.statsTotal &&
+        lhs.firstEvolutionChain == rhs.firstEvolutionChain &&
+        lhs.secondEvolutionChain == rhs.secondEvolutionChain
+    }
+}
+
+extension EvolutionChain: Equatable {
+    public static func == (lhs: EvolutionChain, rhs: EvolutionChain) -> Bool {
+        lhs.from == rhs.from &&
+        lhs.to == rhs.to
+    }
+}
+
+extension EvolutionChain.Pokemon: Equatable {
+    public static func == (lhs: EvolutionChain.Pokemon, rhs: EvolutionChain.Pokemon) -> Bool {
+        lhs.name == rhs.name &&
+        lhs.imageUrl == rhs.imageUrl
+    }
 }
