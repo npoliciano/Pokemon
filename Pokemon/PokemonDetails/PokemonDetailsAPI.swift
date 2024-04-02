@@ -8,10 +8,14 @@
 import Combine
 import UIKit
 
-final class PokemonDetailsAPI {
-    private let database: FirebaseDatabaseService<PokemonJSON>
+protocol FirebaseDatabaseServiceProtocol {
+    func getData() -> AnyPublisher<PokemonJSON, Error>
+}
 
-    init(database: FirebaseDatabaseService<PokemonJSON>) {
+final class PokemonDetailsAPI {
+    private let database: FirebaseDatabaseServiceProtocol
+
+    init(database: FirebaseDatabaseServiceProtocol) {
         self.database = database
     }
 }
@@ -26,3 +30,5 @@ extension PokemonDetailsAPI: PokemonDetailsService {
             .eraseToAnyPublisher()
     }
 }
+
+extension FirebaseDatabaseService<PokemonJSON>: FirebaseDatabaseServiceProtocol {}
