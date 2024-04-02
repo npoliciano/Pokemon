@@ -61,6 +61,7 @@ final class PokemonDetailsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.setTitleColor(.white)
+        navigationController?.navigationBar.tintColor = .white
         viewModel.onAppear()
     }
 

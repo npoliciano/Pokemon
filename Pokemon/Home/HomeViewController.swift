@@ -65,8 +65,6 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
 
         collectionView.isHidden = true
         loadingView.isHidden = false
-        
-        viewModel.onAppear()
 
         subscription = viewModel
             .$state
@@ -86,6 +84,7 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.setTitleColor(.label)
+        viewModel.onAppear()
     }
 
     @objc private func refreshData() {
