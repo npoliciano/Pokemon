@@ -14,49 +14,46 @@
             <rect key="frame" x="0.0" y="0.0" width="696" height="323"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="hGS-gP-l3d">
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hGS-gP-l3d">
                     <rect key="frame" x="16" y="75" width="664" height="198"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ng0-7e-LSx">
-                            <rect key="frame" x="0.0" y="22" width="60" height="154"/>
+                            <rect key="frame" x="0.0" y="22" width="57" height="154"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="HP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igb-cw-eph">
-                                    <rect key="frame" x="0.0" y="0.0" width="60" height="18"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="57" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXh-tz-82h">
-                                    <rect key="frame" x="0.0" y="34" width="60" height="18"/>
+                                    <rect key="frame" x="0.0" y="34" width="57" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Defense" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjz-LE-vRh">
-                                    <rect key="frame" x="0.0" y="68" width="60" height="18"/>
+                                    <rect key="frame" x="0.0" y="68" width="57" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVA-Yj-0bF">
-                                    <rect key="frame" x="0.0" y="102" width="60" height="18"/>
+                                    <rect key="frame" x="0.0" y="102" width="57" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4c-fQ-OuG">
-                                    <rect key="frame" x="0.0" y="136" width="60" height="18"/>
+                                    <rect key="frame" x="0.0" y="136" width="57" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="60" id="OMz-Wp-pfo"/>
-                            </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="lo6-yD-6kT">
-                            <rect key="frame" x="84" y="22" width="27" height="154"/>
+                            <rect key="frame" x="73" y="22" width="27" height="154"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="35" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiH-LA-3cZ">
                                     <rect key="frame" x="0.0" y="0.0" width="27" height="18"/>
@@ -89,31 +86,28 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="27" id="htc-81-d85"/>
-                            </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" horizontalCompressionResistancePriority="250" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="9nL-LG-NNZ">
-                            <rect key="frame" x="135" y="29" width="529" height="140"/>
+                            <rect key="frame" x="116" y="29" width="548" height="140"/>
                             <subviews>
-                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.34999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="Xj5-g5-NJn">
-                                    <rect key="frame" x="0.0" y="0.0" width="529" height="4"/>
+                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xj5-g5-NJn">
+                                    <rect key="frame" x="0.0" y="0.0" width="548" height="4"/>
                                     <color key="progressTintColor" systemColor="systemOrangeColor"/>
                                 </progressView>
-                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.55000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="Gdr-7R-IQw">
-                                    <rect key="frame" x="0.0" y="34" width="529" height="4"/>
+                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gdr-7R-IQw">
+                                    <rect key="frame" x="0.0" y="34" width="548" height="4"/>
                                     <color key="progressTintColor" systemColor="systemGreenColor"/>
                                 </progressView>
-                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="vqD-1j-8CF">
-                                    <rect key="frame" x="0.0" y="68" width="529" height="4"/>
+                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vqD-1j-8CF">
+                                    <rect key="frame" x="0.0" y="68" width="548" height="4"/>
                                     <color key="progressTintColor" systemColor="systemOrangeColor"/>
                                 </progressView>
-                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.90000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="fzz-rL-x4p">
-                                    <rect key="frame" x="0.0" y="102" width="529" height="4"/>
+                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fzz-rL-x4p">
+                                    <rect key="frame" x="0.0" y="102" width="548" height="4"/>
                                     <color key="progressTintColor" systemColor="systemGreenColor"/>
                                 </progressView>
-                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.55000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="d0S-mb-QfH">
-                                    <rect key="frame" x="0.0" y="136" width="529" height="4"/>
+                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d0S-mb-QfH">
+                                    <rect key="frame" x="0.0" y="136" width="548" height="4"/>
                                     <color key="progressTintColor" systemColor="systemGreenColor"/>
                                 </progressView>
                             </subviews>

@@ -22,11 +22,11 @@ final class PokemonDetailsViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: "PokemonDetailsViewController", bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     @IBOutlet weak var specieLabel: UILabel!
     @IBOutlet weak var primaryAttributeLabel: UILabel!
     @IBOutlet weak var secondaryAttributeView: UIView!
@@ -52,7 +52,6 @@ final class PokemonDetailsViewController: UIViewController {
         setupEvolutionView()
         setupStatsView()
         setupSegments()
-        viewModel.onAppear()
 
         subscription = viewModel.$state
             .sink { [weak self] state in
@@ -62,6 +61,7 @@ final class PokemonDetailsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.setTitleColor(.white)
+        viewModel.onAppear()
     }
 
     private func setupSegments() {
@@ -106,36 +106,25 @@ final class PokemonDetailsViewController: UIViewController {
     }
 
     private func setContent(pokemon: PokemonDetails) {
+        title = pokemon.name
+        view.backgroundColor = pokemon.backgroundColor
+
         scrollView.isHidden = false
         loadingView.isHidden = true
-
-        primaryAttributeLabel.alpha = 0
-        specieLabel.alpha = 0
-        imageView.alpha = 0
-        secondaryAttributeView.alpha = 0
 
         primaryAttributeLabel.text = pokemon.primaryAttribute
         specieLabel.text = "\(pokemon.specie) Pokémon"
         imageView.kf.setImage(with: pokemon.imageUrl)
+        headerBackgroundView.backgroundColor = pokemon.backgroundColor
+        aboutView.setContent(with: pokemon)
+        statsView.setContent(with: pokemon)
+        evolutionView.setContent(with: pokemon)
 
         if let secondaryAttribute = pokemon.secondaryAttribute {
             secondaryAttributeLabel.text = secondaryAttribute
             secondaryAttributeView.isHidden = false
         } else {
             secondaryAttributeView.isHidden = true
-        }
-
-        UIView.animate(withDuration: 0.5) {
-            self.primaryAttributeLabel.alpha = 1
-            self.specieLabel.alpha = 1
-            self.imageView.alpha = 1
-            self.secondaryAttributeView.alpha = 1
-            self.title = pokemon.name
-            self.view.backgroundColor = pokemon.backgroundColor
-            self.headerBackgroundView.backgroundColor = pokemon.backgroundColor
-            self.aboutView.setContent(with: pokemon)
-            self.statsView.setContent(with: pokemon)
-            self.evolutionView.setContent(with: pokemon)
         }
     }
 

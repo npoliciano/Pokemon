@@ -25,17 +25,16 @@ final class StatsView: UIView {
         defenseLabel.text = String(pokemon.defense)
         speedLabel.text = String(pokemon.speed)
         totalLabel.text = String(pokemon.statsTotal)
-        hpProgressView.progress = Float(pokemon.hp)/100
-        attackProgressView.progress = Float(pokemon.attack)/100
-        defenseProgressView.progress = Float(pokemon.defense)/100
-        speedProgressView.progress = Float(pokemon.speed)/100
-        totalProgressView.progress = Float(pokemon.statsTotal)/400
+        hpProgressView.setProgress(Float(pokemon.hp)/100, animated: true)
+        attackProgressView.setProgress(Float(pokemon.attack)/100, animated: true)
+        defenseProgressView.setProgress(Float(pokemon.defense)/100, animated: true)
+        speedProgressView.setProgress(Float(pokemon.speed)/100, animated: true)
+        totalProgressView.setProgress(Float(pokemon.statsTotal)/400, animated: true)
         hpProgressView.progressTintColor = getProgressColor(with: pokemon.hp)
         attackProgressView.progressTintColor = getProgressColor(with: pokemon.attack)
         defenseProgressView.progressTintColor = getProgressColor(with: pokemon.defense)
         speedProgressView.progressTintColor = getProgressColor(with: pokemon.speed)
         totalProgressView.progressTintColor = getProgressColor(with: pokemon.statsTotal)
-
     }
 
     private func getProgressColor(with attribute: Int) -> UIColor {
