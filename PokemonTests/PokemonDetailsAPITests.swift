@@ -16,6 +16,15 @@ final class PokemonDetailsAPITests: XCTestCase {
 
         XCTAssertEqual(service.getDataCalls, 0)
     }
+
+    func testIsErrorOnFailureToGetJSONData() {
+        let service = FirebaseDatabaseServiceSpy()
+        let sut = PokemonDetailsAPI(database: service)
+
+        _ = sut.getPokemonDetails()
+
+        XCTAssertEqual(service.getDataCalls, 1)
+    }
 }
 
 final class FirebaseDatabaseServiceSpy: FirebaseDatabaseServiceProtocol{
@@ -23,6 +32,8 @@ final class FirebaseDatabaseServiceSpy: FirebaseDatabaseServiceProtocol{
 
     func getData() -> AnyPublisher<PokemonJSON, Error> {
         getDataCalls += 1
-        fatalError()
+        return Result.failure(ErrorDummy())
+            .publisher
+            .eraseToAnyPublisher()
     }
 }
