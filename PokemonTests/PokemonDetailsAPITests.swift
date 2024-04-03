@@ -25,7 +25,7 @@ final class PokemonDetailsAPITests: XCTestCase {
         service.expectedResult = .failure(ErrorDummy())
 
         var actualError: Error?
-        let subscription = sut.getPokemonDetails()
+        _ = sut.getPokemonDetails()
             .sink(
                 receiveCompletion: { completion in
                     if case.failure(let error) = completion {
@@ -74,7 +74,7 @@ final class PokemonDetailsAPITests: XCTestCase {
         service.expectedResult = .success(expectedPokemonJSON)
 
         var actualPokemonDetails: PokemonDetails?
-        let subscription = sut.getPokemonDetails()
+        _ = sut.getPokemonDetails()
             .sink(
                 receiveCompletion: { _ in },
                 receiveValue: { pokemonDetails in
