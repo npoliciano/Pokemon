@@ -6,13 +6,16 @@
 //
 
 import Combine
-import Foundation
 import UIKit
 
-final class HomeAPI {
-    private let database: FirebaseDatabaseService<[PokemonJSON]>
+protocol PokemonsDataSource {
+    func getData() -> AnyPublisher<[PokemonJSON], Error>
+}
 
-    init(database: FirebaseDatabaseService<[PokemonJSON]>) {
+final class HomeAPI {
+    private let database: PokemonsDataSource
+
+    init(database: PokemonsDataSource) {
         self.database = database
     }
 }
@@ -27,3 +30,5 @@ extension HomeAPI: HomeService {
             .eraseToAnyPublisher()
     }
 }
+
+extension FirebaseDatabaseService<[PokemonJSON]>: PokemonsDataSource {}

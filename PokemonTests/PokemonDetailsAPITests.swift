@@ -11,7 +11,7 @@ import Combine
 
 final class PokemonDetailsAPITests: XCTestCase {
     func testInitDoesNotPerformAnyRequest() {
-        let service = FirebaseDatabaseServiceSpy()
+        let service = PokemonDetailsDataSourceSpy()
         let sut = PokemonDetailsAPI(database: service)
         trackForMemoryLeaks(sut, service)
 
@@ -19,7 +19,7 @@ final class PokemonDetailsAPITests: XCTestCase {
     }
 
     func testFailsToGetPokemonDetails() {
-        let service = FirebaseDatabaseServiceSpy()
+        let service = PokemonDetailsDataSourceSpy()
         let sut = PokemonDetailsAPI(database: service)
         trackForMemoryLeaks(sut, service)
         service.expectedResult = .failure(ErrorDummy())
@@ -39,7 +39,7 @@ final class PokemonDetailsAPITests: XCTestCase {
     }
 
     func testMapsPokemonJsonOnSuccess() {
-        let service = FirebaseDatabaseServiceSpy()
+        let service = PokemonDetailsDataSourceSpy()
         let sut = PokemonDetailsAPI(database: service)
         trackForMemoryLeaks(sut, service)
         let expectedPokemonJSON = PokemonJSON(
@@ -86,7 +86,7 @@ final class PokemonDetailsAPITests: XCTestCase {
     }
 }
 
-final class FirebaseDatabaseServiceSpy: FirebaseDatabaseServiceProtocol{
+final class PokemonDetailsDataSourceSpy: PokemonDetailsDataSource {
     private(set) var getDataCalls = 0
 
     var expectedResult = Result<PokemonJSON, Error>.failure(ErrorDummy())
