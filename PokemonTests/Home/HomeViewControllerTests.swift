@@ -19,12 +19,28 @@ final class HomeViewControllerTests: XCTestCase {
     func testStartLoadingAndRequestPokemonsOnAppear() {
         let (sut, service) = makeSUT()
 
-        // Act
         sut.simulateAppearance()
 
         XCTAssertTrue(sut.collectionView.isHidden)
         XCTAssertFalse(sut.loadingView.isHidden)
+        XCTAssertFalse(sut.refreshControl.isRefreshing)
+        XCTAssertEqual(sut.numberOfPokemons, 0)
         XCTAssertEqual(service.getPokemonsCalls, 1)
+    }
+
+    func testPresentPokemonOnSuccess() {
+        let (sut, service) = makeSUT()
+        service.expectedResult = .success([
+            Pokemon.fixture(),
+            Pokemon.fixture(),
+        ])
+
+        sut.simulateAppearance()
+
+        XCTAssertFalse(sut.collectionView.isHidden)
+        XCTAssertTrue(sut.loadingView.isHidden)
+        XCTAssertEqual(service.getPokemonsCalls, 1)
+        XCTAssertEqual(sut.numberOfPokemons, 2)
     }
 
     // MARK: Helpers
@@ -53,5 +69,29 @@ extension HomeViewController {
 
         beginAppearanceTransition(true, animated: false)
         endAppearanceTransition()
+    }
+
+    var numberOfPokemons: Int {
+        collectionView.numberOfItems(inSection: 0)
+    }
+}
+
+extension Pokemon {
+    static func fixture(
+        id: Int = .anyValue,
+        name: String = .anyValue,
+        imageUrl: URL = .anyValue,
+        primaryAttribute: String = .anyValue,
+        secondaryAttribute: String? = nil,
+        backgroundColor: UIColor = .clear
+    ) -> Pokemon {
+        Pokemon(
+            id: id,
+            name: name,
+            imageUrl: imageUrl,
+            primaryAttribute: primaryAttribute,
+            secondaryAttribute: secondaryAttribute,
+            backgroundColor: backgroundColor
+        )
     }
 }

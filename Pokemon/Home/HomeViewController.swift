@@ -50,7 +50,7 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    private let refreshControl = UIRefreshControl()
+    let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
