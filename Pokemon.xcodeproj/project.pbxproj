@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A403A5992BC19BB3004082E7 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A403A5982BC19BB3004082E7 /* HomeViewControllerTests.swift */; };
 		A403A59B2BC1AE37004082E7 /* Pokemon+Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A403A59A2BC1AE37004082E7 /* Pokemon+Fixtures.swift */; };
+		A403A59D2BC1B1F8004082E7 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A403A59C2BC1B1F8004082E7 /* ImageFetcher.swift */; };
 		A405AE632BA24E45003CBBD5 /* PokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405AE622BA24E45003CBBD5 /* PokemonCell.swift */; };
 		A405AE662BA3D2D0003CBBD5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A405AE652BA3D2D0003CBBD5 /* Kingfisher */; };
 		A41F58172BA79E4700CF08E6 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41F58162BA79E4700CF08E6 /* UIView+Extensions.swift */; };
@@ -80,6 +81,7 @@
 /* Begin PBXFileReference section */
 		A403A5982BC19BB3004082E7 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		A403A59A2BC1AE37004082E7 /* Pokemon+Fixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pokemon+Fixtures.swift"; sourceTree = "<group>"; };
+		A403A59C2BC1B1F8004082E7 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 		A405AE622BA24E45003CBBD5 /* PokemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCell.swift; sourceTree = "<group>"; };
 		A41F58162BA79E4700CF08E6 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		A41F58182BA7AC0200CF08E6 /* AttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeView.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				A41F581D2BA7B3FC00CF08E6 /* UINavigationBar+Extensions.swift */,
 				A4D10E762BABE145002740B5 /* UIColor+Extensions.swift */,
 				A4D10E782BABEC9F002740B5 /* Future+Extensions.swift */,
+				A403A59C2BC1B1F8004082E7 /* ImageFetcher.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				A462F93E2B9822D200D60FC0 /* AppDelegate.swift in Sources */,
 				A4F74F2F2BA2312000FBB8A6 /* HomeViewController.swift in Sources */,
 				A4D10E792BABEC9F002740B5 /* Future+Extensions.swift in Sources */,
+				A403A59D2BC1B1F8004082E7 /* ImageFetcher.swift in Sources */,
 				A41F58192BA7AC0200CF08E6 /* AttributeView.swift in Sources */,
 				A4923AF52B9C1C4F00DD717E /* ViewState.swift in Sources */,
 				A4D10E772BABE145002740B5 /* UIColor+Extensions.swift in Sources */,

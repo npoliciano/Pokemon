@@ -11,13 +11,13 @@ import XCTest
 
 final class HomeViewControllerTests: XCTestCase {
     func testInitDoesNotPerformAnyRequest() {
-        let (_, service) = makeSUT()
+        let (_, service, _) = makeSUT()
 
         XCTAssertEqual(service.getPokemonsCalls, 0)
     }
 
     func testStartLoadingAndRequestPokemonsOnAppear() {
-        let (sut, service) = makeSUT()
+        let (sut, service, _) = makeSUT()
 
         sut.simulateAppearance()
 
@@ -29,7 +29,7 @@ final class HomeViewControllerTests: XCTestCase {
     }
 
     func testPresentPokemonOnSuccess() {
-        let (sut, service) = makeSUT()
+        let (sut, service, _) = makeSUT()
         service.expectedResult = .success([
             Pokemon.fixture(),
             Pokemon.fixture(),
@@ -43,15 +43,19 @@ final class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.numberOfPokemons, 2)
     }
 
-    func testSetCellContent() throws {
-        let (sut, service) = makeSUT()
+    func testSetCellContentAndFetchImages() throws {
+        let (sut, service, imageFetcher) = makeSUT()
         let pokemon1 = Pokemon.fixture()
         let pokemon2 = Pokemon.fixture(backgroundColor: .brown)
+        let expectedImage1 = UIImage(resource: .pikachu)
+        let expectedImage2 = UIImage(resource: .bulbasaur)
 
         service.expectedResult = .success([
             pokemon1,
             pokemon2,
         ])
+        imageFetcher.expectedImages[pokemon1.imageUrl] = expectedImage1
+        imageFetcher.expectedImages[pokemon2.imageUrl] = expectedImage2
 
         sut.simulateAppearance()
 
@@ -61,11 +65,15 @@ final class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(firstPokemonCell.primaryAttribute, pokemon1.primaryAttribute)
         XCTAssertEqual(firstPokemonCell.secondaryAttribute, pokemon1.secondaryAttribute)
         XCTAssertEqual(firstPokemonCell.background, pokemon1.backgroundColor)
+        XCTAssertEqual(firstPokemonCell.image, expectedImage1)
 
         XCTAssertEqual(secondPokemonCell.name, pokemon2.name)
         XCTAssertEqual(secondPokemonCell.primaryAttribute, pokemon2.primaryAttribute)
         XCTAssertEqual(secondPokemonCell.secondaryAttribute, pokemon2.secondaryAttribute)
         XCTAssertEqual(secondPokemonCell.background, pokemon2.backgroundColor)
+        XCTAssertEqual(secondPokemonCell.image, expectedImage2)
+
+        XCTAssertEqual(imageFetcher.fetchCalls, 2)
     }
 
     // MARK: Helpers
@@ -73,17 +81,32 @@ final class HomeViewControllerTests: XCTestCase {
     private func makeSUT(
         file: StaticString = #filePath,
         line: UInt = #line
-    ) -> (HomeViewController, HomeServiceSpy) {
+    ) -> (HomeViewController, HomeServiceSpy, ImageFetcherSpy) {
         let service = HomeServiceSpy()
         let viewModel = HomeViewModel(
             service: service,
             scheduler: .immediate
         )
-        let sut = HomeViewController(viewModel: viewModel)
+        let imageFecher = ImageFetcherSpy()
+        let sut = HomeViewController(
+            viewModel: viewModel,
+            imageFetcher: imageFecher
+        )
 
-        trackForMemoryLeaks(sut, viewModel, service, file: file, line: line)
+        trackForMemoryLeaks(sut, viewModel, service, imageFecher, file: file, line: line)
 
-        return (sut, service)
+        return (sut, service, imageFecher)
+    }
+}
+
+final class ImageFetcherSpy: ImageFetcher {
+    private(set) var fetchCalls = 0
+    var expectedImages: [URL: UIImage?] = [:]
+
+    func fetch(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        fetchCalls += 1
+        let image = expectedImages[url]!
+        completion(image)
     }
 }
 
@@ -132,5 +155,9 @@ extension PokemonCell {
 
     var background: UIColor? {
         contentView.backgroundColor
+    }
+
+    var image: UIImage? {
+        imageView.image
     }
 }

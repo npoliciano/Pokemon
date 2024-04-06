@@ -24,7 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
         let api = HomeAPI(database: database)
         let viewModel = HomeViewModel(service: api, scheduler: .main)
-        let homeViewController = HomeViewController(viewModel: viewModel)
+        let imageFetcher = KingfisherImageFetcher()
+        let homeViewController = HomeViewController(viewModel: viewModel, imageFetcher: imageFetcher)
 
         homeViewController.title = "Pokémons"
         let navigationController = UINavigationController(rootViewController: homeViewController)

@@ -81,11 +81,18 @@ extension PokemonCell {
         let backgroundColor: UIColor
     }
 
-    func setContent(with pokemon: Pokemon) {
+    func setContent(with pokemon: Pokemon, imageFetcher: ImageFetcher) {
         nameLabel.text = pokemon.name
-        imageView.kf.setImage(with: pokemon.imageUrl)
         contentView.backgroundColor = pokemon.backgroundColor
         primaryAttributeView.setContent(value: pokemon.primaryAttribute)
         secondaryAttributeView.setContent(value: pokemon.secondaryAttribute)
+
+        imageFetcher.fetch(from: pokemon.imageUrl) { image in
+            self.imageView.image = image
+        }
     }
+}
+
+protocol ImageFetcher {
+    func fetch(from url: URL, completion: @escaping (UIImage?) -> Void)
 }

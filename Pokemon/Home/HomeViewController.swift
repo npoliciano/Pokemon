@@ -34,9 +34,11 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
 
     private var subscription: AnyCancellable?
     private let viewModel: HomeViewModel
+    private let imageFetcher: ImageFetcher
 
-    init(viewModel: HomeViewModel) {
+    init(viewModel: HomeViewModel, imageFetcher: ImageFetcher) {
         self.viewModel = viewModel
+        self.imageFetcher = imageFetcher
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -121,7 +123,7 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonCell.identifier, for: indexPath) as! PokemonCell
 
         let pokemon = items[indexPath.row]
-        cell.setContent(with: pokemon)
+        cell.setContent(with: pokemon, imageFetcher: imageFetcher)
         return cell
     }
 
