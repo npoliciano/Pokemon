@@ -8,7 +8,7 @@
 import UIKit
 
 final class AttributeView: UIView {
-    private let valueLabel: UILabel = {
+    let valueLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 10, weight: .medium)
         label.textColor = .white

@@ -11,17 +11,17 @@ import Kingfisher
 final class PokemonCell: UICollectionViewCell {
     static let identifier = "PokemonCell"
 
-    private let nameLabel: UILabel = {
+    let nameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .heavy)
         label.textColor = .white
         return label
     }()
 
-    private let primaryAttributeView = AttributeView()
-    private let secondaryAttributeView = AttributeView()
+    let primaryAttributeView = AttributeView()
+    let secondaryAttributeView = AttributeView()
 
-    private let imageView = UIImageView()
+    let imageView = UIImageView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)

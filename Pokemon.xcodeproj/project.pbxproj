@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A403A5992BC19BB3004082E7 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A403A5982BC19BB3004082E7 /* HomeViewControllerTests.swift */; };
+		A403A59B2BC1AE37004082E7 /* Pokemon+Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A403A59A2BC1AE37004082E7 /* Pokemon+Fixtures.swift */; };
 		A405AE632BA24E45003CBBD5 /* PokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405AE622BA24E45003CBBD5 /* PokemonCell.swift */; };
 		A405AE662BA3D2D0003CBBD5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A405AE652BA3D2D0003CBBD5 /* Kingfisher */; };
 		A41F58172BA79E4700CF08E6 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41F58162BA79E4700CF08E6 /* UIView+Extensions.swift */; };
@@ -78,6 +79,7 @@
 
 /* Begin PBXFileReference section */
 		A403A5982BC19BB3004082E7 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
+		A403A59A2BC1AE37004082E7 /* Pokemon+Fixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pokemon+Fixtures.swift"; sourceTree = "<group>"; };
 		A405AE622BA24E45003CBBD5 /* PokemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCell.swift; sourceTree = "<group>"; };
 		A41F58162BA79E4700CF08E6 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		A41F58182BA7AC0200CF08E6 /* AttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeView.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				A45449DD2BC0F2AA000462A5 /* PokemonJSON+Fixtures.swift */,
+				A403A59A2BC1AE37004082E7 /* Pokemon+Fixtures.swift */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				A45449D82BC0E1A6000462A5 /* ErrorDummy.swift in Sources */,
 				A462F9552B9822D300D60FC0 /* HomeViewModelTests.swift in Sources */,
 				A4BB61732BBCBAAF0074CE1A /* PokemonDetailsAPITests.swift in Sources */,
+				A403A59B2BC1AE37004082E7 /* Pokemon+Fixtures.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
