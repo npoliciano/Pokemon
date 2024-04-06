@@ -43,8 +43,7 @@ final class HomeAPITests: XCTestCase {
         let sut = HomeAPI(database: service)
         trackForMemoryLeaks(sut, service)
 
-        let firstExpectedPokemonJSON =
-        PokemonJSON(
+        let firstExpectedPokemonJSON = PokemonJSON(
             id: 0,
             name: "0",
             imageUrl: URL(filePath: "0"),
@@ -74,8 +73,7 @@ final class HomeAPITests: XCTestCase {
             )
         )
 
-        let secondExpectedPokemonJSON =
-        PokemonJSON(
+        let secondExpectedPokemonJSON = PokemonJSON(
             id: 1,
             name: "1",
             imageUrl: URL(filePath: "1"),
