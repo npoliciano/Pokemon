@@ -156,8 +156,6 @@ final class HomeServiceSpy: HomeService {
     }
 }
 
-struct ErrorDummy: Error, Equatable { }
-
 extension HomeViewState: Equatable {
     public static func ==(lhs: HomeViewState, rhs: HomeViewState) -> Bool {
         switch (lhs, rhs) {
