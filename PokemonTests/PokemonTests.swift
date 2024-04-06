@@ -18,8 +18,6 @@ final class PokemonTests: XCTestCase {
 
         let sut = Pokemon(json: json)
 
-        print(json.backgroundColor)
-
         XCTAssertEqual(sut.id, json.id)
         XCTAssertEqual(sut.name, json.name)
         XCTAssertEqual(sut.imageUrl, json.imageUrl)
@@ -36,8 +34,6 @@ final class PokemonTests: XCTestCase {
 
         let sut = Pokemon(json: json)
 
-        print(json.backgroundColor)
-
         XCTAssertEqual(sut.id, json.id)
         XCTAssertEqual(sut.name, json.name)
         XCTAssertEqual(sut.imageUrl, json.imageUrl)
@@ -52,8 +48,6 @@ final class PokemonTests: XCTestCase {
         )
 
         let sut = Pokemon(json: json)
-
-        print(json.backgroundColor)
 
         XCTAssertEqual(sut.id, json.id)
         XCTAssertEqual(sut.name, json.name)
