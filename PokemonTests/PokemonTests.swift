@@ -13,7 +13,7 @@ final class PokemonTests: XCTestCase {
     func testInitsWithJSONAndParseColor() {
         let json = PokemonJSON.fixture(
             secondaryAttribute: "some value",
-            backgroundColor: whiteHexColor
+            backgroundColor: .whiteHexColor
         )
 
         let sut = Pokemon(json: json)
@@ -25,7 +25,7 @@ final class PokemonTests: XCTestCase {
         XCTAssertEqual(sut.imageUrl, json.imageUrl)
         XCTAssertEqual(sut.primaryAttribute, json.primaryAttribute)
         XCTAssertEqual(sut.secondaryAttribute, json.secondaryAttribute)
-        XCTAssertEqual(sut.backgroundColor, whiteColor)
+        XCTAssertEqual(sut.backgroundColor, UIColor.whiteColor)
     }
 
     func testInitsWithJSONAndSetClearColorWhenInvalid() {
@@ -61,13 +61,5 @@ final class PokemonTests: XCTestCase {
         XCTAssertEqual(sut.primaryAttribute, json.primaryAttribute)
         XCTAssertEqual(sut.backgroundColor, .clear)
         XCTAssertNil(sut.secondaryAttribute)
-    }
-
-    var whiteColor: UIColor {
-        UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-    }
-
-    var whiteHexColor: String {
-        "#FFFFFF"
     }
 }
