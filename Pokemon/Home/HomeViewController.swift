@@ -13,7 +13,7 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
 
     // Subviews
 
-    private let collectionView: UICollectionView = {
+    let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSizeMake(1, 1)
@@ -21,7 +21,7 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
         return collectionView
     }()
 
-    private let loadingView: UIActivityIndicatorView = {
+    let loadingView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: .large)
         view.startAnimating()
         return view
@@ -50,7 +50,7 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
 
-    let refreshControl = UIRefreshControl()
+    private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
