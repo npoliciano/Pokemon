@@ -35,10 +35,16 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
     private var subscription: AnyCancellable?
     private let viewModel: HomeViewModel
     private let imageFetcher: ImageFetcher
+    let refreshControl: UIRefreshControl
 
-    init(viewModel: HomeViewModel, imageFetcher: ImageFetcher) {
+    init(
+        viewModel: HomeViewModel,
+        imageFetcher: ImageFetcher,
+        refreshControl: UIRefreshControl = UIRefreshControl()
+    ) {
         self.viewModel = viewModel
         self.imageFetcher = imageFetcher
+        self.refreshControl = refreshControl
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -51,8 +57,6 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
             collectionView.reloadData()
         }
     }
-
-    let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,13 +93,14 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
         viewModel.onAppear()
     }
 
-    @objc private func refreshData() {
-        viewModel.onRefresh()
-    }
-
     private func setupRefreshControl() {
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         collectionView.refreshControl = refreshControl
+    }
+
+    @objc private func refreshData() {
+        refreshControl.beginRefreshing()
+        viewModel.onRefresh()
     }
 
     private func setupLoadingViewConstraints() {
