@@ -24,12 +24,18 @@ final class HomeViewModel {
 
     private let service: HomeService
     private let scheduler: AnySchedulerOf<DispatchQueue>
+    private let onSelectPokemon: (PokemonId) -> Void
 
     private var subscription: AnyCancellable?
 
-    init(service: HomeService, scheduler: AnySchedulerOf<DispatchQueue>) {
+    init(
+        service: HomeService,
+        scheduler: AnySchedulerOf<DispatchQueue>,
+        onSelectPokemon: @escaping (PokemonId) -> Void
+    ) {
         self.service = service
         self.scheduler = scheduler
+        self.onSelectPokemon = onSelectPokemon
     }
 
     func onAppear() {
@@ -46,5 +52,9 @@ final class HomeViewModel {
 
     func onRefresh() {
         onAppear()
+    }
+
+    func onSelectPokemon(_ pokemon: Pokemon) {
+        onSelectPokemon(pokemon.id)
     }
 }

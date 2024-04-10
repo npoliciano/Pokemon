@@ -138,18 +138,9 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        let item = items[indexPath.item]
+        let pokemon = items[indexPath.item]
 
-        let reference = Database.database().reference()
-        let database = FirebaseDatabaseService<PokemonJSON>(
-            path: "pokemons/\(item.id)",
-            databaseReference: reference
-        )
-        let api = PokemonDetailsAPI(database: database)
-        let viewModel = PokemonDetailsViewModel(service: api, scheduler: .main)
-        let viewController = PokemonDetailsViewController(viewModel: viewModel)
-
-        navigationController?.pushViewController(viewController, animated: true)
+        viewModel.onSelectPokemon(pokemon)
     }
 
     // MARK: - UICollectionViewDelegateFlowLayout

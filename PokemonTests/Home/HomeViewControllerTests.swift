@@ -12,13 +12,13 @@ import XCTest
 
 final class HomeViewControllerTests: XCTestCase {
     func testInitDoesNotPerformAnyRequest() {
-        let (_, service, _) = makeSUT()
+        let (_, service, _, _) = makeSUT()
 
         XCTAssertEqual(service.getPokemonsCalls, 0)
     }
 
     func testStartLoadingAndRequestPokemonsOnAppear() {
-        let (sut, service, _) = makeSUT()
+        let (sut, service, _, _) = makeSUT()
 
         sut.simulateAppearance()
 
@@ -30,7 +30,7 @@ final class HomeViewControllerTests: XCTestCase {
     }
 
     func testPresentPokemonOnSuccess() {
-        let (sut, service, _) = makeSUT()
+        let (sut, service, _, _) = makeSUT()
 
         sut.simulateAppearance()
         service.complete(with: .success([
@@ -45,7 +45,7 @@ final class HomeViewControllerTests: XCTestCase {
     }
 
     func testSetCellContentAndFetchImages() throws {
-        let (sut, service, imageFetcher) = makeSUT()
+        let (sut, service, imageFetcher, _) = makeSUT()
         let pokemon1 = Pokemon.fixture()
         let pokemon2 = Pokemon.fixture(backgroundColor: .brown)
         let expectedImage1 = UIImage(resource: .pikachu)
@@ -78,7 +78,7 @@ final class HomeViewControllerTests: XCTestCase {
     }
 
     func testRefreshStartsAndEnds() {
-        let (sut, service, _) = makeSUT()
+        let (sut, service, _, _) = makeSUT()
 
         sut.simulateAppearance()
 
@@ -117,16 +117,42 @@ final class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(service.getPokemonsCalls, 4)
     }
 
+    func testSelectsPokemon() {
+        let (sut, service, _, selection) = makeSUT()
+        let pokemon1 = Pokemon.fixture()
+
+        sut.simulateAppearance()
+
+        service.complete(with: .success([
+            .fixture(),
+            pokemon1,
+            .fixture(),
+            .fixture(),
+        ]))
+
+        sut.selectPokemon(at: 1)
+
+        XCTAssertEqual(selection.onSelectPokemonCalls, 1)
+        XCTAssertEqual(selection.receivedId, pokemon1.id)
+    }
+
     // MARK: Helpers
 
     private func makeSUT(
         file: StaticString = #filePath,
         line: UInt = #line
-    ) -> (HomeViewController, HomeViewControllerServiceSpy, ImageFetcherSpy) {
+    ) -> (
+        HomeViewController,
+        HomeViewControllerServiceSpy,
+        ImageFetcherSpy,
+        PokemonSelectionSpy
+    ) {
         let service = HomeViewControllerServiceSpy()
+        let selection = PokemonSelectionSpy()
         let viewModel = HomeViewModel(
             service: service,
-            scheduler: .immediate
+            scheduler: .immediate, 
+            onSelectPokemon: selection.onSelectPokemon
         )
         let imageFecher = ImageFetcherSpy()
         let sut = HomeViewController(
@@ -135,9 +161,19 @@ final class HomeViewControllerTests: XCTestCase {
             refreshControl: FakeUIRefreshControl()
         )
 
-        trackForMemoryLeaks(sut, viewModel, service, imageFecher, file: file, line: line)
+        trackForMemoryLeaks(sut, viewModel, service, imageFecher, selection, file: file, line: line)
 
-        return (sut, service, imageFecher)
+        return (sut, service, imageFecher, selection)
+    }
+}
+
+final class PokemonSelectionSpy {
+    private(set) var receivedId: PokemonId?
+    private(set) var onSelectPokemonCalls = 0
+
+    func onSelectPokemon(_ id: PokemonId) {
+        onSelectPokemonCalls += 1
+        receivedId = id
     }
 }
 
@@ -204,6 +240,10 @@ extension HomeViewController {
             file: file,
             line: line
         )
+    }
+
+    func selectPokemon(at index: Int) {
+        collectionView(collectionView, didSelectItemAt: .init(item: index, section: 0))
     }
 
     var numberOfPokemons: Int {

@@ -70,10 +70,11 @@ final class PokemonCell: UICollectionViewCell {
 }
 
 typealias Pokemon = PokemonCell.Pokemon
+typealias PokemonId = Int
 
 extension PokemonCell {
     struct Pokemon {
-        let id: Int
+        let id: PokemonId
         let name: String
         let imageUrl: URL
         let primaryAttribute: String

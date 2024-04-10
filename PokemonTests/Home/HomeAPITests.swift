@@ -134,3 +134,14 @@ final class PokemonsDataSourceSpy: PokemonsDataSource {
             .eraseToAnyPublisher()
     }
 }
+
+extension Pokemon: Equatable {
+    public static func ==(lhs: Pokemon, rhs: Pokemon) -> Bool {
+        lhs.id == rhs.id &&
+        lhs.name == rhs.name &&
+        lhs.imageUrl == rhs.imageUrl &&
+        lhs.primaryAttribute == rhs.primaryAttribute &&
+        lhs.secondaryAttribute == rhs.secondaryAttribute &&
+        lhs.backgroundColor == rhs.backgroundColor
+    }
+}

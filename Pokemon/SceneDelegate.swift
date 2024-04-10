@@ -18,17 +18,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
 
+        let reference = Database.database().reference()
+        
         let database = FirebaseDatabaseService<[PokemonJSON]>(
             path: "pokemons",
-            databaseReference: Database.database().reference()
+            databaseReference: reference
         )
         let api = HomeAPI(database: database)
-        let viewModel = HomeViewModel(service: api, scheduler: .main)
+        let navigationController = UINavigationController()
+
+        let viewModel = HomeViewModel(
+            service: api,
+            scheduler: .main,
+            onSelectPokemon: { pokemonId in
+                let database = FirebaseDatabaseService<PokemonJSON>(
+                    path: "pokemons/\(pokemonId)",
+                    databaseReference: reference
+                )
+                let api = PokemonDetailsAPI(database: database)
+                let viewModel = PokemonDetailsViewModel(service: api, scheduler: .main)
+                let viewController = PokemonDetailsViewController(viewModel: viewModel)
+
+                navigationController.pushViewController(viewController, animated: true)
+            }
+        )
+
         let imageFetcher = KingfisherImageFetcher()
         let homeViewController = HomeViewController(viewModel: viewModel, imageFetcher: imageFetcher)
 
         homeViewController.title = "Pokémons"
-        let navigationController = UINavigationController(rootViewController: homeViewController)
+        navigationController.viewControllers = [homeViewController]
         navigationController.navigationBar.prefersLargeTitles = true
 
         window?.rootViewController = navigationController
