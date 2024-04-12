@@ -29,6 +29,20 @@ final class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(service.getPokemonsCalls, 1)
     }
 
+    func testPresentErrorAlertOnFailure() {
+        let (sut, service) = makeSUTWithoutMemoryLeakTracking()
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = sut
+        window.makeKeyAndVisible()
+
+        sut.simulateAppearance()
+        service.complete(with: .failure(ErrorDummy()))
+
+        XCTAssertEqual(service.getPokemonsCalls, 1)
+        XCTAssertEqual(sut.numberOfPokemons, 0)
+        XCTAssertTrue(sut.isShowingErrorAlert)
+    }
+
     func testPresentPokemonOnSuccess() {
         let (sut, service, _, _) = makeSUT()
 
@@ -137,6 +151,27 @@ final class HomeViewControllerTests: XCTestCase {
     }
 
     // MARK: Helpers
+
+    private func makeSUTWithoutMemoryLeakTracking() -> (
+        HomeViewController,
+        HomeViewControllerServiceSpy
+    ) {
+        let service = HomeViewControllerServiceSpy()
+        let selection = PokemonSelectionSpy()
+        let viewModel = HomeViewModel(
+            service: service,
+            scheduler: .immediate,
+            onSelectPokemon: selection.onSelectPokemon
+        )
+        let imageFecher = ImageFetcherSpy()
+        let sut = HomeViewController(
+            viewModel: viewModel,
+            imageFetcher: imageFecher,
+            refreshControl: FakeUIRefreshControl()
+        )
+
+        return (sut, service)
+    }
 
     private func makeSUT(
         file: StaticString = #filePath,
@@ -248,6 +283,10 @@ extension HomeViewController {
 
     var numberOfPokemons: Int {
         collectionView.numberOfItems(inSection: 0)
+    }
+
+    var isShowingErrorAlert: Bool {
+        presentedViewController is UIAlertController
     }
 }
 
