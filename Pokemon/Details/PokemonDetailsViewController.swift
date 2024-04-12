@@ -16,17 +16,6 @@ enum SegmentSection: Int {
 }
 
 final class PokemonDetailsViewController: UIViewController {
-    private let viewModel: PokemonDetailsViewModel
-
-    init(viewModel: PokemonDetailsViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: "PokemonDetailsViewController", bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     @IBOutlet weak var specieLabel: UILabel!
     @IBOutlet weak var primaryAttributeLabel: UILabel!
     @IBOutlet weak var secondaryAttributeView: UIView!
@@ -46,6 +35,17 @@ final class PokemonDetailsViewController: UIViewController {
     private let statsView = StatsView.loadFromNib()
 
     private var subscription: AnyCancellable?
+
+    private let viewModel: PokemonDetailsViewModel
+
+    init(viewModel: PokemonDetailsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: "PokemonDetailsViewController", bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         setupAboutView()
@@ -90,13 +90,26 @@ final class PokemonDetailsViewController: UIViewController {
         switch state {
         case .loading:
             setLoading()
-
         case .content(let pokemon):
             setContent(pokemon: pokemon)
         case .error:
-            break
+            showErrorAlert()
         }
     }
+
+    private func showErrorAlert() {
+        let alert = UIAlertController(
+            title: "Error",
+            message: "Something went wrong. Please try again.",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: { [weak self] _ in
+            self?.viewModel.tryAgain()
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+
 
     private func setLoading() {
         title = ""

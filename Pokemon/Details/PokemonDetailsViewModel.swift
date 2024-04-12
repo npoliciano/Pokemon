@@ -53,7 +53,7 @@ final class PokemonDetailsViewModel {
         self.scheduler = scheduler
     }
 
-    func onAppear() {
+    private func getPokemonDetails() {
         subscription = service.getPokemonDetails()
             .receive(on: scheduler)
             .sink { completion in
@@ -63,6 +63,14 @@ final class PokemonDetailsViewModel {
             } receiveValue: { pokemon in
                 self.state = .content(pokemon)
             }
+    }
+
+    func onAppear() {
+        getPokemonDetails()
+    }
+
+    func tryAgain() {
+        getPokemonDetails()
     }
 }
 
