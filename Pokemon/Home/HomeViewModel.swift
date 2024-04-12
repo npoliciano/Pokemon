@@ -38,7 +38,7 @@ final class HomeViewModel {
         self.onSelectPokemon = onSelectPokemon
     }
 
-    func onAppear() {
+    private func getPokemons() {
         subscription = service.getPokemons()
             .receive(on: scheduler)
             .sink { [weak self] completion in
@@ -50,8 +50,16 @@ final class HomeViewModel {
             }
     }
 
+    func onAppear() {
+        getPokemons()
+    }
+
     func onRefresh() {
-        onAppear()
+        getPokemons()
+    }
+
+    func tryAgain() {
+        getPokemons()
     }
 
     func onSelectPokemon(_ pokemon: Pokemon) {

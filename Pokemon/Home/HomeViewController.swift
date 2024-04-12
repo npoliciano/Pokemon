@@ -79,7 +79,7 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
                 self?.refreshControl.endRefreshing()
                 switch state {
                 case .error:
-                    break
+                    self?.showErrorAlert()
                 case .content(let pokemons):
                     self?.items = pokemons
                     self?.collectionView.isHidden = false
@@ -101,6 +101,19 @@ final class HomeViewController: UIViewController, UICollectionViewDataSource, UI
     @objc private func refreshData() {
         refreshControl.beginRefreshing()
         viewModel.onRefresh()
+    }
+
+    private func showErrorAlert() {
+        let alert = UIAlertController(
+            title: "Error",
+            message: "Something went wrong. Please try again.",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: { [weak self] _ in
+            self?.viewModel.tryAgain()
+        }))
+        present(alert, animated: true, completion: nil)
     }
 
     private func setupLoadingViewConstraints() {
