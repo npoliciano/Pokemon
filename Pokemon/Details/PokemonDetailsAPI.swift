@@ -13,16 +13,16 @@ protocol PokemonDetailsDataSource {
 }
 
 final class PokemonDetailsAPI {
-    private let database: PokemonDetailsDataSource
+    private let dataSource: PokemonDetailsDataSource
 
-    init(database: PokemonDetailsDataSource) {
-        self.database = database
+    init(dataSource: PokemonDetailsDataSource) {
+        self.dataSource = dataSource
     }
 }
 
 extension PokemonDetailsAPI: PokemonDetailsService {
     func getPokemonDetails() -> AnyPublisher<PokemonDetails, Error> {
-        database
+        dataSource
             .getData()
             .map {
                 PokemonDetails(json: $0)
@@ -31,4 +31,4 @@ extension PokemonDetailsAPI: PokemonDetailsService {
     }
 }
 
-extension FirebaseDatabaseService<PokemonJSON>: PokemonDetailsDataSource {}
+extension FirebaseDataSource<PokemonJSON>: PokemonDetailsDataSource {}

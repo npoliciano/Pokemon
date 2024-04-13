@@ -11,18 +11,18 @@ import Combine
 
 final class PokemonDetailsAPITests: XCTestCase {
     func testInitDoesNotPerformAnyRequest() {
-        let service = PokemonDetailsDataSourceSpy()
-        let sut = PokemonDetailsAPI(database: service)
-        trackForMemoryLeaks(sut, service)
+        let dataSource = PokemonDetailsDataSourceSpy()
+        let sut = PokemonDetailsAPI(dataSource: dataSource)
+        trackForMemoryLeaks(sut, dataSource)
 
-        XCTAssertEqual(service.getDataCalls, 0)
+        XCTAssertEqual(dataSource.getDataCalls, 0)
     }
 
     func testFailsToGetPokemonDetails() {
-        let service = PokemonDetailsDataSourceSpy()
-        let sut = PokemonDetailsAPI(database: service)
-        trackForMemoryLeaks(sut, service)
-        service.expectedResult = .failure(ErrorDummy())
+        let dataSource = PokemonDetailsDataSourceSpy()
+        let sut = PokemonDetailsAPI(dataSource: dataSource)
+        trackForMemoryLeaks(sut, dataSource)
+        dataSource.expectedResult = .failure(ErrorDummy())
 
         var actualError: Error?
         _ = sut.getPokemonDetails()
@@ -39,9 +39,9 @@ final class PokemonDetailsAPITests: XCTestCase {
     }
 
     func testMapsPokemonJsonOnSuccess() {
-        let service = PokemonDetailsDataSourceSpy()
-        let sut = PokemonDetailsAPI(database: service)
-        trackForMemoryLeaks(sut, service)
+        let dataSource = PokemonDetailsDataSourceSpy()
+        let sut = PokemonDetailsAPI(dataSource: dataSource)
+        trackForMemoryLeaks(sut, dataSource)
         let expectedPokemonJSON = PokemonJSON(
             id: 0,
             name: "0",
@@ -71,7 +71,7 @@ final class PokemonDetailsAPITests: XCTestCase {
                 to: .init(name: "0", imageUrl: URL(filePath: "0"))
             )
         )
-        service.expectedResult = .success(expectedPokemonJSON)
+        dataSource.expectedResult = .success(expectedPokemonJSON)
 
         var actualPokemonDetails: PokemonDetails?
         _ = sut.getPokemonDetails()

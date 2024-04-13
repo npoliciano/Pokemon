@@ -13,16 +13,16 @@ protocol PokemonsDataSource {
 }
 
 final class HomeAPI {
-    private let database: PokemonsDataSource
+    private let dataSource: PokemonsDataSource
 
-    init(database: PokemonsDataSource) {
-        self.database = database
+    init(dataSource: PokemonsDataSource) {
+        self.dataSource = dataSource
     }
 }
 
 extension HomeAPI: HomeService {
     func getPokemons() -> AnyPublisher<[Pokemon], Error> {
-        database
+        dataSource
             .getData()
             .map { pokemonsJson in
                 pokemonsJson.map { Pokemon(json: $0) }
@@ -31,4 +31,4 @@ extension HomeAPI: HomeService {
     }
 }
 
-extension FirebaseDatabaseService<[PokemonJSON]>: PokemonsDataSource {}
+extension FirebaseDataSource<[PokemonJSON]>: PokemonsDataSource {}

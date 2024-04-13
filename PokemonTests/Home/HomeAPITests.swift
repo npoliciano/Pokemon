@@ -11,18 +11,18 @@ import Combine
 
 final class HomeAPITests: XCTestCase {
     func testInitDoesNotPerformAnyRequest() {
-        let service = PokemonsDataSourceSpy()
-        let sut = HomeAPI(database: service)
-        trackForMemoryLeaks(sut, service)
+        let dataSource = PokemonsDataSourceSpy()
+        let sut = HomeAPI(dataSource: dataSource)
+        trackForMemoryLeaks(sut, dataSource)
 
-        XCTAssertEqual(service.getDataCalls, 0)
+        XCTAssertEqual(dataSource.getDataCalls, 0)
     }
 
     func testFailsToGetPokemons() {
-        let service = PokemonsDataSourceSpy()
-        let sut = HomeAPI(database: service)
-        trackForMemoryLeaks(sut, service)
-        service.expectedResult = .failure(ErrorDummy())
+        let dataSource = PokemonsDataSourceSpy()
+        let sut = HomeAPI(dataSource: dataSource)
+        trackForMemoryLeaks(sut, dataSource)
+        dataSource.expectedResult = .failure(ErrorDummy())
 
         var actualError: Error?
         _ = sut.getPokemons()
@@ -39,9 +39,9 @@ final class HomeAPITests: XCTestCase {
     }
 
     func testMapsPokemonsJsonOnSuccess() {
-        let service = PokemonsDataSourceSpy()
-        let sut = HomeAPI(database: service)
-        trackForMemoryLeaks(sut, service)
+        let dataSource = PokemonsDataSourceSpy()
+        let sut = HomeAPI(dataSource: dataSource)
+        trackForMemoryLeaks(sut, dataSource)
 
         let firstExpectedPokemonJSON = PokemonJSON(
             id: 0,
@@ -103,7 +103,7 @@ final class HomeAPITests: XCTestCase {
             )
         )
 
-        service.expectedResult = .success([firstExpectedPokemonJSON, secondExpectedPokemonJSON])
+        dataSource.expectedResult = .success([firstExpectedPokemonJSON, secondExpectedPokemonJSON])
 
         var actualPokemons: [Pokemon]?
         _ = sut.getPokemons()

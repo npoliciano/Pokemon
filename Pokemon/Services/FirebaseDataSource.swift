@@ -8,7 +8,7 @@
 import Combine
 import FirebaseDatabase
 
-final class FirebaseDatabaseService<T: Decodable> {
+final class FirebaseDataSource<T: Decodable> {
     typealias JSON = [String: Any]
 
     let path: String

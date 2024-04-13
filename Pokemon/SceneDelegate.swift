@@ -20,22 +20,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let reference = Database.database().reference()
         
-        let database = FirebaseDatabaseService<[PokemonJSON]>(
+        let dataSource = FirebaseDataSource<[PokemonJSON]>(
             path: "pokemons",
             databaseReference: reference
         )
-        let api = HomeAPI(database: database)
+        let api = HomeAPI(dataSource: dataSource)
         let navigationController = UINavigationController()
 
         let viewModel = HomeViewModel(
             service: api,
             scheduler: .main,
             onSelectPokemon: { pokemonId in
-                let database = FirebaseDatabaseService<PokemonJSON>(
+                let dataSource = FirebaseDataSource<PokemonJSON>(
                     path: "pokemons/\(pokemonId)",
                     databaseReference: reference
                 )
-                let api = PokemonDetailsAPI(database: database)
+                let api = PokemonDetailsAPI(dataSource: dataSource)
                 let viewModel = PokemonDetailsViewModel(service: api, scheduler: .main)
                 let viewController = PokemonDetailsViewController(viewModel: viewModel)
 
