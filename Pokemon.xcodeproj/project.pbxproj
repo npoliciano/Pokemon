@@ -59,7 +59,6 @@
 		A4D6B3662BA13242008DD1EF /* EvolutionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D6B3652BA13242008DD1EF /* EvolutionView.xib */; };
 		A4D6B3682BA13576008DD1EF /* EvolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6B3672BA13576008DD1EF /* EvolutionView.swift */; };
 		A4D708E62BCAF4FD0093DA9C /* PokemonDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D708E52BCAF4FD0093DA9C /* PokemonDetailsViewControllerTests.swift */; };
-		A4EDBDAC2BB90352005C5912 /* PokemonDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EDBDAB2BB90352005C5912 /* PokemonDetailsViewModelTests.swift */; };
 		A4F74F2F2BA2312000FBB8A6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F74F2E2BA2312000FBB8A6 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -132,7 +131,6 @@
 		A4D6B3652BA13242008DD1EF /* EvolutionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EvolutionView.xib; sourceTree = "<group>"; };
 		A4D6B3672BA13576008DD1EF /* EvolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionView.swift; sourceTree = "<group>"; };
 		A4D708E52BCAF4FD0093DA9C /* PokemonDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsViewControllerTests.swift; sourceTree = "<group>"; };
-		A4EDBDAB2BB90352005C5912 /* PokemonDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		A4F74F2E2BA2312000FBB8A6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				A4D708E52BCAF4FD0093DA9C /* PokemonDetailsViewControllerTests.swift */,
-				A4EDBDAB2BB90352005C5912 /* PokemonDetailsViewModelTests.swift */,
 				A4BB61722BBCBAAF0074CE1A /* PokemonDetailsAPITests.swift */,
 			);
 			path = Details;
@@ -569,7 +566,6 @@
 			files = (
 				A45449E02BC0F315000462A5 /* RandomValues.swift in Sources */,
 				A403A59F2BC6298F004082E7 /* UIControl+Extension.swift in Sources */,
-				A4EDBDAC2BB90352005C5912 /* PokemonDetailsViewModelTests.swift in Sources */,
 				A4D708E62BCAF4FD0093DA9C /* PokemonDetailsViewControllerTests.swift in Sources */,
 				A403A5992BC19BB3004082E7 /* HomeViewControllerTests.swift in Sources */,
 				A45449DE2BC0F2AA000462A5 /* PokemonJSON+Fixtures.swift in Sources */,

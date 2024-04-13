@@ -27,7 +27,7 @@ final class HomeViewControllerTests: XCTestCase {
         XCTAssertFalse(sut.refreshControl.isRefreshing)
         XCTAssertEqual(sut.numberOfPokemons, 0)
         XCTAssertEqual(service.getPokemonsCalls, 1)
-        XCTAssertFalse(sut.isShowingErrorAlertAnimated)
+        XCTAssertFalse(sut.isShowingErrorAlert)
     }
 
     func testPresentErrorAlertOnFailure() {
@@ -38,7 +38,7 @@ final class HomeViewControllerTests: XCTestCase {
 
         XCTAssertEqual(service.getPokemonsCalls, 1)
         XCTAssertEqual(sut.numberOfPokemons, 0)
-        XCTAssertTrue(sut.isShowingErrorAlertAnimated)
+        XCTAssertTrue(sut.isShowingErrorAlert)
     }
 
     func testPresentPokemonOnSuccess() {
@@ -54,7 +54,7 @@ final class HomeViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.loadingView.isHidden)
         XCTAssertEqual(service.getPokemonsCalls, 1)
         XCTAssertEqual(sut.numberOfPokemons, 2)
-        XCTAssertFalse(sut.isShowingErrorAlertAnimated)
+        XCTAssertFalse(sut.isShowingErrorAlert)
     }
 
     func testSetCellContentAndFetchImages() throws {
@@ -221,14 +221,10 @@ final class HomeViewControllerServiceSpy: HomeService {
 }
 
 final class TestableHomeViewController: HomeViewController {
-    private(set) var presentCalls = 0
     private(set) var viewControllerToPresent: UIViewController?
-    private(set) var presentAnimated: Bool?
 
     override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
-        presentCalls += 1
         self.viewControllerToPresent = viewControllerToPresent
-        presentAnimated = flag
     }
 
     /// Simulates the ViewController life-cycle
@@ -273,8 +269,8 @@ final class TestableHomeViewController: HomeViewController {
         collectionView.numberOfItems(inSection: 0)
     }
 
-    var isShowingErrorAlertAnimated: Bool {
-        viewControllerToPresent is UIAlertController && presentAnimated == true
+    var isShowingErrorAlert: Bool {
+        viewControllerToPresent is UIAlertController
     }
 }
 

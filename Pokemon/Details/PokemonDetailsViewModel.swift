@@ -56,12 +56,12 @@ final class PokemonDetailsViewModel {
     private func getPokemonDetails() {
         subscription = service.getPokemonDetails()
             .receive(on: scheduler)
-            .sink { completion in
+            .sink { [weak self] completion in
                 if case .failure = completion {
-                    self.state = .error
+                    self?.state = .error
                 }
-            } receiveValue: { pokemon in
-                self.state = .content(pokemon)
+            } receiveValue: { [weak self] pokemon in
+                self?.state = .content(pokemon)
             }
     }
 

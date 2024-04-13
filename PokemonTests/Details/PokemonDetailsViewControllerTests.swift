@@ -11,20 +11,13 @@ import XCTest
 
 final class PokemonDetailsViewControllerTests: XCTestCase {
     func testInitDoesNotPerformAnyRequests() {
-        let service = PokemonDetailsServiceSpy()
-        let viewModel = PokemonDetailsViewModel(service: service, scheduler: .immediate)
-        let sut = PokemonDetailsViewController(viewModel: viewModel)
+        let (_, service) = makeSUT()
 
         XCTAssertEqual(service.getPokemonDetailsCalls, 0)
     }
 
     func testStartsLoadingOnAppear() {
-        let service = PokemonDetailsServiceSpy()
-        let viewModel = PokemonDetailsViewModel(service: service, scheduler: .immediate)
-        let sut = PokemonDetailsViewController(viewModel: viewModel)
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = sut
-        window.makeKeyAndVisible()
+        let (sut, service) = makeSUT()
 
         sut.simulateAppearance()
 
@@ -36,10 +29,41 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
         XCTAssertFalse(sut.loadingView.isHidden)
         XCTAssertFalse(sut.isShowingErrorAlert)
     }
+    func testPresentErrorAlertOnFailure() {
+        let (sut, service) = makeSUT()
 
+        sut.simulateAppearance()
+        service.complete(with: .failure(ErrorDummy()))
+
+        XCTAssertEqual(service.getPokemonDetailsCalls, 1)
+        XCTAssertTrue(sut.isShowingErrorAlert)
+    }
+
+    private func makeSUT(
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) -> (
+        TestablePokemonDetailsViewController,
+        PokemonDetailsServiceSpy
+    ) {
+            let service = PokemonDetailsServiceSpy()
+            let viewModel = PokemonDetailsViewModel(service: service, scheduler: .immediate)
+            let sut = TestablePokemonDetailsViewController(viewModel: viewModel)
+
+            trackForMemoryLeaks(sut, viewModel, service, file: file, line: line)
+
+            return (sut, service)
+        }
 }
 
-extension PokemonDetailsViewController {
+
+final class TestablePokemonDetailsViewController: PokemonDetailsViewController {
+    private(set) var viewControllerToPresent: UIViewController?
+
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        self.viewControllerToPresent = viewControllerToPresent
+    }
+
     /// Simulates the ViewController life-cycle
     /// - Will run the viewDidLoad, viewWillAppear, viewIsAppearing, and viewDidAppear
     func simulateAppearance() {
@@ -52,19 +76,23 @@ extension PokemonDetailsViewController {
     }
 
     var isShowingErrorAlert: Bool {
-        presentedViewController is UIAlertController
+        viewControllerToPresent is UIAlertController
     }
 }
 
 final class PokemonDetailsServiceSpy: PokemonDetailsService {
     private(set) var getPokemonDetailsCalls = 0
 
-    var expectedResult = Result<PokemonDetails, Error>.failure(ErrorDummy())
+    private var promise: ((Result<PokemonDetails, Error>) -> Void)?
 
     func getPokemonDetails() -> AnyPublisher<PokemonDetails, Error> {
         getPokemonDetailsCalls += 1
-        return expectedResult
-            .publisher
-            .eraseToAnyPublisher()
+        return Future { promise in
+            self.promise = promise
+        }
+        .eraseToAnyPublisher()
+    }
+    func complete(with result: Result<PokemonDetails, Error>) {
+        promise?(result)
     }
 }

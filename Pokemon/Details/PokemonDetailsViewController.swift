@@ -15,7 +15,7 @@ enum SegmentSection: Int {
     case stats
 }
 
-final class PokemonDetailsViewController: UIViewController {
+class PokemonDetailsViewController: UIViewController {
     @IBOutlet weak var specieLabel: UILabel!
     @IBOutlet weak var primaryAttributeLabel: UILabel!
     @IBOutlet weak var secondaryAttributeView: UIView!
