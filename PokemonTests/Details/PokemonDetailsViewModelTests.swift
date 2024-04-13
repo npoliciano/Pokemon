@@ -87,19 +87,6 @@ final class PokemonDetailsViewModelTests: XCTestCase {
     }
 }
 
-final class PokemonDetailsServiceSpy: PokemonDetailsService {
-    private(set) var getPokemonDetailsCalls = 0
-
-    var expectedResult = Result<PokemonDetails, Error>.failure(ErrorDummy())
-
-    func getPokemonDetails() -> AnyPublisher<PokemonDetails, Error> {
-        getPokemonDetailsCalls += 1
-        return expectedResult
-            .publisher
-            .eraseToAnyPublisher()
-    }
-}
-
 extension ViewState<PokemonDetails>: Equatable {
     public static func ==(lhs: ViewState<PokemonDetails>, rhs: ViewState<PokemonDetails>) -> Bool {
         switch (lhs, rhs) {
