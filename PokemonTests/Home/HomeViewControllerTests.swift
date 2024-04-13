@@ -17,7 +17,7 @@ final class HomeViewControllerTests: XCTestCase {
         XCTAssertEqual(service.getPokemonsCalls, 0)
     }
 
-    func testStartLoadingAndRequestPokemonsOnAppear() {
+    func testStartLoadingOnAppear() {
         let (sut, service, _, _) = makeSUT()
 
         sut.simulateAppearance()
@@ -27,20 +27,18 @@ final class HomeViewControllerTests: XCTestCase {
         XCTAssertFalse(sut.refreshControl.isRefreshing)
         XCTAssertEqual(sut.numberOfPokemons, 0)
         XCTAssertEqual(service.getPokemonsCalls, 1)
+        XCTAssertFalse(sut.isShowingErrorAlertAnimated)
     }
 
     func testPresentErrorAlertOnFailure() {
-        let (sut, service) = makeSUTWithoutMemoryLeakTracking()
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = sut
-        window.makeKeyAndVisible()
+        let (sut, service, _, _) = makeSUT()
 
         sut.simulateAppearance()
         service.complete(with: .failure(ErrorDummy()))
 
         XCTAssertEqual(service.getPokemonsCalls, 1)
         XCTAssertEqual(sut.numberOfPokemons, 0)
-        XCTAssertTrue(sut.isShowingErrorAlert)
+        XCTAssertTrue(sut.isShowingErrorAlertAnimated)
     }
 
     func testPresentPokemonOnSuccess() {
@@ -56,6 +54,7 @@ final class HomeViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.loadingView.isHidden)
         XCTAssertEqual(service.getPokemonsCalls, 1)
         XCTAssertEqual(sut.numberOfPokemons, 2)
+        XCTAssertFalse(sut.isShowingErrorAlertAnimated)
     }
 
     func testSetCellContentAndFetchImages() throws {
@@ -152,32 +151,11 @@ final class HomeViewControllerTests: XCTestCase {
 
     // MARK: Helpers
 
-    private func makeSUTWithoutMemoryLeakTracking() -> (
-        HomeViewController,
-        HomeViewControllerServiceSpy
-    ) {
-        let service = HomeViewControllerServiceSpy()
-        let selection = PokemonSelectionSpy()
-        let viewModel = HomeViewModel(
-            service: service,
-            scheduler: .immediate,
-            onSelectPokemon: selection.onSelectPokemon
-        )
-        let imageFecher = ImageFetcherSpy()
-        let sut = HomeViewController(
-            viewModel: viewModel,
-            imageFetcher: imageFecher,
-            refreshControl: FakeUIRefreshControl()
-        )
-
-        return (sut, service)
-    }
-
     private func makeSUT(
         file: StaticString = #filePath,
         line: UInt = #line
     ) -> (
-        HomeViewController,
+        TestableHomeViewController,
         HomeViewControllerServiceSpy,
         ImageFetcherSpy,
         PokemonSelectionSpy
@@ -190,7 +168,7 @@ final class HomeViewControllerTests: XCTestCase {
             onSelectPokemon: selection.onSelectPokemon
         )
         let imageFecher = ImageFetcherSpy()
-        let sut = HomeViewController(
+        let sut = TestableHomeViewController(
             viewModel: viewModel,
             imageFetcher: imageFecher,
             refreshControl: FakeUIRefreshControl()
@@ -242,7 +220,17 @@ final class HomeViewControllerServiceSpy: HomeService {
     }
 }
 
-extension HomeViewController {
+final class TestableHomeViewController: HomeViewController {
+    private(set) var presentCalls = 0
+    private(set) var viewControllerToPresent: UIViewController?
+    private(set) var presentAnimated: Bool?
+
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        presentCalls += 1
+        self.viewControllerToPresent = viewControllerToPresent
+        presentAnimated = flag
+    }
+
     /// Simulates the ViewController life-cycle
     /// - Will run the viewDidLoad, viewWillAppear, viewIsAppearing, and viewDidAppear
     func simulateAppearance() {
@@ -285,8 +273,8 @@ extension HomeViewController {
         collectionView.numberOfItems(inSection: 0)
     }
 
-    var isShowingErrorAlert: Bool {
-        presentedViewController is UIAlertController
+    var isShowingErrorAlertAnimated: Bool {
+        viewControllerToPresent is UIAlertController && presentAnimated == true
     }
 }
 

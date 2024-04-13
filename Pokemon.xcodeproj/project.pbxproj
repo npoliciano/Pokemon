@@ -179,9 +179,9 @@
 		A403A5962BC19AD2004082E7 /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				A4D708E52BCAF4FD0093DA9C /* PokemonDetailsViewControllerTests.swift */,
 				A4EDBDAB2BB90352005C5912 /* PokemonDetailsViewModelTests.swift */,
 				A4BB61722BBCBAAF0074CE1A /* PokemonDetailsAPITests.swift */,
-				A4D708E52BCAF4FD0093DA9C /* PokemonDetailsViewControllerTests.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
