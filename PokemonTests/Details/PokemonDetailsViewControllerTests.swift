@@ -23,12 +23,12 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
 
         XCTAssertEqual(service.getPokemonDetailsCalls, 1)
         XCTAssertEqual(sut.title, "")
-        XCTAssertEqual(sut.view.backgroundColor, .systemBackground)
-        XCTAssertEqual(sut.headerBackgroundView.backgroundColor, .systemBackground)
+        XCTAssertEqual(sut.pokemonColor, .systemBackground)
         XCTAssertTrue(sut.scrollView.isHidden)
         XCTAssertFalse(sut.loadingView.isHidden)
         XCTAssertFalse(sut.isShowingErrorAlert)
     }
+
     func testPresentErrorAlertOnFailure() {
         let (sut, service) = makeSUT()
 
@@ -38,6 +38,28 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
         XCTAssertEqual(service.getPokemonDetailsCalls, 1)
         XCTAssertTrue(sut.isShowingErrorAlert)
     }
+    
+    func testPresentPokemonDetailsOnSuccess() {
+        let (sut, service) = makeSUT()
+
+        let pokemon = PokemonDetails.fixture(
+            secondaryAttribute: .anyValue,
+            backgroundColor: UIColor.orange
+        )
+
+        sut.simulateAppearance()
+        service.complete(with: .success(pokemon))
+
+        XCTAssertEqual(service.getPokemonDetailsCalls, 1)
+        XCTAssertEqual(sut.title, pokemon.name)
+        XCTAssertEqual(sut.pokemonColor, pokemon.backgroundColor)
+        XCTAssertEqual(sut.specie, "\(pokemon.specie) Pokémon")
+        XCTAssertEqual(sut.primaryAttributeLabel.text, pokemon.primaryAttribute)
+        XCTAssertEqual(sut.secondaryAttributeLabel.text, pokemon.secondaryAttribute)
+        XCTAssertFalse(sut.scrollView.isHidden)
+        XCTAssertTrue(sut.loadingView.isHidden)
+        XCTAssertFalse(sut.isShowingErrorAlert)
+    }
 
     private func makeSUT(
         file: StaticString = #filePath,
@@ -46,14 +68,14 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
         TestablePokemonDetailsViewController,
         PokemonDetailsServiceSpy
     ) {
-            let service = PokemonDetailsServiceSpy()
-            let viewModel = PokemonDetailsViewModel(service: service, scheduler: .immediate)
-            let sut = TestablePokemonDetailsViewController(viewModel: viewModel)
+        let service = PokemonDetailsServiceSpy()
+        let viewModel = PokemonDetailsViewModel(service: service, scheduler: .immediate)
+        let sut = TestablePokemonDetailsViewController(viewModel: viewModel)
 
-            trackForMemoryLeaks(sut, viewModel, service, file: file, line: line)
+        trackForMemoryLeaks(sut, viewModel, service, file: file, line: line)
 
-            return (sut, service)
-        }
+        return (sut, service)
+    }
 }
 
 
@@ -77,6 +99,18 @@ final class TestablePokemonDetailsViewController: PokemonDetailsViewController {
 
     var isShowingErrorAlert: Bool {
         viewControllerToPresent is UIAlertController
+    }
+
+    var specie: String? {
+        specieLabel.text
+    }
+
+    var pokemonColor: UIColor? {
+        if view.backgroundColor != headerBackgroundView.backgroundColor {
+            return nil
+        }
+
+        return view.backgroundColor
     }
 }
 
