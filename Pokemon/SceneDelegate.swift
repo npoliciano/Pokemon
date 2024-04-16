@@ -26,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
         let api = HomeAPI(dataSource: dataSource)
         let navigationController = UINavigationController()
+        let imageFetcher = KingfisherImageFetcher()
 
         let viewModel = HomeViewModel(
             service: api,
@@ -37,13 +38,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 )
                 let api = PokemonDetailsAPI(dataSource: dataSource)
                 let viewModel = PokemonDetailsViewModel(service: api, scheduler: .main)
-                let viewController = PokemonDetailsViewController(viewModel: viewModel)
-
+                let viewController = PokemonDetailsViewController(
+                    viewModel: viewModel,
+                    imageFetcher: imageFetcher
+                )
+                
                 navigationController.pushViewController(viewController, animated: true)
             }
         )
 
-        let imageFetcher = KingfisherImageFetcher()
         let homeViewController = HomeViewController(viewModel: viewModel, imageFetcher: imageFetcher)
 
         homeViewController.title = "Pokémons"

@@ -38,9 +38,11 @@ class PokemonDetailsViewController: UIViewController {
     private var subscription: AnyCancellable?
 
     private let viewModel: PokemonDetailsViewModel
+    private let imageFetcher: ImageFetcher
 
-    init(viewModel: PokemonDetailsViewModel) {
+    init(viewModel: PokemonDetailsViewModel, imageFetcher: ImageFetcher) {
         self.viewModel = viewModel
+        self.imageFetcher = imageFetcher
         super.init(nibName: "PokemonDetailsViewController", bundle: nil)
     }
 
@@ -133,7 +135,7 @@ class PokemonDetailsViewController: UIViewController {
         headerBackgroundView.backgroundColor = pokemon.backgroundColor
         aboutView.setContent(with: pokemon)
         statsView.setContent(with: pokemon)
-        evolutionView.setContent(with: pokemon)
+        evolutionView.setContent(with: pokemon, imageFetcher: imageFetcher)
 
         if let secondaryAttribute = pokemon.secondaryAttribute {
             secondaryAttributeLabel.text = secondaryAttribute

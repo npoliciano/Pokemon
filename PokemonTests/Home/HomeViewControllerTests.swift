@@ -190,17 +190,6 @@ final class PokemonSelectionSpy {
     }
 }
 
-final class ImageFetcherSpy: ImageFetcher {
-    private(set) var fetchCalls = 0
-    var expectedImages: [URL: UIImage?] = [:]
-
-    func fetch(from url: URL, completion: @escaping (UIImage?) -> Void) {
-        fetchCalls += 1
-        let image = expectedImages[url]!
-        completion(image)
-    }
-}
-
 final class HomeViewControllerServiceSpy: HomeService {
     private(set) var getPokemonsCalls = 0
 

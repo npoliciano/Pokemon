@@ -11,8 +11,8 @@ final class EvolutionView: UIView {
     @IBOutlet weak var firstEvolutionChainContainerView: UIView!
     @IBOutlet weak var secondEvolutionChainContainerView: UIView!
 
-    private let firstEvolutionChainView = EvolutionChainView.loadFromNib()
-    private let secondEvolutionChainView = EvolutionChainView.loadFromNib()
+    let firstEvolutionChainView = EvolutionChainView.loadFromNib()
+    let secondEvolutionChainView = EvolutionChainView.loadFromNib()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,9 +20,15 @@ final class EvolutionView: UIView {
         setupSecondChainView()
     }
 
-    func setContent(with pokemon: PokemonDetails) {
-        firstEvolutionChainView.setContent(with: pokemon.firstEvolutionChain)
-        secondEvolutionChainView.setContent(with: pokemon.secondEvolutionChain)
+    func setContent(with pokemon: PokemonDetails, imageFetcher: ImageFetcher) {
+        firstEvolutionChainView.setContent(
+            with: pokemon.firstEvolutionChain,
+            imageFetcher: imageFetcher
+        )
+        secondEvolutionChainView.setContent(
+            with: pokemon.secondEvolutionChain,
+            imageFetcher: imageFetcher
+        )
     }
 
     private func setupFirstChainView() {

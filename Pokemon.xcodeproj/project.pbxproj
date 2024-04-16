@@ -60,6 +60,7 @@
 		A4D6B3682BA13576008DD1EF /* EvolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D6B3672BA13576008DD1EF /* EvolutionView.swift */; };
 		A4D708E62BCAF4FD0093DA9C /* PokemonDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D708E52BCAF4FD0093DA9C /* PokemonDetailsViewControllerTests.swift */; };
 		A4D708E82BCDD4CC0093DA9C /* PokemonDetails+Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D708E72BCDD4CC0093DA9C /* PokemonDetails+Fixtures.swift */; };
+		A4D708EA2BCE223F0093DA9C /* ImageFetcherSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D708E92BCE223F0093DA9C /* ImageFetcherSpy.swift */; };
 		A4F74F2F2BA2312000FBB8A6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F74F2E2BA2312000FBB8A6 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +134,7 @@
 		A4D6B3672BA13576008DD1EF /* EvolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionView.swift; sourceTree = "<group>"; };
 		A4D708E52BCAF4FD0093DA9C /* PokemonDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsViewControllerTests.swift; sourceTree = "<group>"; };
 		A4D708E72BCDD4CC0093DA9C /* PokemonDetails+Fixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PokemonDetails+Fixtures.swift"; sourceTree = "<group>"; };
+		A4D708E92BCE223F0093DA9C /* ImageFetcherSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcherSpy.swift; sourceTree = "<group>"; };
 		A4F74F2E2BA2312000FBB8A6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -347,6 +349,7 @@
 				A45449D72BC0E1A6000462A5 /* ErrorDummy.swift */,
 				A45449DF2BC0F315000462A5 /* RandomValues.swift */,
 				A403A5A02BC62DD2004082E7 /* FakeUIRefreshControl.swift */,
+				A4D708E92BCE223F0093DA9C /* ImageFetcherSpy.swift */,
 			);
 			path = TestUtils;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				A45449DE2BC0F2AA000462A5 /* PokemonJSON+Fixtures.swift in Sources */,
 				A45449E52BC0F42D000462A5 /* UIColor+Extension.swift in Sources */,
 				A45449E72BC0F45F000462A5 /* String+Extension.swift in Sources */,
+				A4D708EA2BCE223F0093DA9C /* ImageFetcherSpy.swift in Sources */,
 				A45449DA2BC0E311000462A5 /* PokemonTests.swift in Sources */,
 				A45449E22BC0F375000462A5 /* PokemonDetailsTests.swift in Sources */,
 				A4D19D432BB8EEFA0099F225 /* MemoryLeakTracking.swift in Sources */,

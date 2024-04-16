@@ -11,13 +11,13 @@ import XCTest
 
 final class PokemonDetailsViewControllerTests: XCTestCase {
     func testInitDoesNotPerformAnyRequests() {
-        let (_, service) = makeSUT()
+        let (_, service, _) = makeSUT()
 
         XCTAssertEqual(service.getPokemonDetailsCalls, 0)
     }
 
     func testStartsLoadingOnAppear() {
-        let (sut, service) = makeSUT()
+        let (sut, service, _) = makeSUT()
 
         sut.simulateAppearance()
 
@@ -30,7 +30,7 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
     }
 
     func testPresentErrorAlertOnFailure() {
-        let (sut, service) = makeSUT()
+        let (sut, service, _) = makeSUT()
 
         sut.simulateAppearance()
         service.complete(with: .failure(ErrorDummy()))
@@ -40,7 +40,7 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
     }
     
     func testPresentPokemonDetailsOnSuccess() {
-        let (sut, service) = makeSUT()
+        let (sut, service, _) = makeSUT()
 
         let pokemon = PokemonDetails.fixture(
             secondaryAttribute: .anyValue,
@@ -67,7 +67,7 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
     }
 
     func testPresentAboutSectionOnSuccess() {
-        let (sut, service) = makeSUT()
+        let (sut, service, _) = makeSUT()
 
         sut.simulateAppearance()
         service.complete(with: .success(
@@ -81,7 +81,7 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
     }
 
     func testCanSelectSegment() {
-        let (sut, service) = makeSUT()
+        let (sut, service, _) = makeSUT()
 
         sut.simulateAppearance()
         service.complete(with: .success(
@@ -113,7 +113,7 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
     }
 
     func testPresentAboutSectionProperly() {
-        let (sut, service) = makeSUT()
+        let (sut, service, _) = makeSUT()
         let pokemon = PokemonDetails.fixture()
 
         sut.simulateAppearance()
@@ -129,7 +129,7 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
     }
 
     func testPresentStatsSectionProperly() {
-        let (sut, service) = makeSUT()
+        let (sut, service, _) = makeSUT()
         let pokemon = PokemonDetails.fixture(
             hp: 90,
             attack: 85,
@@ -154,20 +154,51 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.totalProgress, 0.5)
     }
 
+    func testPresentEvolutionSectionProperly() {
+        let (sut, service, imageFetcher) = makeSUT()
+        let pokemon = PokemonDetails.fixture()
+        let expectedImage1 = UIImage(resource: .pikachu)
+        let expectedImage2 = UIImage(resource: .bulbasaur)
+        let expectedImage3 = UIImage(systemName: "info")!
+        let expectedImage4 = UIImage(systemName: "info.circle")!
+
+        imageFetcher.expectedImages[pokemon.firstEvolutionChain.from.imageUrl] = expectedImage1
+        imageFetcher.expectedImages[pokemon.firstEvolutionChain.to.imageUrl] = expectedImage2
+        imageFetcher.expectedImages[pokemon.secondEvolutionChain.from.imageUrl] = expectedImage3
+        imageFetcher.expectedImages[pokemon.secondEvolutionChain.to.imageUrl] = expectedImage4
+
+        sut.simulateAppearance()
+
+        service.complete(with: .success(pokemon))
+
+        XCTAssertEqual(imageFetcher.fetchCalls, 4)
+        XCTAssertEqual(sut.evolutionView.firstEvolutionChainView.evolvesFromLabel.text, pokemon.firstEvolutionChain.from.name)
+        XCTAssertEqual(sut.evolutionView.firstEvolutionChainView.evolvesToLabel.text, pokemon.firstEvolutionChain.to.name)
+        XCTAssertEqual(sut.evolutionView.firstEvolutionChainView.firstEvolutionImageView.image, expectedImage1)
+        XCTAssertEqual(sut.evolutionView.firstEvolutionChainView.secondEvolutionImageView.image, expectedImage2)
+
+        XCTAssertEqual(sut.evolutionView.secondEvolutionChainView.evolvesFromLabel.text, pokemon.secondEvolutionChain.from.name)
+        XCTAssertEqual(sut.evolutionView.secondEvolutionChainView.evolvesToLabel.text, pokemon.secondEvolutionChain.to.name)
+        XCTAssertEqual(sut.evolutionView.secondEvolutionChainView.firstEvolutionImageView.image, expectedImage3)
+        XCTAssertEqual(sut.evolutionView.secondEvolutionChainView.secondEvolutionImageView.image, expectedImage4)
+    }
+
     private func makeSUT(
         file: StaticString = #filePath,
         line: UInt = #line
     ) -> (
         TestablePokemonDetailsViewController,
-        PokemonDetailsServiceSpy
+        PokemonDetailsServiceSpy,
+        ImageFetcherSpy
     ) {
         let service = PokemonDetailsServiceSpy()
         let viewModel = PokemonDetailsViewModel(service: service, scheduler: .immediate)
-        let sut = TestablePokemonDetailsViewController(viewModel: viewModel)
+        let imageFecher = ImageFetcherSpy()
+        let sut = TestablePokemonDetailsViewController(viewModel: viewModel, imageFetcher: imageFecher)
 
-        trackForMemoryLeaks(sut, viewModel, service, file: file, line: line)
+        trackForMemoryLeaks(sut, viewModel, service, imageFecher, file: file, line: line)
 
-        return (sut, service)
+        return (sut, service, imageFecher)
     }
 }
 
