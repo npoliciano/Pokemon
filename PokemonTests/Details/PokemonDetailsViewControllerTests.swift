@@ -80,6 +80,38 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.statsContainerView.isHidden)
     }
 
+    func testCanSelectSegment() {
+        let (sut, service) = makeSUT()
+
+        sut.simulateAppearance()
+        service.complete(with: .success(
+            PokemonDetails.fixture()
+        ))
+
+        XCTAssertEqual(sut.selectedSegmentIndex, 0)
+        XCTAssertFalse(sut.aboutContainerView.isHidden)
+        XCTAssertTrue(sut.evolutionContainerView.isHidden)
+        XCTAssertTrue(sut.statsContainerView.isHidden)
+
+        sut.simulateSelectedSegment(at: 1)
+
+        XCTAssertTrue(sut.aboutContainerView.isHidden)
+        XCTAssertFalse(sut.evolutionContainerView.isHidden)
+        XCTAssertTrue(sut.statsContainerView.isHidden)
+
+        sut.simulateSelectedSegment(at: 2)
+
+        XCTAssertTrue(sut.aboutContainerView.isHidden)
+        XCTAssertTrue(sut.evolutionContainerView.isHidden)
+        XCTAssertFalse(sut.statsContainerView.isHidden)
+
+        sut.simulateSelectedSegment(at: 0)
+
+        XCTAssertFalse(sut.aboutContainerView.isHidden)
+        XCTAssertTrue(sut.evolutionContainerView.isHidden)
+        XCTAssertTrue(sut.statsContainerView.isHidden)
+    }
+
     private func makeSUT(
         file: StaticString = #filePath,
         line: UInt = #line
@@ -142,6 +174,11 @@ final class TestablePokemonDetailsViewController: PokemonDetailsViewController {
 
     func titleForSegment(at index: Int) -> String? {
         segmentedControl.titleForSegment(at: index)
+    }
+
+    func simulateSelectedSegment(at index: Int) {
+        segmentedControl.selectedSegmentIndex = index
+        segmentedControl.sendActions(for: .valueChanged)
     }
 }
 
