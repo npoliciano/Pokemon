@@ -59,6 +59,25 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
         XCTAssertFalse(sut.scrollView.isHidden)
         XCTAssertTrue(sut.loadingView.isHidden)
         XCTAssertFalse(sut.isShowingErrorAlert)
+
+        XCTAssertEqual(sut.numberOfSegments, 3)
+        XCTAssertEqual(sut.titleForSegment(at: 0), "About")
+        XCTAssertEqual(sut.titleForSegment(at: 1), "Evolution")
+        XCTAssertEqual(sut.titleForSegment(at: 2), "Stats")
+    }
+
+    func testPresentAboutSectionOnSuccess() {
+        let (sut, service) = makeSUT()
+
+        sut.simulateAppearance()
+        service.complete(with: .success(
+            PokemonDetails.fixture()
+        ))
+
+        XCTAssertEqual(sut.selectedSegmentIndex, 0)
+        XCTAssertFalse(sut.aboutContainerView.isHidden)
+        XCTAssertTrue(sut.evolutionContainerView.isHidden)
+        XCTAssertTrue(sut.statsContainerView.isHidden)
     }
 
     private func makeSUT(
@@ -111,6 +130,18 @@ final class TestablePokemonDetailsViewController: PokemonDetailsViewController {
         }
 
         return view.backgroundColor
+    }
+
+    var selectedSegmentIndex: Int {
+        segmentedControl.selectedSegmentIndex
+    }
+
+    var numberOfSegments: Int {
+        segmentedControl.numberOfSegments
+    }
+
+    func titleForSegment(at index: Int) -> String? {
+        segmentedControl.titleForSegment(at: index)
     }
 }
 

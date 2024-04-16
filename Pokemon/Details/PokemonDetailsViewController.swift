@@ -24,6 +24,7 @@ class PokemonDetailsViewController: UIViewController {
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var headerBackgroundView: UIView!
 
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var aboutContainerView: UIView!
     @IBOutlet weak var evolutionContainerView: UIView!
     @IBOutlet weak var statsContainerView: UIView!
@@ -142,7 +143,8 @@ class PokemonDetailsViewController: UIViewController {
         }
     }
 
-    @IBAction func didSelectSegment(_ sender: UISegmentedControl) {
+    @IBAction
+    private func didSelectSegment(_ sender: UISegmentedControl) {
         guard let segment = SegmentSection(rawValue: sender.selectedSegmentIndex) else {
             return
         }

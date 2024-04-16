@@ -19,20 +19,21 @@
                 <outlet property="scrollView" destination="kMV-yV-pKm" id="bPY-4j-zkf"/>
                 <outlet property="secondaryAttributeLabel" destination="tbl-2i-jra" id="hJx-qN-Dsi"/>
                 <outlet property="secondaryAttributeView" destination="6vl-or-0xh" id="iBh-nl-HZe"/>
+                <outlet property="segmentedControl" destination="Vk5-gK-bAq" id="lMN-er-dIc"/>
                 <outlet property="specieLabel" destination="Mu1-kE-9XD" id="cRO-hd-1WX"/>
                 <outlet property="statsContainerView" destination="vNF-0w-Vcp" id="Wd7-xa-x3Q"/>
                 <outlet property="view" destination="Jj2-kI-Rro" id="1Gb-jf-k3d"/>
             </connections>
         </placeholder>
         <view contentMode="scaleToFill" id="Jj2-kI-Rro">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="1212"/>
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="QqY-md-WxC">
-                    <rect key="frame" x="178" y="600" width="37" height="37"/>
+                    <rect key="frame" x="178" y="420" width="37" height="37"/>
                 </activityIndicatorView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kMV-yV-pKm">
-                    <rect key="frame" x="0.0" y="59" width="393" height="1153"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="793"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghI-3G-yZS" userLabel="Scrollable Content">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="812"/>
