@@ -119,13 +119,39 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
         sut.simulateAppearance()
         service.complete(with: .success(pokemon))
 
-        XCTAssertEqual(sut.description, pokemon.description)
+        XCTAssertEqual(sut.pokemonDescription, pokemon.description)
         XCTAssertEqual(sut.eggCycle, pokemon.eggCycle)
         XCTAssertEqual(sut.eggGroups, pokemon.eggGroups)
         XCTAssertEqual(sut.female, pokemon.female)
         XCTAssertEqual(sut.male, pokemon.male)
         XCTAssertEqual(sut.weight, pokemon.weight)
         XCTAssertEqual(sut.height, pokemon.height)
+    }
+
+    func testPresentStatsSectionProperly() {
+        let (sut, service) = makeSUT()
+        let pokemon = PokemonDetails.fixture(
+            hp: 90,
+            attack: 85,
+            defense: 70,
+            speed: 68,
+            statsTotal: 200
+        )
+
+        sut.simulateAppearance()
+        service.complete(with: .success(pokemon))
+
+        XCTAssertEqual(sut.hp, "90")
+        XCTAssertEqual(sut.attack, "85")
+        XCTAssertEqual(sut.defense, "70")
+        XCTAssertEqual(sut.speed, "68")
+        XCTAssertEqual(sut.total, "200")
+
+        XCTAssertEqual(sut.hpProgress, 0.9)
+        XCTAssertEqual(sut.attackProgress, 0.85)
+        XCTAssertEqual(sut.defenseProgress, 0.7)
+        XCTAssertEqual(sut.speedProgress, 0.68)
+        XCTAssertEqual(sut.totalProgress, 0.5)
     }
 
     private func makeSUT(
@@ -217,6 +243,38 @@ final class TestablePokemonDetailsViewController: PokemonDetailsViewController {
     }
     var height: String? {
         aboutView.heightLabel.text
+    }
+
+    var hp: String? {
+        statsView.hpLabel.text
+    }
+    var attack: String? {
+        statsView.attackLabel.text
+    }
+    var defense: String? {
+        statsView.defenseLabel.text
+    }
+    var speed: String? {
+        statsView.speedLabel.text
+    }
+    var total: String? {
+        statsView.totalLabel.text
+    }
+
+    var hpProgress: Float {
+        statsView.hpProgressView.progress
+    }
+    var attackProgress: Float {
+        statsView.attackProgressView.progress
+    }
+    var defenseProgress: Float {
+        statsView.defenseProgressView.progress
+    }
+    var speedProgress: Float {
+        statsView.speedProgressView.progress
+    }
+    var totalProgress: Float {
+        statsView.totalProgressView.progress
     }
 }
 
