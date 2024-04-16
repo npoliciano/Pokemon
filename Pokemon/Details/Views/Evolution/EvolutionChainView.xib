@@ -127,10 +127,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="evolvesFromImageView" destination="BNg-Dm-2tg" id="ARL-39-5G8"/>
                 <outlet property="evolvesFromLabel" destination="KYV-Lg-oSQ" id="2FJ-qa-jQp"/>
+                <outlet property="evolvesToImageView" destination="dYk-ZH-QGv" id="aFh-LP-iUF"/>
                 <outlet property="evolvesToLabel" destination="WfI-SJ-TmC" id="pwJ-aH-Mc2"/>
-                <outlet property="firstEvolutionImageView" destination="BNg-Dm-2tg" id="ARL-39-5G8"/>
-                <outlet property="secondEvolutionImageView" destination="dYk-ZH-QGv" id="aFh-LP-iUF"/>
             </connections>
             <point key="canvasLocation" x="0.76335877862595414" y="-219.36619718309859"/>
         </view>

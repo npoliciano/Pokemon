@@ -131,11 +131,14 @@ class PokemonDetailsViewController: UIViewController {
 
         primaryAttributeLabel.text = pokemon.primaryAttribute
         specieLabel.text = "\(pokemon.specie) Pokémon"
-        imageView.kf.setImage(with: pokemon.imageUrl)
         headerBackgroundView.backgroundColor = pokemon.backgroundColor
         aboutView.setContent(with: pokemon)
         statsView.setContent(with: pokemon)
         evolutionView.setContent(with: pokemon, imageFetcher: imageFetcher)
+
+        imageFetcher.fetch(from: pokemon.imageUrl) { image in
+            self.imageView.image = image
+        }
 
         if let secondaryAttribute = pokemon.secondaryAttribute {
             secondaryAttributeLabel.text = secondaryAttribute

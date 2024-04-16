@@ -40,22 +40,25 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
     }
     
     func testPresentPokemonDetailsOnSuccess() {
-        let (sut, service, _) = makeSUT()
-
+        let (sut, service, imageFetcher) = makeSUT()
         let pokemon = PokemonDetails.fixture(
             secondaryAttribute: .anyValue,
             backgroundColor: UIColor.orange
         )
+        let expectedImage = UIImage(resource: .pikachu)
+        imageFetcher.expectedImages[pokemon.imageUrl] = expectedImage
 
         sut.simulateAppearance()
         service.complete(with: .success(pokemon))
 
         XCTAssertEqual(service.getPokemonDetailsCalls, 1)
+        XCTAssertEqual(imageFetcher.fetchCalls, 5)
         XCTAssertEqual(sut.title, pokemon.name)
         XCTAssertEqual(sut.pokemonColor, pokemon.backgroundColor)
         XCTAssertEqual(sut.specie, "\(pokemon.specie) Pokémon")
         XCTAssertEqual(sut.primaryAttributeLabel.text, pokemon.primaryAttribute)
         XCTAssertEqual(sut.secondaryAttributeLabel.text, pokemon.secondaryAttribute)
+        XCTAssertEqual(sut.imageView.image, expectedImage)
         XCTAssertFalse(sut.scrollView.isHidden)
         XCTAssertTrue(sut.loadingView.isHidden)
         XCTAssertFalse(sut.isShowingErrorAlert)
@@ -168,19 +171,17 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
         imageFetcher.expectedImages[pokemon.secondEvolutionChain.to.imageUrl] = expectedImage4
 
         sut.simulateAppearance()
-
         service.complete(with: .success(pokemon))
 
-        XCTAssertEqual(imageFetcher.fetchCalls, 4)
         XCTAssertEqual(sut.evolutionView.firstEvolutionChainView.evolvesFromLabel.text, pokemon.firstEvolutionChain.from.name)
         XCTAssertEqual(sut.evolutionView.firstEvolutionChainView.evolvesToLabel.text, pokemon.firstEvolutionChain.to.name)
-        XCTAssertEqual(sut.evolutionView.firstEvolutionChainView.firstEvolutionImageView.image, expectedImage1)
-        XCTAssertEqual(sut.evolutionView.firstEvolutionChainView.secondEvolutionImageView.image, expectedImage2)
+        XCTAssertEqual(sut.evolutionView.firstEvolutionChainView.evolvesFromImageView.image, expectedImage1)
+        XCTAssertEqual(sut.evolutionView.firstEvolutionChainView.evolvesToImageView.image, expectedImage2)
 
         XCTAssertEqual(sut.evolutionView.secondEvolutionChainView.evolvesFromLabel.text, pokemon.secondEvolutionChain.from.name)
         XCTAssertEqual(sut.evolutionView.secondEvolutionChainView.evolvesToLabel.text, pokemon.secondEvolutionChain.to.name)
-        XCTAssertEqual(sut.evolutionView.secondEvolutionChainView.firstEvolutionImageView.image, expectedImage3)
-        XCTAssertEqual(sut.evolutionView.secondEvolutionChainView.secondEvolutionImageView.image, expectedImage4)
+        XCTAssertEqual(sut.evolutionView.secondEvolutionChainView.evolvesFromImageView.image, expectedImage3)
+        XCTAssertEqual(sut.evolutionView.secondEvolutionChainView.evolvesToImageView.image, expectedImage4)
     }
 
     private func makeSUT(
