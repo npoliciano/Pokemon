@@ -104,15 +104,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     private func showErrorAlert() {
-        let alert = UIAlertController(
-            title: "Error",
-            message: "Something went wrong. Please try again.",
-            preferredStyle: .alert
-        )
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
-        alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: { [weak self] _ in
+        let alert = UIAlertController.errorAlert { [weak self] in
             self?.viewModel.tryAgain()
-        }))
+        }
+
         present(alert, animated: true, completion: nil)
     }
 

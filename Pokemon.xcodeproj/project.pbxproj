@@ -61,6 +61,7 @@
 		A4D708E62BCAF4FD0093DA9C /* PokemonDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D708E52BCAF4FD0093DA9C /* PokemonDetailsViewControllerTests.swift */; };
 		A4D708E82BCDD4CC0093DA9C /* PokemonDetails+Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D708E72BCDD4CC0093DA9C /* PokemonDetails+Fixtures.swift */; };
 		A4D708EA2BCE223F0093DA9C /* ImageFetcherSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D708E92BCE223F0093DA9C /* ImageFetcherSpy.swift */; };
+		A4D708EC2BCE27C70093DA9C /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D708EB2BCE27C70093DA9C /* UIAlertController+Extensions.swift */; };
 		A4F74F2F2BA2312000FBB8A6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F74F2E2BA2312000FBB8A6 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +136,7 @@
 		A4D708E52BCAF4FD0093DA9C /* PokemonDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsViewControllerTests.swift; sourceTree = "<group>"; };
 		A4D708E72BCDD4CC0093DA9C /* PokemonDetails+Fixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PokemonDetails+Fixtures.swift"; sourceTree = "<group>"; };
 		A4D708E92BCE223F0093DA9C /* ImageFetcherSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcherSpy.swift; sourceTree = "<group>"; };
+		A4D708EB2BCE27C70093DA9C /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		A4F74F2E2BA2312000FBB8A6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -309,12 +311,13 @@
 		A4923AF32B9C1C3100DD717E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				A4923AF42B9C1C4F00DD717E /* ViewState.swift */,
-				A41F58162BA79E4700CF08E6 /* UIView+Extensions.swift */,
-				A41F581D2BA7B3FC00CF08E6 /* UINavigationBar+Extensions.swift */,
-				A4D10E762BABE145002740B5 /* UIColor+Extensions.swift */,
 				A4D10E782BABEC9F002740B5 /* Future+Extensions.swift */,
 				A403A59C2BC1B1F8004082E7 /* ImageFetcher.swift */,
+				A4D708EB2BCE27C70093DA9C /* UIAlertController+Extensions.swift */,
+				A4D10E762BABE145002740B5 /* UIColor+Extensions.swift */,
+				A41F581D2BA7B3FC00CF08E6 /* UINavigationBar+Extensions.swift */,
+				A41F58162BA79E4700CF08E6 /* UIView+Extensions.swift */,
+				A4923AF42B9C1C4F00DD717E /* ViewState.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				A4923AF52B9C1C4F00DD717E /* ViewState.swift in Sources */,
 				A4D10E772BABE145002740B5 /* UIColor+Extensions.swift in Sources */,
 				A41F58172BA79E4700CF08E6 /* UIView+Extensions.swift in Sources */,
+				A4D708EC2BCE27C70093DA9C /* UIAlertController+Extensions.swift in Sources */,
 				A41F58202BA8C27100CF08E6 /* PokemonDetailsAPI.swift in Sources */,
 				A4D10E7B2BABECD7002740B5 /* PokemonJSON.swift in Sources */,
 				A462F9402B9822D200D60FC0 /* SceneDelegate.swift in Sources */,
