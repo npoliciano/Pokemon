@@ -15,12 +15,12 @@ final class EvolutionChainView: UIView {
     @IBOutlet weak var evolvesToLabel: UILabel!
 
     func setContent(with chain: EvolutionChain, imageFetcher: ImageFetcher) {
-        imageFetcher.fetch(from: chain.from.imageUrl) { image in
-            self.evolvesFromImageView.image = image
+        imageFetcher.fetch(from: chain.from.imageUrl) { [weak self] image in
+            self?.evolvesFromImageView.image = image
         }
 
-        imageFetcher.fetch(from: chain.to.imageUrl) { image in
-            self.evolvesToImageView.image = image
+        imageFetcher.fetch(from: chain.to.imageUrl) { [weak self] image in
+            self?.evolvesToImageView.image = image
         }
 
         evolvesFromLabel.text = chain.from.name

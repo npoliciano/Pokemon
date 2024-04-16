@@ -69,6 +69,17 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.titleForSegment(at: 2), "Stats")
     }
 
+    func testHideSecondaryAttributeIfAbsent() {
+        let (sut, service, _) = makeSUT()
+
+        sut.simulateAppearance()
+        service.complete(with: .success(.fixture(
+            secondaryAttribute: nil
+        )))
+
+        XCTAssertTrue(sut.secondaryAttributeView.isHidden)
+    }
+
     func testPresentAboutSectionOnSuccess() {
         let (sut, service, _) = makeSUT()
 

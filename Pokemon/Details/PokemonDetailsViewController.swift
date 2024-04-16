@@ -136,8 +136,8 @@ class PokemonDetailsViewController: UIViewController {
         statsView.setContent(with: pokemon)
         evolutionView.setContent(with: pokemon, imageFetcher: imageFetcher)
 
-        imageFetcher.fetch(from: pokemon.imageUrl) { image in
-            self.imageView.image = image
+        imageFetcher.fetch(from: pokemon.imageUrl) { [weak self] image in
+            self?.imageView.image = image
         }
 
         if let secondaryAttribute = pokemon.secondaryAttribute {
