@@ -31,9 +31,9 @@ class PokemonDetailsViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
 
-    private let aboutView = AboutView.loadFromNib()
-    private let evolutionView = EvolutionView.loadFromNib()
-    private let statsView = StatsView.loadFromNib()
+    let aboutView = AboutView.loadFromNib()
+    let evolutionView = EvolutionView.loadFromNib()
+    let statsView = StatsView.loadFromNib()
 
     private var subscription: AnyCancellable?
 

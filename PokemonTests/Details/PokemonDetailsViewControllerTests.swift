@@ -112,6 +112,22 @@ final class PokemonDetailsViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.statsContainerView.isHidden)
     }
 
+    func testPresentAboutSectionProperly() {
+        let (sut, service) = makeSUT()
+        let pokemon = PokemonDetails.fixture()
+
+        sut.simulateAppearance()
+        service.complete(with: .success(pokemon))
+
+        XCTAssertEqual(sut.description, pokemon.description)
+        XCTAssertEqual(sut.eggCycle, pokemon.eggCycle)
+        XCTAssertEqual(sut.eggGroups, pokemon.eggGroups)
+        XCTAssertEqual(sut.female, pokemon.female)
+        XCTAssertEqual(sut.male, pokemon.male)
+        XCTAssertEqual(sut.weight, pokemon.weight)
+        XCTAssertEqual(sut.height, pokemon.height)
+    }
+
     private func makeSUT(
         file: StaticString = #filePath,
         line: UInt = #line
@@ -179,6 +195,28 @@ final class TestablePokemonDetailsViewController: PokemonDetailsViewController {
     func simulateSelectedSegment(at index: Int) {
         segmentedControl.selectedSegmentIndex = index
         segmentedControl.sendActions(for: .valueChanged)
+    }
+
+    var pokemonDescription: String? {
+        aboutView.descriptionLabel.text
+    }
+    var eggCycle: String? {
+        aboutView.eggCycleLabel.text
+    }
+    var eggGroups: String? {
+        aboutView.eggGroupsLabel.text
+    }
+    var female: String? {
+        aboutView.femaleLabel.text
+    }
+    var male: String? {
+        aboutView.maleLabel.text
+    }
+    var weight: String? {
+        aboutView.weightLabel.text
+    }
+    var height: String? {
+        aboutView.heightLabel.text
     }
 }
 
